@@ -1,0 +1,30 @@
+# Download the following packages for each sensor:
+
+# CircuitPython (needed for all sensors)
+https://circuitpython.org/downloads 
+
+# Enabling I2C (necessary for steering, motor, IMU)
+https://learn.adafruit.com/adafruits-raspberry-pi-lesson-4-gpio-setup/configuring-i2c 
+
+# Camera
+https://picamera.readthedocs.io/en/release-1.13/
+OpenCV: $ sudo apt-get install python3-opencv
+
+#  IMU (i2c address: 0x68)
+sudo pip3 install adafruit-circuitpython-mpu6050
+
+# servo (steering) (i2c address: 0x40)
+sudo pip3 install adafruit-circuitpython-pca9685
+
+# ESC (motor) (i2c address: 0x70)
+also needs pca9685 package listed under "servo (steering)"
+
+# Lidar
+sudo pip3 install adafruit-circuitpython-rplidar
+
+If you see error message: permission denied to '/dev/ttyUSB0', this is because the 'dev/ttyUSB0' device has the group of dialout. So you need to add current user to the dialout group, by typing: 
+sudo adduser username dialout
+
+you will need to log out and back in again for this to take effect. 
+
+# 
