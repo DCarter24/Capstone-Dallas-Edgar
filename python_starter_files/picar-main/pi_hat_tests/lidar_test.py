@@ -23,12 +23,12 @@ import pygame
 from adafruit_rplidar import RPLidar
 
 # Set up pygame and the display
-os.putenv('SDL_FBDEV', '/dev/fb1')
-pygame.init()
-lcd = pygame.display.set_mode((320,240))
-pygame.mouse.set_visible(False)
-lcd.fill((0,0,0))
-pygame.display.update()
+#os.putenv('SDL_FBDEV', '/dev/fb1')
+#pygame.init()
+#lcd = pygame.display.set_mode((320,240))
+#pygame.mouse.set_visible(False)
+#lcd.fill((0,0,0))
+#pygame.display.update()
 
 # Setup the RPLidar
 PORT_NAME = '/dev/ttyUSB0'
@@ -50,7 +50,7 @@ def process_data(data):
             y = distance * sin(radians)
             point = (160 + int(x / max_distance * 119), 120 + int(y / max_distance * 119))
             lcd.set_at(point, pygame.Color(255, 255, 255))
-    pygame.display.update()
+#    pygame.display.update()
 
 
 scan_data = [0]*360
