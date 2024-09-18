@@ -50,6 +50,8 @@ def process_data(data):
             y = distance * sin(radians)
             point = (160 + int(x / max_distance * 119), 120 + int(y / max_distance * 119))
             lcd.set_at(point, pygame.Color(255, 255, 255))
+            print(x)
+            print(y)
 #    pygame.display.update()
 
 
