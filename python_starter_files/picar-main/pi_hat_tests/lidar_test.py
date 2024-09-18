@@ -64,7 +64,7 @@ scan_data = [0]*360
     #        scan_data[min([359, floor(angle)])] = distance
      #   process_data(scan_data)
 
-except KeyboardInterrupt:
+#except KeyboardInterrupt:
     print('Stoping.')
 lidar.stop()
 lidar.disconnect()
