@@ -65,6 +65,6 @@ scan_data = [0]*360
      #   process_data(scan_data)
 
 #except KeyboardInterrupt:
-    print('Stoping.')
-lidar.stop()
-lidar.disconnect()
+#    print('Stoping.')
+#lidar.stop()
+#lidar.disconnect()
