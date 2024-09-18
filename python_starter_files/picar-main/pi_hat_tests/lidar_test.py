@@ -57,12 +57,12 @@ def process_data(data):
 
 scan_data = [0]*360
 
-try:
-    print(lidar.info)
-    for scan in lidar.iter_scans():
-        for (_, angle, distance) in scan:
-            scan_data[min([359, floor(angle)])] = distance
-        process_data(scan_data)
+#try:
+ #   print(lidar.info)
+  #  for scan in lidar.iter_scans():
+   #     for (_, angle, distance) in scan:
+    #        scan_data[min([359, floor(angle)])] = distance
+     #   process_data(scan_data)
 
 except KeyboardInterrupt:
     print('Stoping.')
