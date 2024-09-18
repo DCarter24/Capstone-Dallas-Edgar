@@ -40,7 +40,7 @@ max_distance = 0
 #pylint: disable=redefined-outer-name,global-statement
 def process_data(data):
     global max_distance
-    lcd.fill((0,0,0))
+   # lcd.fill((0,0,0))
     for angle in range(360):
         distance = data[angle]
         if distance > 0:                  # ignore initially ungathered data points
