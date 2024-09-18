@@ -68,3 +68,4 @@ except KeyboardInterrupt:
     print('Stoping.')
 lidar.stop()
 lidar.disconnect()
+lidar.clear_input()
