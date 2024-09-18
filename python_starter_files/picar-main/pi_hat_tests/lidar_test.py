@@ -19,7 +19,7 @@ All text above must be included in any redistribution.
 
 import os
 from math import cos, sin, pi, floor
-import pygame
+#import pygame
 from adafruit_rplidar import RPLidar
 
 # Set up pygame and the display
@@ -49,7 +49,7 @@ def process_data(data):
             x = distance * cos(radians)
             y = distance * sin(radians)
             point = (160 + int(x / max_distance * 119), 120 + int(y / max_distance * 119))
-            lcd.set_at(point, pygame.Color(255, 255, 255))
+          #  lcd.set_at(point, pygame.Color(255, 255, 255))
             print(x)
             print(y)
 #    pygame.display.update()
