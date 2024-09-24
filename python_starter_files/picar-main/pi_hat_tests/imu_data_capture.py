@@ -17,4 +17,5 @@ with open("imu_readings.txt", "a") as file:
 
         print(log)
         file.write(log)
+        file.flush()  # Ensures the data is written immediately
         time.sleep(0.1)
