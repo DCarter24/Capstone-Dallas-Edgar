@@ -5,8 +5,11 @@ import adafruit_mpu6050
 i2c = board.I2C()  # uses board.SCL and board.SDA
 mpu = adafruit_mpu6050.MPU6050(i2c)
 
+start_time = time.time()  # Record the start time
+duration = 60  # Run the loop for 60 seconds
+
 with open("imu_readings.txt", "a") as file:
-    while True:
+    while time.time() - start_time < duration:
         timestamp = time.strftime("%Y-%m-%d %H:%M:%S")
         acceleration = mpu.acceleration
         gyro = mpu.gyro
