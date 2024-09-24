@@ -1,0 +1,2252 @@
+Timestamp: 2024-09-24 08:30:46
+Acceleration (m/s^2): X=-0.13, Y=0.21, Z=-10.32
+Gyro (rad/s): X=0.75, Y=0.87, Z=1.63
+
+Timestamp: 2024-09-24 08:30:46
+Acceleration (m/s^2): X=-0.16, Y=0.34, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:46
+Acceleration (m/s^2): X=-0.18, Y=0.24, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:46
+Acceleration (m/s^2): X=-0.11, Y=0.19, Z=-10.13
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:46
+Acceleration (m/s^2): X=-0.16, Y=0.26, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:46
+Acceleration (m/s^2): X=-0.21, Y=0.35, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:46
+Acceleration (m/s^2): X=-0.16, Y=0.34, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.06, Y=0.02, Z=-10.27
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.09, Y=0.27, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.14, Y=0.24, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.21, Y=0.33, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.24, Y=0.29, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.06, Y=0.30, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.16, Y=0.34, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.12, Y=0.34, Z=-10.38
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:47
+Acceleration (m/s^2): X=-0.16, Y=0.21, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.14, Y=0.29, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.15, Y=0.31, Z=-10.38
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.14, Y=0.32, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.09, Y=0.32, Z=-10.46
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.23, Y=0.22, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.12, Y=0.38, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.30, Y=0.45, Z=-10.13
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.19, Y=0.33, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.17, Y=0.38, Z=-10.22
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:48
+Acceleration (m/s^2): X=-0.14, Y=0.26, Z=-10.26
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.21, Y=0.25, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.14, Y=0.43, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.15, Y=0.24, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.12, Y=0.33, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.21, Y=0.31, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.18, Y=0.27, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.19, Y=0.22, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.06, Y=0.37, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:49
+Acceleration (m/s^2): X=-0.17, Y=0.19, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.07, Y=0.34, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.02
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.14, Y=0.35, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.18, Y=0.29, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.16, Y=0.46, Z=-10.14
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.14, Y=0.28, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.04, Y=0.32, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.18, Y=0.36, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.17, Y=0.19, Z=-10.20
+Gyro (rad/s): X=0.20, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.08, Y=0.37, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:50
+Acceleration (m/s^2): X=-0.14, Y=0.33, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.19, Y=0.26, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.15, Y=0.33, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.17, Y=0.16, Z=-10.15
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.11, Y=0.29, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.13, Y=0.30, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.20, Y=0.21, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.12, Y=0.27, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.05, Y=0.24, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:51
+Acceleration (m/s^2): X=-0.19, Y=0.32, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.20, Y=0.23, Z=-10.14
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.09, Y=0.46, Z=-10.27
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.21, Y=0.32, Z=-10.14
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.15, Y=0.23, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.16, Y=0.44, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.17, Y=0.27, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.21, Y=0.28, Z=-10.41
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.13, Y=0.38, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:52
+Acceleration (m/s^2): X=-0.18, Y=0.29, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.11, Y=0.31, Z=-10.27
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.02
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.12, Y=0.25, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.14, Y=0.34, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.16, Y=0.29, Z=-10.26
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.22, Y=0.28, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.16, Y=0.22, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.19, Y=0.31, Z=-10.45
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.12, Y=0.23, Z=-10.42
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.13, Y=0.17, Z=-10.16
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:53
+Acceleration (m/s^2): X=-0.15, Y=0.25, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.16, Y=0.23, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.06, Y=0.31, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.10, Y=0.19, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.11, Y=0.30, Z=-10.49
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.24, Y=0.25, Z=-10.15
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.09, Y=0.26, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.13, Y=0.24, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=-0.16, Y=0.26, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:54
+Acceleration (m/s^2): X=0.06, Y=0.21, Z=-10.45
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.17, Y=0.32, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.10, Y=0.31, Z=-10.22
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.18, Y=0.18, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.09, Y=0.29, Z=-10.46
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.11, Y=0.31, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.17, Y=0.24, Z=-10.38
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.22, Y=0.27, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.10, Y=0.18, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:55
+Acceleration (m/s^2): X=-0.07, Y=0.31, Z=-10.15
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.17, Y=0.32, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.19, Y=0.10, Z=-10.19
+Gyro (rad/s): X=0.20, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.16, Y=0.24, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.05, Y=0.22, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.11, Y=0.38, Z=-10.13
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.15, Y=0.35, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.04, Y=0.30, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.06, Y=0.17, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.22, Y=0.25, Z=-10.31
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:56
+Acceleration (m/s^2): X=-0.12, Y=0.28, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.02
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.08, Y=0.20, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.14, Y=0.33, Z=-10.35
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.13, Y=0.29, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.13, Y=0.34, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.17, Y=0.28, Z=-10.27
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.06, Y=0.45, Z=-10.21
+Gyro (rad/s): X=0.17, Y=0.01, Z=-0.02
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.17, Y=0.33, Z=-10.17
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.17, Y=0.26, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:57
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.17, Y=0.42, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.09, Y=0.28, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.13, Y=0.49, Z=-10.07
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.17, Y=0.28, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.06, Y=0.34, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.13, Y=0.30, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.14, Y=0.26, Z=-10.33
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.14, Y=0.30, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:58
+Acceleration (m/s^2): X=-0.23, Y=0.24, Z=-10.05
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.11, Y=0.18, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.14, Y=0.22, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.02, Y=0.38, Z=-10.40
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.13, Y=0.26, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.08, Y=0.18, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.17, Y=0.26, Z=-10.30
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.17, Y=0.24, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.12, Y=0.28, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.16, Y=0.25, Z=-10.33
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:30:59
+Acceleration (m/s^2): X=-0.14, Y=0.29, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.16, Y=0.31, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.10, Y=0.38, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.02
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.16, Y=0.23, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.16, Y=0.36, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.13, Y=0.22, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.14, Y=0.40, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.11, Y=0.36, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.21, Y=0.23, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:00
+Acceleration (m/s^2): X=-0.16, Y=0.28, Z=-10.20
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.11, Y=0.23, Z=-10.16
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.14, Y=0.37, Z=-10.46
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.12, Y=0.45, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.17, Y=0.34, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.17, Y=0.22, Z=-10.41
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.15, Y=0.37, Z=-10.14
+Gyro (rad/s): X=0.17, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.16, Y=0.38, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.12, Y=0.28, Z=-10.32
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.18, Y=0.23, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:01
+Acceleration (m/s^2): X=-0.14, Y=0.35, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.03, Y=0.29, Z=-10.35
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.22, Y=0.37, Z=-10.22
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.19, Y=0.30, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.13, Y=0.25, Z=-10.33
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.21, Y=0.29, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.04, Y=0.27, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.16, Y=0.27, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:02
+Acceleration (m/s^2): X=-0.14, Y=0.35, Z=-10.33
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.11, Y=0.36, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.18, Y=0.39, Z=-10.41
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.21, Y=0.24, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.25, Y=0.42, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.13, Y=0.34, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.18, Y=0.25, Z=-10.34
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.09, Y=0.03, Z=-10.13
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.12, Y=0.27, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:03
+Acceleration (m/s^2): X=-0.18, Y=0.24, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.12, Y=0.27, Z=-10.17
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.14, Y=0.33, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.11, Y=0.22, Z=-10.35
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.17, Y=0.33, Z=-10.12
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.18, Y=0.24, Z=-10.19
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.12, Y=0.25, Z=-10.27
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.16, Y=0.33, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.01, Y=0.30, Z=-10.42
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.11, Y=0.33, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.02
+
+Timestamp: 2024-09-24 08:31:04
+Acceleration (m/s^2): X=-0.18, Y=0.30, Z=-10.19
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.21, Y=0.35, Z=-10.38
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.09, Y=0.28, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.14, Y=0.25, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.10, Y=0.25, Z=-10.43
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.11, Y=0.09, Z=-10.34
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.15, Y=0.23, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.15, Y=0.29, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.23, Y=0.49, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:05
+Acceleration (m/s^2): X=-0.18, Y=0.26, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.15, Y=0.23, Z=-10.33
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.18, Y=0.32, Z=-10.15
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.11, Y=0.27, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.09, Y=0.27, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.15, Y=0.22, Z=-10.13
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.11, Y=0.35, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.14, Y=0.28, Z=-10.40
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.12, Y=0.28, Z=-10.19
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:06
+Acceleration (m/s^2): X=-0.09, Y=0.16, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.21, Y=0.36, Z=-10.35
+Gyro (rad/s): X=0.17, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.20, Y=0.29, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.07, Y=0.28, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.11, Y=0.32, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.19, Y=0.25, Z=-10.38
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.09, Y=0.28, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.19, Y=0.21, Z=-10.15
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.12, Y=0.35, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.05, Y=0.28, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:07
+Acceleration (m/s^2): X=-0.16, Y=0.33, Z=-10.19
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.12, Y=0.31, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.19
+Gyro (rad/s): X=0.20, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.12, Y=0.21, Z=-9.98
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.17, Y=0.21, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.15, Y=0.30, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.16, Y=0.22, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.12, Y=0.30, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.18, Y=0.40, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:08
+Acceleration (m/s^2): X=-0.16, Y=0.30, Z=-10.15
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.09, Y=0.33, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.28, Y=0.45, Z=-10.24
+Gyro (rad/s): X=0.17, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.19, Y=0.33, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.17, Y=0.18, Z=-10.25
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.19, Y=0.30, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.07, Y=0.25, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.18, Y=0.49, Z=-10.32
+Gyro (rad/s): X=0.17, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.19, Y=0.50, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:09
+Acceleration (m/s^2): X=-0.08, Y=0.33, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.08, Y=0.25, Z=-10.32
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.21, Y=0.39, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.17, Y=0.30, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.14, Y=0.22, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.10, Y=0.25, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.20, Y=0.25, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.12, Y=0.46, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.07, Y=0.24, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.02
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.10, Y=0.33, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:10
+Acceleration (m/s^2): X=-0.13, Y=0.23, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.17, Y=0.30, Z=-10.46
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.14, Y=0.31, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.06, Y=0.20, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.16, Y=0.35, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.14, Y=0.23, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.16, Y=0.28, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.15, Y=0.30, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.06, Y=0.29, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:11
+Acceleration (m/s^2): X=-0.23, Y=0.36, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.09, Y=0.40, Z=-10.43
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.12, Y=0.37, Z=-10.19
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.15, Y=0.42, Z=-10.32
+Gyro (rad/s): X=0.17, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.11, Y=0.36, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.23, Y=0.36, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.18, Y=0.33, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.13, Y=0.28, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.12, Y=0.31, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.13, Y=0.32, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:12
+Acceleration (m/s^2): X=-0.11, Y=0.33, Z=-10.35
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.09, Y=0.38, Z=-10.24
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.09, Y=0.23, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.15, Y=0.25, Z=-10.16
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.22
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.11, Y=0.26, Z=-10.37
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.08, Y=0.27, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.10, Y=0.02, Z=-10.26
+Gyro (rad/s): X=0.20, Y=0.03, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.20, Y=0.23, Z=-10.41
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:13
+Acceleration (m/s^2): X=-0.18, Y=0.23, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.09, Y=0.11, Z=-10.33
+Gyro (rad/s): X=0.20, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.20, Y=0.23, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.08, Y=0.24, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.14, Y=0.29, Z=-10.19
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.14, Y=0.40, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.19, Y=0.32, Z=-10.25
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=0.03, Y=0.20, Z=-10.39
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.21, Y=0.27, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:14
+Acceleration (m/s^2): X=-0.07, Y=0.51, Z=-10.34
+Gyro (rad/s): X=0.18, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.16, Y=0.26, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.16, Y=0.23, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.26, Y=0.28, Z=-10.12
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.16, Y=0.30, Z=-10.40
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.11, Y=0.27, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.17, Y=0.23, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.11, Y=0.28, Z=-10.12
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.13, Y=0.27, Z=-10.35
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.13, Y=0.07, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:15
+Acceleration (m/s^2): X=-0.09, Y=0.34, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.08, Y=0.30, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.06, Y=0.07, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.12, Y=0.41, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.06, Y=0.25, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.10, Y=0.27, Z=-10.41
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.13, Y=0.33, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.14, Y=0.27, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.10, Y=0.20, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:16
+Acceleration (m/s^2): X=-0.13, Y=0.33, Z=-10.35
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.07, Y=0.46, Z=-10.35
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.13, Y=0.28, Z=-10.32
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.16, Y=0.26, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.19, Y=0.47, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.13, Y=0.37, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.18, Y=0.35, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.20, Y=0.41, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.16, Y=0.34, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:17
+Acceleration (m/s^2): X=-0.15, Y=0.27, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.10, Y=0.25, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.17, Y=0.22, Z=-10.37
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.09, Y=0.29, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.17, Y=0.38, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.20, Y=0.24, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.16, Y=0.29, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.14, Y=0.29, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.20, Y=0.29, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=-0.29, Y=0.25, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:18
+Acceleration (m/s^2): X=0.00, Y=0.34, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.09, Y=0.32, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.12, Y=0.32, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.10, Y=0.25, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.13, Y=0.28, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.18, Y=0.17, Z=-10.23
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.14, Y=0.25, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.12, Y=0.26, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.15, Y=0.21, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:19
+Acceleration (m/s^2): X=-0.22, Y=0.39, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.13, Y=0.27, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.18, Y=0.23, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.24, Y=0.25, Z=-10.35
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.21, Y=0.24, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.13, Y=0.21, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.10, Y=0.32, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.25, Y=0.37, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:20
+Acceleration (m/s^2): X=-0.08, Y=0.31, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.11, Y=0.28, Z=-10.39
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.14, Y=0.36, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.13, Y=0.27, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.12, Y=0.29, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.16, Y=0.23, Z=-10.27
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.11, Y=0.28, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.21, Y=0.43, Z=-10.45
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.13, Y=0.16, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:21
+Acceleration (m/s^2): X=-0.20, Y=0.28, Z=-10.37
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.07, Y=0.26, Z=-10.33
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.02, Y=0.25, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.15, Y=0.15, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.17, Y=0.28, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.10, Y=0.08, Z=-10.36
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.17, Y=0.27, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.14, Y=0.26, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:22
+Acceleration (m/s^2): X=-0.09, Y=0.29, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.14, Y=0.37, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.19, Y=0.29, Z=-10.27
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.12, Y=0.24, Z=-10.30
+Gyro (rad/s): X=0.20, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.11, Y=0.34, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.15, Y=0.39, Z=-10.25
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.12, Y=0.27, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.19, Y=0.33, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.11, Y=0.41, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.06, Y=0.34, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:23
+Acceleration (m/s^2): X=-0.15, Y=0.22, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.19, Y=0.40, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.18, Y=0.35, Z=-10.14
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.11, Y=0.39, Z=-10.42
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.16, Y=0.06, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.10, Y=0.31, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.14, Y=0.29, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.09, Y=0.14, Z=-10.41
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.18, Y=0.25, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:24
+Acceleration (m/s^2): X=-0.13, Y=0.19, Z=-10.11
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.16, Y=0.34, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.12, Y=0.39, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.10, Y=0.37, Z=-10.34
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.15, Y=0.29, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.12, Y=0.27, Z=-10.12
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.16, Y=0.38, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.21, Y=0.29, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.06, Y=0.25, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:25
+Acceleration (m/s^2): X=-0.07, Y=0.40, Z=-10.34
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.11, Y=0.35, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.09, Y=0.23, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.15, Y=0.28, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.22, Y=0.29, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.11, Y=0.27, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.17, Y=0.27, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.05, Y=0.22, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.15, Y=0.20, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.04, Y=-0.09, Z=-10.36
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:26
+Acceleration (m/s^2): X=-0.15, Y=0.27, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.14, Y=0.39, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.08, Y=0.26, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.05, Y=0.34, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.09, Y=0.21, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.31, Y=0.34, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.07, Y=0.26, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.20, Y=0.31, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.15, Y=0.34, Z=-10.37
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:27
+Acceleration (m/s^2): X=-0.12, Y=0.22, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.12, Y=0.27, Z=-10.45
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.17, Y=0.27, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.10, Y=0.29, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.02
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.16, Y=0.17, Z=-10.11
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.20, Y=0.42, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.09, Y=0.22, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.06, Y=0.26, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.15, Y=0.33, Z=-10.30
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.15, Y=0.34, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:28
+Acceleration (m/s^2): X=-0.15, Y=0.37, Z=-10.24
+Gyro (rad/s): X=0.17, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.09, Y=0.27, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.12, Y=0.34, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.12, Y=0.44, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.19, Y=0.25, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.19, Y=0.38, Z=-10.15
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.15, Y=0.27, Z=-10.19
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.14, Y=0.28, Z=-10.25
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.21, Y=0.29, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:29
+Acceleration (m/s^2): X=-0.08, Y=0.16, Z=-10.47
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.13, Y=0.27, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.20, Y=0.26, Z=-10.17
+Gyro (rad/s): X=0.21, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.19, Y=0.22, Z=-10.03
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.14, Y=0.34, Z=-10.32
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.06, Y=0.24, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.12, Y=0.25, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.18, Y=0.21, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.14, Y=0.45, Z=-10.31
+Gyro (rad/s): X=0.17, Y=0.01, Z=-0.02
+
+Timestamp: 2024-09-24 08:31:30
+Acceleration (m/s^2): X=-0.18, Y=0.33, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.13, Y=0.27, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.11, Y=0.21, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.18, Y=0.31, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.13, Y=0.34, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.15, Y=0.23, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.06, Y=0.33, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.19, Y=0.43, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.24, Y=0.18, Z=-10.29
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.12, Y=0.37, Z=-10.33
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:31
+Acceleration (m/s^2): X=-0.15, Y=0.33, Z=-10.27
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.15, Y=0.30, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.20, Y=0.32, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.17, Y=0.19, Z=-10.26
+Gyro (rad/s): X=0.21, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.15, Y=0.31, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.13, Y=0.30, Z=-10.31
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.23, Y=0.13, Z=-10.16
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.14, Y=0.28, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.12, Y=0.25, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:32
+Acceleration (m/s^2): X=-0.10, Y=0.18, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.11, Y=0.30, Z=-10.12
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.18, Y=0.28, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.19, Y=0.37, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.13, Y=0.23, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.15, Y=0.20, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.11, Y=0.23, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.13, Y=0.31, Z=-10.39
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.17, Y=0.24, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:33
+Acceleration (m/s^2): X=-0.14, Y=0.35, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.08, Y=0.34, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.18, Y=0.26, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.21, Y=0.27, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.11, Y=0.28, Z=-10.20
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.09, Y=0.32, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.14, Y=0.20, Z=-10.12
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.11, Y=0.23, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.14, Y=0.42, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.02
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.16, Y=0.29, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:34
+Acceleration (m/s^2): X=-0.16, Y=0.23, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.17, Y=0.33, Z=-10.41
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.14, Y=0.24, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.15, Y=0.32, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.11, Y=0.23, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.09, Y=0.29, Z=-10.48
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.12, Y=0.21, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.04, Y=0.12, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.09, Y=0.20, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:35
+Acceleration (m/s^2): X=-0.19, Y=0.30, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.13, Y=0.28, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.17, Y=0.20, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.10, Y=0.17, Z=-10.35
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.12, Y=0.26, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.22, Y=0.25, Z=-10.14
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.14, Y=0.31, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.14, Y=0.35, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.12, Y=0.28, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.14, Y=0.35, Z=-10.19
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:36
+Acceleration (m/s^2): X=-0.11, Y=0.30, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.10, Y=0.28, Z=-10.27
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.22, Y=0.24, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.11, Y=0.29, Z=-10.36
+Gyro (rad/s): X=0.19, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.21, Y=0.26, Z=-10.47
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.13, Y=0.26, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.17, Y=0.27, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.23, Y=0.17, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.17, Y=0.27, Z=-10.21
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:37
+Acceleration (m/s^2): X=-0.22, Y=0.34, Z=-10.11
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.16, Y=0.28, Z=-10.39
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.16, Y=0.29, Z=-10.16
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.16, Y=0.35, Z=-10.31
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.03, Y=0.24, Z=-10.25
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.13, Y=0.14, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.22, Y=0.41, Z=-10.30
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.15, Y=0.23, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.12, Y=0.20, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:38
+Acceleration (m/s^2): X=-0.18, Y=0.30, Z=-10.11
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.19, Y=0.29, Z=-10.22
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.15, Y=0.32, Z=-10.42
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.16, Y=0.23, Z=-10.11
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.16, Y=0.39, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.08, Y=0.32, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.13, Y=0.31, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.06, Y=0.27, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.20, Y=0.26, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.16, Y=0.29, Z=-10.20
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:39
+Acceleration (m/s^2): X=-0.14, Y=0.27, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.18, Y=0.31, Z=-10.15
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.16, Y=0.25, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.21, Y=0.38, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.21, Y=0.29, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.11, Y=0.47, Z=-10.36
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.21, Y=0.30, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.19, Y=0.12, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.09, Y=0.29, Z=-10.28
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:40
+Acceleration (m/s^2): X=-0.10, Y=0.14, Z=-9.91
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.09, Y=0.37, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.15, Y=0.16, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.04, Y=0.14, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.26, Y=0.32, Z=-10.27
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.22, Y=0.34, Z=-10.25
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.11, Y=0.35, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.20, Y=0.15, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.19, Y=0.03, Z=-10.31
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:41
+Acceleration (m/s^2): X=-0.12, Y=0.25, Z=-10.27
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.19, Y=0.17, Z=-10.10
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.18, Y=0.32, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.18, Y=0.25, Z=-10.35
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.19, Y=0.38, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.21, Y=0.34, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.16, Y=0.34, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.19, Y=0.29, Z=-10.23
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.13, Y=0.19, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.08, Y=0.28, Z=-10.15
+Gyro (rad/s): X=0.18, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:42
+Acceleration (m/s^2): X=-0.12, Y=0.23, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.18, Y=0.31, Z=-10.38
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.15, Y=0.39, Z=-10.31
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.16, Y=0.38, Z=-10.21
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.12, Y=0.37, Z=-10.32
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.12, Y=0.24, Z=-10.17
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.19, Y=0.46, Z=-10.18
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.02
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.13, Y=0.32, Z=-10.25
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.12, Y=0.32, Z=-10.29
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:43
+Acceleration (m/s^2): X=-0.14, Y=0.32, Z=-10.22
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.11, Y=0.23, Z=-10.18
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.13, Y=0.25, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.09, Y=-0.00, Z=-10.39
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.13, Y=0.20, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.18, Y=0.31, Z=-10.24
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.14, Y=0.22, Z=-10.35
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.10, Y=0.29, Z=-10.34
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.19, Y=0.20, Z=-10.26
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:44
+Acceleration (m/s^2): X=-0.03, Y=0.36, Z=-10.39
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.00
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.16, Y=0.33, Z=-10.29
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.13, Y=0.32, Z=-10.28
+Gyro (rad/s): X=0.20, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.10, Y=0.22, Z=-10.23
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.17, Y=0.36, Z=-10.37
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.19, Y=0.35, Z=-10.11
+Gyro (rad/s): X=0.19, Y=0.02, Z=0.00
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.21, Y=0.39, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.17, Y=0.29, Z=-10.33
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.15, Y=0.38, Z=-10.24
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.23, Y=0.36, Z=-10.17
+Gyro (rad/s): X=0.19, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:45
+Acceleration (m/s^2): X=-0.14, Y=0.26, Z=-10.28
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:46
+Acceleration (m/s^2): X=-0.07, Y=0.26, Z=-10.26
+Gyro (rad/s): X=0.18, Y=0.02, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:46
+Acceleration (m/s^2): X=-0.21, Y=0.28, Z=-10.34
+Gyro (rad/s): X=0.20, Y=0.03, Z=-0.01
+
+Timestamp: 2024-09-24 08:31:46
+Acceleration (m/s^2): X=-0.13, Y=0.24, Z=-10.22
+Gyro (rad/s): X=0.19, Y=0.01, Z=-0.01
+
