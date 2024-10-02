@@ -8,6 +8,8 @@ import cv2
 run_duration_seconds = 60  # Total duration to run the program (1 minute)
 capture_interval_seconds = 5  # Delay between captures (5 seconds)
 debug_mode = True  # Enable or disable debug mode
+use_time_limit = False  # Set to True to use time-based limit, False to use capture count
+max_captures = 1  # Maximum number of captures if not using time limit
 
 # Initialize camera capture
 cap = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
@@ -15,16 +17,25 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)  # Set resolution
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 # Define lower and upper HSV limits for the color mask
-lower_hsv_limits = (35, 50, 50) # This represents a green hue with medium to high saturation and brightness.
-upper_hsv_limits = (85, 255, 255) # This upper limit encompasses the hue range for green with maximum saturation and brightness.
+lower_hsv_limits = (35, 50, 50)  # For green detection
+upper_hsv_limits = (85, 255, 255)
 
 # Initialize timing variables
 start_time = time.time()
 current_time = start_time
 next_capture_time = start_time
 
+# Initialize capture count
+capture_count = 0
+
 # Main part of the program
-while (current_time - start_time < run_duration_seconds):
+while True:
+    # Check if the loop should end based on time limit or capture count
+    if use_time_limit and (current_time - start_time >= run_duration_seconds):
+        break
+    elif not use_time_limit and capture_count >= max_captures:
+        break
+
     current_time = time.time()
 
     if (current_time - next_capture_time >= capture_interval_seconds):
@@ -39,6 +50,8 @@ while (current_time - start_time < run_duration_seconds):
         if not ret:
             print(f'ERROR: Failed to Capture Image. Time Elapsed: {current_time:.2f}')
             continue  # Skip this iteration if the image was not captured successfully
+
+        capture_count += 1  # Increment capture count
 
         # Finding angle using the captured image
         print("_______________________")
@@ -82,7 +95,7 @@ while (current_time - start_time < run_duration_seconds):
 
             # Calculate the angle of the detected region
             print("_______________________")
-            print('___________Origing Calc___________')
+            print('___________Origin Calc___________')
 
             # Get the dimensions of the image
             img_height, img_width, _ = img.shape
@@ -113,7 +126,7 @@ while (current_time - start_time < run_duration_seconds):
 
         # Check the captured angle and update the angle if valid
         if moments["m00"] <= 0.00001:
-            print("SecondSafety Check: Moment[\"m00\"] <= 0.00001. Angle Set to default 360")
+            print('SecondSafety Check: Moment["m00"] <= 0.00001. Angle Set to default 360')
             new_angle = 360
         else:
             new_angle = angle_theta
