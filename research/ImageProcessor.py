@@ -15,8 +15,8 @@ cap.set(cv2.CAP_PROP_FRAME_WIDTH, 640)  # Set resolution
 cap.set(cv2.CAP_PROP_FRAME_HEIGHT, 480)
 
 # Define lower and upper HSV limits for the color mask
-lower_hsv_limits = (95, 50, 50)
-upper_hsv_limits = (125, 255, 255)
+lower_hsv_limits = (35, 50, 50) # This represents a green hue with medium to high saturation and brightness.
+upper_hsv_limits = (85, 255, 255) # This upper limit encompasses the hue range for green with maximum saturation and brightness.
 
 # Initialize timing variables
 start_time = time.time()
