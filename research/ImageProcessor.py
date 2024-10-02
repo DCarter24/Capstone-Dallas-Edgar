@@ -136,5 +136,4 @@ while True:
 
 # Release the camera and clean up
 cap.release()
-car.stop()
 print("End of program")
