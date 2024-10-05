@@ -1,0 +1,115 @@
+Timestamp: 2024-10-05 11:52:40
+Acceleration (m/s^2): X=-0.60, Y=0.34, Z=-10.30
+Velocity (m/s): X=-1.80, Y=1.03, Z=-30.97
+Position (m): X=-8.12, Y=4.64, Z=-139.68
+
+Timestamp: 2024-10-05 11:52:43
+Acceleration (m/s^2): X=-0.72, Y=0.25, Z=-10.21
+Velocity (m/s): X=-6.11, Y=2.54, Z=-92.41
+Position (m): X=-57.81, Y=24.49, Z=-880.49
+
+Timestamp: 2024-10-05 11:52:46
+Acceleration (m/s^2): X=-0.68, Y=0.33, Z=-10.18
+Velocity (m/s): X=-12.22, Y=5.50, Z=-184.30
+Position (m): X=-195.74, Y=87.51, Z=-2958.75
+
+Timestamp: 2024-10-05 11:52:49
+Acceleration (m/s^2): X=-0.65, Y=0.30, Z=-10.29
+Velocity (m/s): X=-20.00, Y=9.13, Z=-308.18
+Position (m): X=-483.31, Y=219.29, Z=-7413.45
+
+Timestamp: 2024-10-05 11:52:52
+Acceleration (m/s^2): X=-0.70, Y=0.26, Z=-10.27
+Velocity (m/s): X=-30.49, Y=13.02, Z=-462.71
+Position (m): X=-1020.83, Y=444.51, Z=-15537.73
+
+Timestamp: 2024-10-05 12:06:36
+Raw Acceleration (m/s^2): X=-0.59, Y=0.34, Z=-10.25
+Filtered Acceleration (m/s^2): X=-0.12, Y=0.07, Z=-11.86
+Velocity (m/s): X=-0.36, Y=0.20, Z=-35.97
+Position (m): X=-1.63, Y=0.92, Z=-163.61
+
+Timestamp: 2024-10-05 12:06:39
+Raw Acceleration (m/s^2): X=-0.63, Y=0.27, Z=-10.34
+Filtered Acceleration (m/s^2): X=-0.22, Y=0.11, Z=-21.37
+Velocity (m/s): X=-1.69, Y=0.85, Z=-165.37
+Position (m): X=-15.91, Y=8.03, Z=-1556.90
+
+Timestamp: 2024-10-05 12:06:42
+Raw Acceleration (m/s^2): X=-0.72, Y=0.29, Z=-10.39
+Filtered Acceleration (m/s^2): X=-0.32, Y=0.14, Z=-28.98
+Velocity (m/s): X=-4.59, Y=2.16, Z=-428.53
+Position (m): X=-70.81, Y=33.60, Z=-6642.65
+
+Timestamp: 2024-10-05 12:06:45
+Raw Acceleration (m/s^2): X=-0.62, Y=0.36, Z=-10.26
+Filtered Acceleration (m/s^2): X=-0.38, Y=0.19, Z=-35.05
+Velocity (m/s): X=-9.19, Y=4.43, Z=-852.48
+Position (m): X=-209.74, Y=100.94, Z=-19518.52
+
+Timestamp: 2024-10-05 12:06:48
+Raw Acceleration (m/s^2): X=-0.55, Y=0.34, Z=-10.35
+Filtered Acceleration (m/s^2): X=-0.41, Y=0.22, Z=-39.92
+Velocity (m/s): X=-15.44, Y=7.72, Z=-1456.79
+Position (m): X=-490.82, Y=242.71, Z=-46146.88
+
+Timestamp: 2024-10-05 12:22:28
+Raw Acceleration (m/s^2): X=-0.58, Y=0.23, Z=-10.27
+Filtered Acceleration (m/s^2): X=0.50, Y=-0.27, Z=8.21
+Velocity (m/s): X=1.52, Y=-0.82, Z=24.88
+Position (m): X=6.92, Y=-3.71, Z=113.09
+
+Timestamp: 2024-10-05 12:22:31
+Raw Acceleration (m/s^2): X=-0.66, Y=0.39, Z=-10.18
+Filtered Acceleration (m/s^2): X=0.89, Y=-0.45, Z=14.80
+Velocity (m/s): X=6.91, Y=-3.55, Z=114.64
+Position (m): X=65.13, Y=-33.56, Z=1080.60
+
+Timestamp: 2024-10-05 12:22:34
+Raw Acceleration (m/s^2): X=-0.66, Y=0.40, Z=-10.25
+Filtered Acceleration (m/s^2): X=1.20, Y=-0.60, Z=20.05
+Velocity (m/s): X=17.80, Y=-8.97, Z=297.09
+Position (m): X=276.62, Y=-139.88, Z=4613.62
+
+Timestamp: 2024-10-05 12:22:37
+Raw Acceleration (m/s^2): X=-0.59, Y=0.37, Z=-10.28
+Filtered Acceleration (m/s^2): X=1.46, Y=-0.72, Z=24.25
+Velocity (m/s): X=35.47, Y=-17.67, Z=590.86
+Position (m): X=813.33, Y=-406.54, Z=13550.59
+
+Timestamp: 2024-10-05 12:22:40
+Raw Acceleration (m/s^2): X=-0.69, Y=0.28, Z=-10.24
+Filtered Acceleration (m/s^2): X=1.65, Y=-0.83, Z=27.62
+Velocity (m/s): X=60.42, Y=-30.28, Z=1009.07
+Position (m): X=1917.18, Y=-960.60, Z=31996.71
+
+Timestamp: 2024-10-05 12:30:44
+Raw Acceleration (m/s^2): X=-0.61, Y=0.37, Z=-10.43
+Filtered Acceleration (m/s^2): X=0.49, Y=-0.26, Z=8.20
+Velocity (m/s): X=0.00, Y=0.00, Z=0.00
+Position (m): X=0.00, Y=0.00, Z=0.00
+
+Timestamp: 2024-10-05 12:30:47
+Raw Acceleration (m/s^2): X=-0.59, Y=0.29, Z=-10.40
+Filtered Acceleration (m/s^2): X=0.88, Y=-0.48, Z=14.77
+Velocity (m/s): X=0.00, Y=0.00, Z=0.00
+Position (m): X=0.00, Y=0.00, Z=0.00
+
+Timestamp: 2024-10-05 12:30:50
+Raw Acceleration (m/s^2): X=-0.57, Y=0.24, Z=-10.31
+Filtered Acceleration (m/s^2): X=1.20, Y=-0.66, Z=20.04
+Velocity (m/s): X=0.00, Y=0.00, Z=0.00
+Position (m): X=0.00, Y=0.00, Z=0.00
+
+Timestamp: 2024-10-05 12:30:56
+Raw Acceleration (m/s^2): X=-0.58, Y=0.37, Z=-10.33
+Filtered Acceleration (m/s^2): X=1.46, Y=-0.78, Z=24.27
+Velocity (m/s): X=0.00, Y=0.00, Z=0.00
+Position (m): X=0.00, Y=0.00, Z=0.00
+
+Timestamp: 2024-10-05 12:30:59
+Raw Acceleration (m/s^2): X=-0.59, Y=0.33, Z=-10.33
+Filtered Acceleration (m/s^2): X=1.66, Y=-0.88, Z=27.64
+Velocity (m/s): X=0.00, Y=0.00, Z=0.00
+Position (m): X=0.00, Y=0.00, Z=0.00
+
