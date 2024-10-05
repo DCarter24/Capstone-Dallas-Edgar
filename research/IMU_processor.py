@@ -19,36 +19,41 @@ position = [0, 0, 0]  # Position components in X, Y, and Z directions
 
 # Constants
 alpha = 0.8  # Smoothing factor for the low-pass filter (between 0 and 1)
+calibration_interval = 10  # Interval for recalibrating the gravity vector (in seconds)
 
 # Initialize filtered acceleration values (for low-pass filtering)
 filtered_acceleration = [0, 0, 0]
 gravity_vector = [0, 0, 0]  # Placeholder for the dynamic gravity vector
 
-# Perform an initial calibration phase to determine the gravitational vector
-calibration_duration = 5  # Collect data for 5 seconds for calibration
-calibration_samples = 0
+# Perform initial calibration phase to determine the gravitational vector
+def calibrate_gravity_vector():
+    print("Calibrating gravity vector...")
+    calibration_duration = 5  # Collect data for 5 seconds for calibration
+    calibration_samples = 0
+    temp_gravity_vector = [0, 0, 0]
 
-print("Starting initial calibration phase to determine the gravity vector...")
-start_time = time.time()
-calibration_start_time = start_time
+    calibration_start_time = time.time()
+    while time.time() - calibration_start_time < calibration_duration:
+        raw_acceleration = mpu.acceleration
+        for i in range(3):
+            temp_gravity_vector[i] += raw_acceleration[i]
+        calibration_samples += 1
+        time.sleep(0.1)  # Collect samples at 10 Hz
 
-while time.time() - calibration_start_time < calibration_duration:
-    raw_acceleration = mpu.acceleration
+    # Average the collected acceleration values to determine the gravity vector
     for i in range(3):
-        gravity_vector[i] += raw_acceleration[i]
-    calibration_samples += 1
-    time.sleep(0.1)  # Collect samples at 10 Hz
+        gravity_vector[i] = temp_gravity_vector[i] / calibration_samples
 
-# Average the collected acceleration values to determine the gravity vector
-for i in range(3):
-    gravity_vector[i] /= calibration_samples
+    print(f"Gravity vector calibrated: X={gravity_vector[0]:.2f}, Y={gravity_vector[1]:.2f}, Z={gravity_vector[2]:.2f}")
 
-print(f"Initial gravity vector determined: X={gravity_vector[0]:.2f}, Y={gravity_vector[1]:.2f}, Z={gravity_vector[2]:.2f}")
+# Initial gravity calibration
+calibrate_gravity_vector()
 
 # Initialize timing variables
 start_time = time.time()
 current_time = start_time
 next_capture_time = start_time
+last_calibration_time = start_time
 
 # Initialize capture count
 capture_count = 0
@@ -63,6 +68,11 @@ with open("imu_readings.txt", "a") as file:
             break
 
         current_time = time.time()
+
+        # Perform periodic gravity vector recalibration
+        if current_time - last_calibration_time >= calibration_interval:
+            calibrate_gravity_vector()
+            last_calibration_time = current_time
 
         if (current_time - next_capture_time >= capture_interval_seconds):
             print('____________________IMU Data Collection Started_______________________________')
@@ -81,8 +91,8 @@ with open("imu_readings.txt", "a") as file:
                 # Compensate for gravity by subtracting the dynamic gravity vector
                 filtered_acceleration[i] -= gravity_vector[i]
 
-            # Calculate delta time
-            delta_t = current_time - start_time
+            # Calculate delta time for current iteration
+            delta_t = current_time - next_capture_time
 
             # Calculate distance using kinematic equations for each axis
             for i in range(3):  # Loop over X, Y, Z axes
