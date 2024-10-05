@@ -18,11 +18,32 @@ velocity = [0, 0, 0]  # Velocity components in X, Y, and Z directions
 position = [0, 0, 0]  # Position components in X, Y, and Z directions
 
 # Constants
-gravity = 9.81  # Approximate acceleration due to gravity in m/s^2
 alpha = 0.8  # Smoothing factor for the low-pass filter (between 0 and 1)
 
 # Initialize filtered acceleration values (for low-pass filtering)
 filtered_acceleration = [0, 0, 0]
+gravity_vector = [0, 0, 0]  # Placeholder for the dynamic gravity vector
+
+# Perform an initial calibration phase to determine the gravitational vector
+calibration_duration = 5  # Collect data for 5 seconds for calibration
+calibration_samples = 0
+
+print("Starting initial calibration phase to determine the gravity vector...")
+start_time = time.time()
+calibration_start_time = start_time
+
+while time.time() - calibration_start_time < calibration_duration:
+    raw_acceleration = mpu.acceleration
+    for i in range(3):
+        gravity_vector[i] += raw_acceleration[i]
+    calibration_samples += 1
+    time.sleep(0.1)  # Collect samples at 10 Hz
+
+# Average the collected acceleration values to determine the gravity vector
+for i in range(3):
+    gravity_vector[i] /= calibration_samples
+
+print(f"Initial gravity vector determined: X={gravity_vector[0]:.2f}, Y={gravity_vector[1]:.2f}, Z={gravity_vector[2]:.2f}")
 
 # Initialize timing variables
 start_time = time.time()
@@ -57,8 +78,8 @@ with open("imu_readings.txt", "a") as file:
             for i in range(3):
                 filtered_acceleration[i] = alpha * filtered_acceleration[i] + (1 - alpha) * raw_acceleration[i]
 
-            # Compensate for gravity on the Z-axis
-            filtered_acceleration[2] -= gravity  # Subtract gravity from the Z-axis
+                # Compensate for gravity by subtracting the dynamic gravity vector
+                filtered_acceleration[i] -= gravity_vector[i]
 
             # Calculate delta time
             delta_t = current_time - start_time
