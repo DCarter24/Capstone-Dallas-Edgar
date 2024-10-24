@@ -6,7 +6,7 @@ import time
 import adafruit_motor.servo
 
 # Hardcoded variables for runtime configuration
-run_duration_seconds = 10  # Total duration to run the program (10 seconds)
+run_duration_seconds = 5  # Total duration to run the program (10 seconds)
 capture_interval_seconds = 2  # Delay between captures (2 seconds)
 debug_mode = True  # Enable or disable debug mode
 use_time_limit = True  # Set to True to use time-based limit, False to use specific number of runs
@@ -14,8 +14,8 @@ max_runs = 1  # Maximum number of runs if not using time limit
 
 # Motor speed values
 neutral_speed = 0  # Neutral (stop) motor position
-forward_speed = 0.10  # Slow forward motion
-reverse_speed = -0.10  # Slow reverse motion
+forward_speed = 0.05  # Slow forward motion
+reverse_speed = -0.05  # Slow reverse motion
 
 # Delta timing variables
 start_time = time.time()
