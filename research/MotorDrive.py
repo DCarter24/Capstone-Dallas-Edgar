@@ -1,17 +1,16 @@
-import time
 import math
-from board import SCL,SDA
+from board import SCL, SDA
 import busio
 from adafruit_pca9685 import PCA9685
+import time
 import adafruit_motor.servo
-
 
 # Hardcoded variables for runtime configuration
 run_duration_seconds = 10  # Total duration to run the program (10 seconds)
 capture_interval_seconds = 2  # Delay between captures (2 seconds)
 debug_mode = True  # Enable or disable debug mode
 use_time_limit = True  # Set to True to use time-based limit, False to use specific number of runs
-max_runs = 5  # Maximum number of runs if not using time limit
+max_runs = 1  # Maximum number of runs if not using time limit
 
 # Motor speed values
 neutral_speed = 0  # Neutral (stop) motor position
@@ -23,10 +22,23 @@ start_time = time.time()
 current_time = start_time
 next_run_time = start_time
 
-
-
 # Initialize run count
 run_count = 0
+
+def Servo_Motor_Initialization():
+    """
+    Initializes the I2C bus and the PCA9685 motor controller.
+    """
+    i2c_bus = busio.I2C(SCL, SDA)
+    pca = PCA9685(i2c_bus)
+    pca.frequency = 100  # Set the frequency of the motor controller
+    return pca
+
+def Motor_Start(pca):
+    """
+    Placeholder function to indicate motor startup. Can be used for any additional startup configuration.
+    """ 
+    print("Motor started...")
 
 # Function to control motor speed
 def Motor_Speed(pca, percent):
@@ -39,7 +51,7 @@ def Motor_Speed(pca, percent):
     pca.channels[15].duty_cycle = math.floor(speed)
     print(f"Motor speed set to {speed/65535:.2f} (16-bit duty cycle)")
 
-# Initialization (assuming you have initialization functions ready)
+# Initialization
 pca = Servo_Motor_Initialization()
 Motor_Start(pca)
 
