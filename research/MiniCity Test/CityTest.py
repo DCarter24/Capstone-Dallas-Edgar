@@ -8,13 +8,13 @@ from adafruit_pca9685 import PCA9685
 # Hardcoded variables for runtime configuration
 run_duration_seconds = 5  # Total duration to run the program (5 seconds)
 capture_interval_seconds = 2  # Delay between captures (2 seconds)
-debug_mode = True  # Enable or disable debug mode
+debug_mode = False  # Enable or disable debug mode
 use_time_limit = True  # Set to True to use time-based limit, False to use specific number of runs
 max_runs = 1  # Maximum number of runs if not using time limit
 
 # Motor speed values
 neutral_speed = 0  # Neutral (stop) motor position
-forward_speed = 0.05  # Slow forward motion
+forward_speed = 0.10  # Slow forward motion
 
 # Delta timing variables
 start_time = time.time()
