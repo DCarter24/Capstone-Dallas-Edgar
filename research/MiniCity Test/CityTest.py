@@ -14,7 +14,7 @@ max_runs = 1  # Maximum number of runs if not using time limit
 
 # Motor speed values
 neutral_speed = 0  # Neutral (stop) motor position
-forward_speed = 0.10  # Slow forward motion
+forward_speed = 0.20  # Slow forward motion
 
 # Delta timing variables
 start_time = time.time()

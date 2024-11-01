@@ -1,0 +1,6 @@
+Timestamp: 2024-11-01 10:32:55
+Raw Acceleration (m/s^2): X=-0.86, Y=0.28, Z=-10.08
+Filtered Acceleration (m/s^2): X=0.62, Y=-0.12, Z=8.19
+Velocity (m/s): X=0.06, Y=-0.01, Z=0.82
+Position (m): X=0.01, Y=-0.00, Z=0.12
+
