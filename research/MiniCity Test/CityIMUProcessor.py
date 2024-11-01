@@ -9,7 +9,7 @@ mpu = adafruit_mpu6050.MPU6050(i2c)
 # Variables for distance calculation
 velocity = [0, 0, 0]  # Velocity components in X, Y, and Z directions
 position = [0, 0, 0]  # Position components in X, Y, and Z directions
-debug_mode = true; 
+debug_mode = True; 
 
 # Constants
 alpha = 0.8  # Smoothing factor for the low-pass filter (between 0 and 1)
