@@ -3,6 +3,7 @@ import numpy as np
 import logging
 import datetime
 import math
+import sys
 
 # Constants
 _INITIAL_SPEED = 0
