@@ -1,0 +1,6 @@
+Command to Log In:
+
+ ssh pi@172.27.108.15
+
+McKelvey : 
+	ssh pi@172.27.108.117
