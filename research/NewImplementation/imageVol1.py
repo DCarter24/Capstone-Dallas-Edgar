@@ -6,16 +6,17 @@ from my_hand_coded_lane_follower import MyHandCodedLaneFollower
 
 # Constants
 _INITIAL_SPEED = 0
-_SCREEN_WIDTH = 320
-_SCREEN_HEIGHT = 240
+_SCREEN_WIDTH = 640  
+_SCREEN_HEIGHT = 480  
 _SHOW_IMAGE = True
 
 def setup_camera():
     """Set up the camera and return it"""
     logging.debug('Setting up camera')
-    camera = cv2.VideoCapture(-1)
-    camera.set(3, _SCREEN_WIDTH)
-    camera.set(4, _SCREEN_HEIGHT)
+    # Use the specific device path and V4L for compatibility 
+    camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)  
+    camera.set(cv2.CAP_PROP_FRAME_WIDTH, _SCREEN_WIDTH)  # Set resolution
+    camera.set(cv2.CAP_PROP_FRAME_HEIGHT, _SCREEN_HEIGHT)
     return camera
 
 def create_video_recorder(path, fourcc):
