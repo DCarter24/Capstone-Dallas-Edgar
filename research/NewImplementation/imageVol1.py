@@ -4,12 +4,17 @@ import logging
 import datetime
 import math
 import sys
+import os
 
 # Constants
 _INITIAL_SPEED = 0
 _SCREEN_WIDTH = 640  
 _SCREEN_HEIGHT = 480  
 _SHOW_IMAGE = True
+
+# Define base path for saving videos
+base_video_path = "/home/pi/repo/Capstone-Dallas-Edgar/research/NewImplementation/data/videos"
+
 
 def setup_camera():
     """Set up the camera and return it"""
@@ -19,9 +24,13 @@ def setup_camera():
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, _SCREEN_HEIGHT)
     return camera
 
-def create_video_recorder(path, fourcc):
-    """Create and return a video recorder"""
-    return cv2.VideoWriter(path, fourcc, 20.0, (_SCREEN_WIDTH, _SCREEN_HEIGHT))
+
+def create_video_recorder(base_path, filename, fourcc):
+    """Create directory if not exists and return a video recorder"""
+    if not os.path.exists(base_path):
+        os.makedirs(base_path)
+    full_path = os.path.join(base_path, filename)
+    return cv2.VideoWriter(full_path, fourcc, 20.0, (_SCREEN_WIDTH, _SCREEN_HEIGHT))
 
 def cleanup(camera, video_orig, video_lane):
     """Cleanup resources"""
@@ -249,11 +258,13 @@ def show_image(title, frame, show=_SHOW_IMAGE):
 logging.basicConfig(level=logging.DEBUG, format='%(levelname)-5s:%(asctime)s: %(message)s')
 logging.info('Setting up the system...')
 
+
+
 camera = setup_camera()
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
 datestr = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
-video_orig = create_video_recorder('../data/tmp/car_video%s.avi' % datestr, fourcc)
-video_lane = create_video_recorder('../data/tmp/car_video_lane%s.avi' % datestr, fourcc)
+video_orig = create_video_recorder(base_video_path, f"Original_car_video_{datestr}.avi",fourcc)
+video_lane = create_video_recorder(base_video_path, f"lane_car_video_{datestr}.avi", fourcc)
 
 # Main driving loop
 try:
