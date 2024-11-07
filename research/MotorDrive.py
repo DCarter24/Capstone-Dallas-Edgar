@@ -6,7 +6,7 @@ import time
 import adafruit_motor.servo
 
 # Hardcoded variables for runtime configuration
-run_duration_seconds = 5  # Total duration to run the program (10 seconds)
+run_duration_seconds = 8  # Total duration to run the program (10 seconds)
 capture_interval_seconds = 2  # Delay between captures (2 seconds)
 debug_mode = True  # Enable or disable debug mode
 use_time_limit = True  # Set to True to use time-based limit, False to use specific number of runs
@@ -14,8 +14,8 @@ max_runs = 1  # Maximum number of runs if not using time limit
 
 # Motor speed values
 neutral_speed = 0  # Neutral (stop) motor position
-forward_speed = 0.05  # Slow forward motion
-reverse_speed = -0.05  # Slow reverse motion
+forward_speed = 0.5  # Slow forward motion
+reverse_speed = -0.5  # Slow reverse motion
 
 # Delta timing variables
 start_time = time.time()
@@ -31,7 +31,7 @@ def Servo_Motor_Initialization():
     """
     i2c_bus = busio.I2C(SCL, SDA)
     pca = PCA9685(i2c_bus)
-    pca.frequency = 100  # Set the frequency of the motor controller
+    pca.frequency = 50  # Set the frequency of the motor controller
     return pca
 
 def Motor_Start(pca):
