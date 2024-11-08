@@ -161,9 +161,9 @@ def pipeline_lane_detector(frame_, past_steering_angle=None):
         n_right_side_right_dir = 0
         n_right_side_left_dir = 0
         n_left_side_right_dir = 0
-        n_left_side_left_dir = 0        
+        n_left_side_left_dir = 0
+        print('Computing centroids and mean direction...')        
         for patch in list_patch:
-            print('Computing centroids and mean direction...')
             centroids, velocity, empty_bool = get_centroids_from_patches(lines, patch)
             if not empty_bool:
                 if velocity[1] < -0.25 and centroids['bottom'][0]>160: #velocity[0] < -0.25 and 
