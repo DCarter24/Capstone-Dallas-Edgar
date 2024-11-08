@@ -41,6 +41,7 @@ def cleanup(camera, video_orig, video_lane):
     cv2.destroyAllWindows()
 
 def draw_patches(img,patch_):
+    # Implementation here for drawing patches
     cv2.line(img,(patch_['x'][0],patch_['y'][0]),(patch_['x'][1],patch_['y'][0]),(0,165,255),1)
     cv2.line(img,(patch_['x'][0],patch_['y'][1]),(patch_['x'][1],patch_['y'][1]),(0,165,255),1)
     cv2.line(img,(patch_['x'][0],patch_['y'][0]),(patch_['x'][0],patch_['y'][1]),(0,165,255),1)
@@ -49,6 +50,7 @@ def draw_patches(img,patch_):
 
 
 def get_centroids_from_patches(list_lines,patch_):
+    # Implementation here for getting centroids from patches
     centroids = {'bottom': np.zeros((1,2)),'top': np.zeros((1,2))}
     velocity = (None,None)
 
@@ -83,6 +85,7 @@ def get_centroids_from_patches(list_lines,patch_):
 
 
 def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alpha=0.2):
+    # Implementation here for stabilizing the steering angle
     if last_steering_angle is None:
         return int(curr_steering_angle)
     else:
@@ -98,26 +101,40 @@ def pipeline_lane_detector(frame_, past_steering_angle=None):
 
     row_threshold = 120
 
+    print('Img to color...')
     img_rgb = cv2.cvtColor(frame_, cv2.COLOR_BGR2RGB)
-    img_top_half_bgr = frame_[:-row_threshold,:]
+    print('Cropping top half of the image...')
+    img_bottom_half_bgr = cv2.cvtColor(img_rgb[-row_threshold:,:], cv2.COLOR_RGB2BGR)
 
+    print('Performing HSV color space transformation...')
     img_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV)
 
-    img_bottom_half_bgr = cv2.cvtColor(img_rgb[-row_threshold:,:], cv2.COLOR_RGB2BGR)
+  
+    print('Creating Top Hald bgr and img crop...')
+    img_top_half_bgr = frame_[:-row_threshold,:]
     img_crop_hsv = img_hsv[-row_threshold:,:]
 
+    print('Creating binary mask...')
     bound = (np.array([0, 0, 0]), np.array([255, 255, 50]))
-
     mask = cv2.inRange(img_crop_hsv, bound[0], bound[1])
-
+    
+    print('Applying Gaussian blur on mask...')
+    mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)  # Gaussian blur
     #mask_blurred = cv2.blur(mask,(5,5))
 
+    
+    print('Applying Canny filter...')
     mask_edges = cv2.Canny(mask, 200, 400)
+
 
     minLineLength = 12
     maxLineGap = 3
     min_threshold = 5
+
+    print('Applying Probabilistic Hough Transform...')
     lines = cv2.HoughLinesP(mask_edges,1,np.pi/180,min_threshold,minLineLength,maxLineGap)
+
+   
     list_patch = [{'x': (0,25),'y': (120,100)}, {'x': (25,50),'y': (120,100)}, {'x': (50,75),'y': (120,100)},{'x': (75,100),'y': (120,100)}, {'x': (100,125),'y': (120,100)}]
     list_patch += [{'x': (194,219),'y': (120,100)},{'x': (219,244),'y': (120,100)}, {'x': (244,269),'y': (120,100)}, {'x': (269,294),'y': (120,100)},{'x': (294,319),'y': (120,100)}]
 
@@ -146,6 +163,7 @@ def pipeline_lane_detector(frame_, past_steering_angle=None):
         n_left_side_right_dir = 0
         n_left_side_left_dir = 0        
         for patch in list_patch:
+            print('Computing centroids and mean direction...')
             centroids, velocity, empty_bool = get_centroids_from_patches(lines, patch)
             if not empty_bool:
                 if velocity[1] < -0.25 and centroids['bottom'][0]>160: #velocity[0] < -0.25 and 
@@ -177,6 +195,7 @@ def pipeline_lane_detector(frame_, past_steering_angle=None):
         X_right = X_right[1:,:]
 
         if len(X_right)>1:
+            print('Computing weighted polynomial interpolation...')
             right_lane = np.polyfit(X_right[:,0],X_right[:,1],1,w=X_right[:,1])
             y1 = right_lane[0] * 219 + right_lane[1]
             y2 = right_lane[0] * 319 + right_lane[1]
@@ -205,6 +224,7 @@ def pipeline_lane_detector(frame_, past_steering_angle=None):
         else:
             mid_star = 159
 
+        print('Computing steering angle...')
         if np.abs(mid_star-160)<2:
             steering_angle = 90
         else:
