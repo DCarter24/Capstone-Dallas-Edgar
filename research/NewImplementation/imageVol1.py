@@ -284,9 +284,10 @@ def drive(camera, video_orig, video_lane):
         #video_lane.write(image_lane)
         if _SHOW_IMAGE:
             cv2.imshow('Lane Lines', image_lane)
+        '''
         if cv2.waitKey(1) & 0xFF == ord('q'):
             break
-
+        '''
 def show_image(title, frame, show=_SHOW_IMAGE):
     """Display an image if _SHOW_IMAGE is True"""
     if show:
