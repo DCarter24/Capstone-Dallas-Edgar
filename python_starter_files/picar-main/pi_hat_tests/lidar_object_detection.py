@@ -17,7 +17,9 @@ class LidarObjectDetection(Node):
         
         # Initialize PCA9685 and servo motor for speed control
         self.pca = self.servo_motor_initialization()
-
+# Debugging statement
+        self.get_logger().info("LidarObjectDetection node initialized.")
+        
         # Create a subscription to LIDAR data from the /scan topic
         self.lidar_subscription = self.create_subscription(
             LaserScan,
@@ -37,7 +39,7 @@ class LidarObjectDetection(Node):
         """Control motor speed"""
         speed = ((percent) * 3277) + 65535 * 0.15
         self.pca.channels[15].duty_cycle = math.floor(speed)
-        print(speed / 65535)
+       self.get_logger().info(f"Motor speed set to {percent*100}% (duty cycle: {speed / 65535:.2f})")
 
     def lidar_callback(self, msg):
         # Process the LIDAR data to detect objects
@@ -62,7 +64,8 @@ class LidarObjectDetection(Node):
 
         # Create a Twist message to send steering commands
         cmd = Twist()
-
+# Debugging output to display detected object's position and distance
+        self.get_logger().info(f"Closest object at angle: {angle}, distance: {distance:.2f}m")
         #  logic for maneuvering
         if distance < 0.5:  # Object too close
             if angle < 90 or angle > 270:  # If object is in front
