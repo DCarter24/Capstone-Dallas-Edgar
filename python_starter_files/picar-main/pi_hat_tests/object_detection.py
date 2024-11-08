@@ -1,65 +1,88 @@
-import os
-from math import cos, sin, pi, floor
-from adafruit_rplidar import RPLidar
+import rclpy
+from rclpy.node import Node
+from sensor_msgs.msg import LaserScan
+from geometry_msgs.msg import Twist
 
-# Setup the RPLidar
-PORT_NAME = '/dev/ttyUSB0'
-lidar = RPLidar(None, PORT_NAME, timeout=3)
-
-# Define a proximity threshold for obstacle avoidance in centimeters
-PROXIMITY_THRESHOLD = 50  # adjust
-SCAN_ANGLE = 30  # Angle range (e.g., -15 to +15 degrees) to check in front
-
-def process_data(data):
-    global max_distance
-    obstacle_detected = False
-    left_obstacle = False
-    right_obstacle = False
-    
-    for angle in range(360):
-        distance = data[angle]
+class LidarObjectDetection(Node):
+    def __init__(self):
+        super().__init__('lidar_object_detection')
         
-        if distance > 0:  # Ignore initially ungathered data points
-            radians = angle * pi / 180.0
-            x = distance * cos(radians)
-            y = distance * sin(radians)
-            
-            # Check if obstacle is within proximity threshold in the front area
-            if distance < PROXIMITY_THRESHOLD:
-                if -SCAN_ANGLE <= angle <= SCAN_ANGLE:
-                    obstacle_detected = True
-                    if angle < 180:  # Object on the left side
-                        left_obstacle = True
-                    else:  # Object on the right side
-                        right_obstacle = True
-    
-    if obstacle_detected:
-        maneuver(left_obstacle, right_obstacle)
+        # Subscriber to the LIDAR data
+        self.lidar_subscription = self.create_subscription(
+            LaserScan,
+            '/scan',  # Lidar Topic
+            self.lidar_callback,
+            10
+        )
 
-def maneuver(left_obstacle, right_obstacle):
-    if left_obstacle and right_obstacle:
-        print("Obstacle ahead! Stop or reverse.")
-        # Code to stop or reverse the iCar
-    elif left_obstacle:
-        print("Obstacle on the left. Turning right.")
-        # Code to turn right
-    elif right_obstacle:
-        print("Obstacle on the right. Turning left.")
-        # Code to turn left
-    else:
-        print("Clear path ahead.")
-        # Code to move forward
+        # Publisher for steering commands (Twist message for linear and angular velocities)
+        self.steering_publisher = self.create_publisher(Twist, '/cmd_vel', 10)
+        
+    def lidar_callback(self, msg):
+        # Process the LIDAR data to detect objects
+        detected_objects = self.process_lidar_data(msg)
+        
+        # Print detected objects in a nice format
+        self.print_detected_objects(detected_objects)
+        
+        # If any objects are detected, decide on a maneuver
+        if detected_objects:
+            maneuver = self.decide_maneuver(detected_objects)
+            self.publish_steering_command(maneuver)
 
-scan_data = [0] * 360
+    def process_lidar_data(self, msg):
+       # process the LaserScan data from the LIDAR
+        
+        detected_objects = []
+        for i, range_val in enumerate(msg.ranges):
+            if range_val < 1.0:  # Object detected if range is less than 1 meter
+                detected_objects.append((i, range_val))  # Store angle and distance
 
-try:
-    print(lidar.info)
-    for scan in lidar.iter_scans():
-        for (_, angle, distance) in scan:
-            scan_data[min([359, floor(angle)])] = distance
-        process_data(scan_data)
+        return detected_objects
 
-except KeyboardInterrupt:
-    print('Stopping.')
-lidar.stop()
-lidar.disconnect()
+    def decide_maneuver(self, detected_objects):
+        # Decide the maneuver based on detected objects
+        # For simplicity, if an object is on the left or right, we turn accordingly
+
+        min_distance = min(detected_objects, key=lambda x: x[1])  # Get the closest object
+
+        angle = min_distance[0]  # The index is a rough angle in degrees
+        if angle < 90:  # Object is to the right
+            return 'turn_left'
+        else:  # Object is to the left
+            return 'turn_right'
+
+    def publish_steering_command(self, maneuver):
+        # Publish the steering command based on the maneuver decision
+        twist = Twist()
+        if maneuver == 'turn_left':
+            twist.angular.z = 0.5  # Turn left
+        elif maneuver == 'turn_right':
+            twist.angular.z = -0.5  # Turn right
+        else:
+            twist.angular.z = 0.0  # Move straight
+
+        self.steering_publisher.publish(twist)
+
+    def print_detected_objects(self, detected_objects):
+        # print data
+        if detected_objects:
+            print("\nDetected Objects:")
+            print(f"{'Angle (degrees)':<20} {'Distance (meters)'}")
+            print("-" * 40)
+            for obj in detected_objects:
+                angle_deg = obj[0]  # LIDAR index is an approximation of the angle in degrees
+                distance = obj[1]
+                print(f"{angle_deg:<20} {distance:.2f}")
+        else:
+            print("No objects detected.\n")
+
+def main(args=None):
+    rclpy.init(args=args)
+    lidar_object_detection = LidarObjectDetection()
+    rclpy.spin(lidar_object_detection)
+    lidar_object_detection.destroy_node()
+    rclpy.shutdown()
+
+if __name__ == '__main__':
+    main()
