@@ -107,23 +107,18 @@ def pipeline_lane_detector(frame_, image_path, past_steering_angle=None):
 
     print('Img to color...')
     img_rgb = cv2.cvtColor(frame_, cv2.COLOR_BGR2RGB)
-    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
-    cv2.imwrite(image_path, img_rgb) 
+
     print('Cropping top half of the image...')
     img_bottom_half_bgr = cv2.cvtColor(img_rgb[-row_threshold:,:], cv2.COLOR_RGB2BGR)
-    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
-    cv2.imwrite(image_path, img_bottom_half_bgr)
+
 
     print('Performing HSV color space transformation...')
     img_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV)
-    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
-    cv2.imwrite(image_path, img_hsv)
-    
+
     print('Creating Top Hald bgr and img crop...')
     img_top_half_bgr = frame_[:-row_threshold,:]
     img_crop_hsv = img_hsv[-row_threshold:,:]
-    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
-    cv2.imwrite(image_path, img_crop_hsv)
+
 
     print('Creating binary mask...')
     bound = (np.array([0, 0, 0]), np.array([255, 255, 50]))
@@ -131,15 +126,13 @@ def pipeline_lane_detector(frame_, image_path, past_steering_angle=None):
     
     print('Applying Gaussian blur on mask...')
     mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)  # Gaussian blur
-    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
-    cv2.imwrite(image_path, mask_blurred); 
+
     #mask_blurred = cv2.blur(mask,(5,5))
 
     
     print('Applying Canny filter...')
     mask_edges = cv2.Canny(mask, 200, 400)
-    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
-    cv2.imwrite(image_path, mask_edges); 
+
 
 
 
@@ -150,7 +143,15 @@ def pipeline_lane_detector(frame_, image_path, past_steering_angle=None):
     print('Applying Probabilistic Hough Transform...')
     lines = cv2.HoughLinesP(mask_edges,1,np.pi/180,min_threshold,minLineLength,maxLineGap)
 
-   
+    # Save images at various stages
+    cv2.imwrite(os.path.join(image_path, f"img_rgb_{getTime()}.jpg"), img_rgb)
+    cv2.imwrite(os.path.join(image_path, f"img_bottom_half_bgr_{getTime()}.jpg"), img_bottom_half_bgr)
+    cv2.imwrite(os.path.join(image_path, f"img_crop_hsv_{getTime()}.jpg"), img_crop_hsv)
+    cv2.imwrite(os.path.join(image_path, f"mask_{getTime()}.jpg"), mask)
+    cv2.imwrite(os.path.join(image_path, f"mask_blurred_{getTime()}.jpg"), mask_blurred)
+    cv2.imwrite(os.path.join(image_path, f"mask_edges_{getTime()}.jpg"), mask_edges)
+
+
     list_patch = [{'x': (0,25),'y': (120,100)}, {'x': (25,50),'y': (120,100)}, {'x': (50,75),'y': (120,100)},{'x': (75,100),'y': (120,100)}, {'x': (100,125),'y': (120,100)}]
     list_patch += [{'x': (194,219),'y': (120,100)},{'x': (219,244),'y': (120,100)}, {'x': (244,269),'y': (120,100)}, {'x': (269,294),'y': (120,100)},{'x': (294,319),'y': (120,100)}]
 
