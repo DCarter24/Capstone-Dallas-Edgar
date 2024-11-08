@@ -16,10 +16,10 @@ _SHOW_IMAGE = False
 base_video_path = "/home/pi/repo/Capstone-Dallas-Edgar/research/NewImplementation/data/videos"
 base_media_path = "/home/pi/repo/Capstone-Dallas-Edgar/research/NewImplementation/data/images"
 
-def getTime(){
+def getTime():
     return datetime.datetime.now().strftime("%y%m%d_%H%M%S")
 
-}
+
 
 def setup_camera():
     """Set up the camera and return it"""
