@@ -4,3 +4,6 @@ Command to Log In:
 
 McKelvey : 
 	ssh pi@172.27.108.117
+
+New One: 
+	 ssh pi@172.27.108.51
