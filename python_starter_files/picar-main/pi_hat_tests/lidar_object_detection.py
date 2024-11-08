@@ -12,7 +12,7 @@ class LidarObjectDetection(Node):
     def __init__(self):
         super().__init__('lidar_object_detection')
 
-        # Create a publisher to send Twist messages to the /cmd_vel topic
+        # Creating a publisher to send Twist messages to the /cmd_vel topic
         self.steering_publisher = self.create_publisher(Twist, '/cmd_vel', 10)
         
         # Initialize PCA9685 and servo motor for speed control
