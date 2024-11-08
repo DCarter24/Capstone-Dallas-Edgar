@@ -10,11 +10,16 @@ import os
 _INITIAL_SPEED = 0
 _SCREEN_WIDTH = 640  
 _SCREEN_HEIGHT = 480  
-_SHOW_IMAGE = True
+_SHOW_IMAGE = False
 
-# Define base path for saving videos
+# Define base path for saving videos and images
 base_video_path = "/home/pi/repo/Capstone-Dallas-Edgar/research/NewImplementation/data/videos"
+base_media_path = "/home/pi/repo/Capstone-Dallas-Edgar/research/NewImplementation/data/images"
 
+def getTime(){
+    return datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+
+}
 
 def setup_camera():
     """Set up the camera and return it"""
@@ -47,7 +52,6 @@ def draw_patches(img,patch_):
     cv2.line(img,(patch_['x'][0],patch_['y'][0]),(patch_['x'][0],patch_['y'][1]),(0,165,255),1)
     cv2.line(img,(patch_['x'][1],patch_['y'][0]),(patch_['x'][1],patch_['y'][1]),(0,165,255),1)
     return img
-
 
 def get_centroids_from_patches(list_lines,patch_):
     # Implementation here for getting centroids from patches
@@ -97,22 +101,29 @@ def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alph
             return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),last_steering_angle-3,last_steering_angle+3)
 
 
-def pipeline_lane_detector(frame_, past_steering_angle=None):
+def pipeline_lane_detector(frame_, image_path, past_steering_angle=None):
 
     row_threshold = 120
 
     print('Img to color...')
     img_rgb = cv2.cvtColor(frame_, cv2.COLOR_BGR2RGB)
+    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
+    cv2.imwrite(image_path, img_rgb) 
     print('Cropping top half of the image...')
     img_bottom_half_bgr = cv2.cvtColor(img_rgb[-row_threshold:,:], cv2.COLOR_RGB2BGR)
+    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
+    cv2.imwrite(image_path, img_bottom_half_bgr)
 
     print('Performing HSV color space transformation...')
     img_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV)
-
-  
+    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
+    cv2.imwrite(image_path, img_hsv)
+    
     print('Creating Top Hald bgr and img crop...')
     img_top_half_bgr = frame_[:-row_threshold,:]
     img_crop_hsv = img_hsv[-row_threshold:,:]
+    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
+    cv2.imwrite(image_path, img_crop_hsv)
 
     print('Creating binary mask...')
     bound = (np.array([0, 0, 0]), np.array([255, 255, 50]))
@@ -120,11 +131,16 @@ def pipeline_lane_detector(frame_, past_steering_angle=None):
     
     print('Applying Gaussian blur on mask...')
     mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)  # Gaussian blur
+    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
+    cv2.imwrite(image_path, mask_blurred); 
     #mask_blurred = cv2.blur(mask,(5,5))
 
     
     print('Applying Canny filter...')
     mask_edges = cv2.Canny(mask, 200, 400)
+    image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
+    cv2.imwrite(image_path, mask_edges); 
+
 
 
     minLineLength = 12
@@ -248,9 +264,9 @@ def pipeline_lane_detector(frame_, past_steering_angle=None):
         return new_frame, stable_steering_angle
 
 
-def follow_lane(frame, current_steering_angle=90):
+def follow_lane(frame, image_path, current_steering_angle=90):
     """Process the frame to follow the lane"""
-    frame_lanes, new_steering_angle = pipeline_lane_detector(frame, current_steering_angle) 
+    frame_lanes, new_steering_angle = pipeline_lane_detector(frame, image_path, current_steering_angle) 
     return frame, new_steering_angle
 
 def drive(camera, video_orig, video_lane):
@@ -261,7 +277,8 @@ def drive(camera, video_orig, video_lane):
         ret, image_lane = camera.read()
         if not ret:
             break
-        image_lane, current_steering_angle = follow_lane(image_lane, current_steering_angle)
+        image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
+        image_lane, current_steering_angle = follow_lane(image_lane, image_path,current_steering_angle )
         video_orig.write(image_lane)
         video_lane.write(image_lane)
         if _SHOW_IMAGE:
@@ -282,7 +299,7 @@ logging.info('Setting up the system...')
 
 camera = setup_camera()
 fourcc = cv2.VideoWriter_fourcc(*'XVID')
-datestr = datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+datestr = getTime(); 
 video_orig = create_video_recorder(base_video_path, f"Original_car_video_{datestr}.avi",fourcc)
 video_lane = create_video_recorder(base_video_path, f"lane_car_video_{datestr}.avi", fourcc)
 
