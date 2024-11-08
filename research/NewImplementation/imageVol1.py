@@ -280,8 +280,8 @@ def drive(camera, video_orig, video_lane):
             break
         image_path = os.path.join(base_media_path, f"frame_{getTime()}.jpg")
         image_lane, current_steering_angle = follow_lane(image_lane, image_path,current_steering_angle )
-        video_orig.write(image_lane)
-        video_lane.write(image_lane)
+        #video_orig.write(image_lane)
+        #video_lane.write(image_lane)
         if _SHOW_IMAGE:
             cv2.imshow('Lane Lines', image_lane)
         if cv2.waitKey(1) & 0xFF == ord('q'):
