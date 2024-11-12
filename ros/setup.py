@@ -4,7 +4,7 @@ package_name = 'rplidar_ros'
 
 setup(
     name=package_name,
-    version='1.0.0',
+    version='1.0',
     packages=[package_name],
     install_requires=['setuptools', 'rclpy', 'sensor_msgs', 'geometry_msgs', 'adafruit-circuitpython-pca9685'],
     data_files=[
