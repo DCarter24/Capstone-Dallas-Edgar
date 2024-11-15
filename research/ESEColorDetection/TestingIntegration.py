@@ -48,7 +48,7 @@ times2Run = {2}
 # Main Loop
 for i in times2Run:  
 
-    while camera.isOpened(): 
+    for i in times2Run: 
          successfulRead, raw_image = camera.read() 
 
          if not successfulRead:
