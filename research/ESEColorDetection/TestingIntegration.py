@@ -42,21 +42,15 @@ def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alph
 # Set up time
 datestr = getTime(); 
 
-
+times2Run = {2}
 
 
 # Main Loop
-while True: 
+for i in times2Run:  
 
     while camera.isOpened(): 
          successfulRead, raw_image = camera.read() 
 
-        #  # Checks if the space bar (ASCII code 32) is pressed to exit the loop. 
-        #  if cv2.waitKey(1) == 32:     # stop when space bar hit 
-        #     print("Session Broke by Spacebar. ")
-        #     cv2.imwrite("rawImg.jpg", raw_image)
-        #     break
-         
          if not successfulRead:
               print("Image not taken successful. ")
               break 
@@ -124,6 +118,10 @@ while True:
               cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][1]),(patch['x'][1],patch['y'][1]),(0,165,255),1) # Second line. 
               cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][0]),(patch['x'][0],patch['y'][1]),(0,165,255),1) # Third line. 
               cv2.line(img_bottom_half_bgr,(patch['x'][1],patch['y'][0]),(patch['x'][1],patch['y'][1]),(0,165,255),1) # Fourth line. 
+         
+         print("Saving Image With Lines.")
+         cv2.imwrite(os.path.join(path, f"image_lines{getTime()}.jpg"), img_bottom_half_bgr)
+         
          if lines is None: 
              print("No Lines Detected. Exiting Loop")
              break
@@ -243,11 +241,34 @@ while True:
               cv2.putText(img_bottom_half_bgr, text, (textX, textY ), font, 1, (0, 0, 255), 2)
 
               new_frame = np.concatenate((img_top_half_bgr, img_bottom_half_bgr), axis=0)
+
+              # Draw steering angle line
+              height, width, _ = new_frame.shape
+
+              # Starting point: bottom center of the image
+              start_point = (int(width / 2), int(height))
+
+              # Calculate angle from vertical in radians
+              angle_from_vertical = stable_steering_angle - 90
+              angle_rad = np.radians(angle_from_vertical)
+
+              # Line length in pixels
+              line_length = 100  # Adjust the length as needed
+
+              # Calculate end point
+              end_point_x = int(start_point[0] + line_length * np.sin(angle_rad))
+              end_point_y = int(start_point[1] - line_length * np.cos(angle_rad))
+
+              # Ensure end point is within image boundaries
+              end_point_x = max(0, min(end_point_x, width - 1))
+              end_point_y = max(0, min(end_point_y, height - 1))
+
+              end_point = (end_point_x, end_point_y)
+
+              # Draw the red line representing the steering angle
+              cv2.line(new_frame, start_point, end_point, (0, 0, 255), thickness=2)
+
               # Save new image: 
               cv2.imwrite(os.path.join(path, f"new_frame{getTime()}.jpg"), new_frame)
-
-    # if cv2.waitKey(1) == 32:
-    #      break 
-
 
    
