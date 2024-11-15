@@ -51,11 +51,11 @@ while True:
     while camera.isOpened(): 
          successfulRead, raw_image = camera.read() 
 
-         # Checks if the space bar (ASCII code 32) is pressed to exit the loop. 
-         if cv2.waitKey(1) == 32:     # stop when space bar hit 
-            print("Session Broke by Spacebar. ")
-            cv2.imwrite("rawImg.jpg", raw_image)
-            break
+        #  # Checks if the space bar (ASCII code 32) is pressed to exit the loop. 
+        #  if cv2.waitKey(1) == 32:     # stop when space bar hit 
+        #     print("Session Broke by Spacebar. ")
+        #     cv2.imwrite("rawImg.jpg", raw_image)
+        #     break
          
          if not successfulRead:
               print("Image not taken successful. ")
@@ -245,8 +245,8 @@ while True:
               # Save new image: 
               cv2.imwrite(os.path.join(path, f"new_frame{getTime()}.jpg"), new_frame)
 
-    if cv2.waitKey(1) == 32:
-         break 
+    # if cv2.waitKey(1) == 32:
+    #      break 
 
 
    
