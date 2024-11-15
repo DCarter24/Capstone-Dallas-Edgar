@@ -137,7 +137,8 @@ while True:
               print('Computing centroids and mean direction...') 
               for patch in list_patch: 
                    centroids = {'bottom': np.zeros((1,2)),'top': np.zeros((1,2))}
-                   velocity = (None,None)
+                #    velocity = (None,None)
+                   velocity(0, 0)
 
                    for line in lines:
                         x1,y1,x2,y2 = line[0]
