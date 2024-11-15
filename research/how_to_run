@@ -1,0 +1,42 @@
+go to the ros workspace
+"source install/setup.bash"
+  ros2 launch rplidar_ros launch_steer.py
+  ###DEBUGGING TIPS###
+  The python files that are ran when running lunch_steer are in scripts directory.
+  lidar_object_detection and steering_control
+###Open up CMAKELists.txt file
+#  This is what was added:
+" #Install the Python scripts
+install(PROGRAMS
+  scripts/steering_control.py
+  scripts/lidar_object_detection.py
+  DESTINATION lib/${PROJECT_NAME}
+)
+
+# Install the launch file for steering control
+install(
+  DIRECTORY launch
+  DESTINATION share/${PROJECT_NAME}/launch #not sure if "/launch" would be a problem
+  #if pasted here
+)"
+  ###SCRIPTS FOLDER###
+I added the files to the scripts folder and ran
+chmod +x steering_control.py
+chmod +x lidar_object_detection.py # in the scripts directory to make sure they're executable.
+
+  ### setup.py file###
+  ##I created this file, if you receive an error about multiple launch files, this may be the spot to debug.
+  added these as the entry points:
+entry_points={
+    'console_scripts': [
+        'steering_control = scripts.steering_control:main',
+        'lidar_object_detection = scripts.lidar_object_detection:main',
+    ],
+},
+
+  ### PACKAGE.XML FILE###
+#didn't add these  rclcpp
+  rosconsole
+  sensor_msgs
+  std_srvs
+  rclcpp_components
