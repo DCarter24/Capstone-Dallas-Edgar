@@ -1,35 +1,38 @@
-import cv2
-import numpy as np
-import logging
-import datetime
-import math
-import sys
-import os
+import cv2 # OpenCv Library for image and video processing. 
+import numpy as np # Numericla Operations on Arrays. 
+import logging # Logging events for debugging.
+import datetime # Working with date and time. 
+import math # Mathematical Functions. 
+import sys # System-Specific parameters and functions. 
+import os # Interacting witht the operating system. 
 
 # Constants
-_INITIAL_SPEED = 0
-_SCREEN_WIDTH = 640  
-_SCREEN_HEIGHT = 480  
-_SHOW_IMAGE = False
+_INITIAL_SPEED = 0 # Initial speed of the vehicle. 
+_SCREEN_WIDTH = 640  # Dimensions for the video capture resolution. 
+_SCREEN_HEIGHT = 480 
+_SHOW_IMAGE = False  # Flag ot determine whether to display images during processing. 
 
 # Define base path for saving videos and images
 base_video_path = "/home/pi/repo/Capstone-Dallas-Edgar/research/NewImplementation/data/videos"
 base_media_path = "/home/pi/repo/Capstone-Dallas-Edgar/research/NewImplementation/data/images"
 
+
+# Returns the current date and time as a string in the format YYMMDD_HHMMSS. 
 def getTime():
     return datetime.datetime.now().strftime("%y%m%d_%H%M%S")
 
 
-
+# Initialize the camera for video capture. 
 def setup_camera():
     """Set up the camera and return it"""
     logging.debug('Setting up camera')
     camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)  
     camera.set(cv2.CAP_PROP_FRAME_WIDTH, _SCREEN_WIDTH)  
     camera.set(cv2.CAP_PROP_FRAME_HEIGHT, _SCREEN_HEIGHT)
-    return camera
+    return camera # Returns object for capturing video formats.
 
 
+# Creates a object to record videos. 
 def create_video_recorder(base_path, filename, fourcc):
     """Create directory if not exists and return a video recorder"""
     if not os.path.exists(base_path):
@@ -37,6 +40,7 @@ def create_video_recorder(base_path, filename, fourcc):
     full_path = os.path.join(base_path, filename)
     return cv2.VideoWriter(full_path, fourcc, 20.0, (_SCREEN_WIDTH, _SCREEN_HEIGHT))
 
+# Releases resources and perfomrs clean up when script is stopped. 
 def cleanup(camera, video_orig, video_lane):
     """Cleanup resources"""
     logging.info('Stopping the car, resetting hardware.')
@@ -45,16 +49,36 @@ def cleanup(camera, video_orig, video_lane):
     video_lane.release()
     cv2.destroyAllWindows()
 
+# Draws rectangular patch (regions of interest) on the image. 
 def draw_patches(img,patch_):
     # Implementation here for drawing patches
-    cv2.line(img,(patch_['x'][0],patch_['y'][0]),(patch_['x'][1],patch_['y'][0]),(0,165,255),1)
-    cv2.line(img,(patch_['x'][0],patch_['y'][1]),(patch_['x'][1],patch_['y'][1]),(0,165,255),1)
-    cv2.line(img,(patch_['x'][0],patch_['y'][0]),(patch_['x'][0],patch_['y'][1]),(0,165,255),1)
-    cv2.line(img,(patch_['x'][1],patch_['y'][0]),(patch_['x'][1],patch_['y'][1]),(0,165,255),1)
-    return img
+    '''
+    cv2.line(): Method used to draw a line on any image: 
+        Usage: 
+            cv2.line(image, start_point, end_point, color, thickness). 
 
+    patch_: A dictionary containing the coordinates of the patch: 
+            patch_['x']: Tuple with x-coordinates (x_start, x_end). 
+            patch_['y']: Tuple with y-coordinates (y_start, y_end). 
+    Color: 
+        (0, 165, 255): corresponds to orange in BGR Format. 
+    '''
+
+    # Draws four sides of a rectangle based on the coordinates partc_. 
+    cv2.line(img,(patch_['x'][0],patch_['y'][0]),(patch_['x'][1],patch_['y'][0]),(0,165,255),1) # First line. 
+    cv2.line(img,(patch_['x'][0],patch_['y'][1]),(patch_['x'][1],patch_['y'][1]),(0,165,255),1) # Second line. 
+    cv2.line(img,(patch_['x'][0],patch_['y'][0]),(patch_['x'][0],patch_['y'][1]),(0,165,255),1) # Third line. 
+    cv2.line(img,(patch_['x'][1],patch_['y'][0]),(patch_['x'][1],patch_['y'][1]),(0,165,255),1) # Fourth line. 
+    return img # returns the image on which to draw. 
+
+# Computers the centroids and velocities of line segments within a given patch. 
 def get_centroids_from_patches(list_lines,patch_):
     # Implementation here for getting centroids from patches
+
+    ''' 
+    
+    
+    '''
     centroids = {'bottom': np.zeros((1,2)),'top': np.zeros((1,2))}
     velocity = (None,None)
 
