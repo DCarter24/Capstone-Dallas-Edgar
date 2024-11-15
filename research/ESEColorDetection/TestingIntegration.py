@@ -48,7 +48,7 @@ datestr = getTime();
 # Main Loop
 while True: 
 
-    while camera.isOpen(): 
+    while camera.isOpened(): 
          successfulRead, raw_image = camera.read() 
 
          # Checks if the space bar (ASCII code 32) is pressed to exit the loop. 
