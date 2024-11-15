@@ -137,8 +137,8 @@ while True:
               print('Computing centroids and mean direction...') 
               for patch in list_patch: 
                    centroids = {'bottom': np.zeros((1,2)),'top': np.zeros((1,2))}
-                #    velocity = (None,None)
-                   velocity(0, 0)
+                   velocity = (None,None)
+                   
 
                    for line in lines:
                         x1,y1,x2,y2 = line[0]
@@ -170,10 +170,10 @@ while True:
                             X_right = np.vstack((X_right, centroids['bottom']))
                             n_right_side_left_dir += int(velocity[0] < -0.25)
                             n_right_side_right_dir += int(velocity[0] >= -0.25)
-                    elif velocity[1] < -0.25 and centroids['bottom'][0]<160: #velocity[0] > 0.25 and 
-                         X_left = np.vstack((X_left, centroids['bottom']))
-                         n_left_side_left_dir += int(velocity[0] < -0.25)
-                         n_left_side_right_dir += int(velocity[0] >= -0.25)
+                         elif velocity[1] < -0.25 and centroids['bottom'][0]<160: #velocity[0] > 0.25 and 
+                            X_left = np.vstack((X_left, centroids['bottom']))
+                            n_left_side_left_dir += int(velocity[0] < -0.25)
+                            n_left_side_right_dir += int(velocity[0] >= -0.25)
 
               if n_right_side_right_dir>=n_right_side_left_dir:
                    right_side_dir = ('right', n_right_side_right_dir)
