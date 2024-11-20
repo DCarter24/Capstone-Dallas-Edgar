@@ -16,9 +16,6 @@ row_threshold = 0
 path = "/home/pi/repo/Capstone-Dallas-Edgar/research/ESEColorDetection/Data"
 # Calculate crop height for top 25% of the image
 crop_height = int(SCREEN_HEIGHT * 0.25)  # This will be 120 pixels
-ifblue = True # Select the HSV bound depending on where we are testing the pi car. 
-lower_hsv = 0
-upper_hsv = 0
 
 # Initialize the camera for Image capturing. 
 camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
@@ -67,16 +64,13 @@ for i in times2Run:
 
          print('Img to color...')
          img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
-         
 
          print('Cropping top half of the image...')
          #img_bottom_half_bgr = cv2.cvtColor(img_rgb[-row_threshold:,:], cv2.COLOR_RGB2BGR)
          img_bottom_half_bgr = cv2.cvtColor(img_rgb[crop_height:,:], cv2.COLOR_RGB2BGR)
-         
 
          print('Performing HSV color space transformation...')
-         #img_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV)
-         img_hsv = cv2.cvtColor(raw_image, cv2.COLOR_BGR2HSV)
+         img_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV)
 
          print('Creating Top Hald bgr and img crop...')
          #img_top_half_bgr = raw_image[:-row_threshold,:]
@@ -85,26 +79,14 @@ for i in times2Run:
          img_crop_hsv = img_hsv[crop_height:,:]
 
          print('Creating binary mask...')
-         if ifblue{
-              # If True, we are detecting blue lanes for testing. 
-              # Define HSV range for blue color
-              lower_hsv = np.array([100, 150, 50])
-              upper_hsv = np.array([130, 255, 255])
-         }else{
-              # If False, we are detecting white lanes for implementation. 
-              # Define HSV range for white color
-              lower_hsv = np.array([0, 0, 200])
-              upper_hsv = np.array([180, 25, 255])
-         }
- 
-         # Create the mask using the new HSV bounds
-         mask = cv2.inRange(img_crop_hsv, lower_hsv, upper_hsv)
+         bound = (np.array([0, 0, 0]), np.array([255, 255, 50]))
+         mask = cv2.inRange(img_crop_hsv, bound[0], bound[1])
         
          print('Applying Gaussian blur on mask...')
          mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)  # Gaussian blur
 
          print('Applying Canny filter...')
-         mask_edges = cv2.Canny(mask, 50, 150) # Adjusted to changes made for hsv 
+         mask_edges = cv2.Canny(mask, 200, 400)
 
          minLineLength = 12
          maxLineGap = 3
@@ -122,6 +104,24 @@ for i in times2Run:
          cv2.imwrite(os.path.join(path, f"mask_blurred_{getTime()}.jpg"), mask_blurred)
          cv2.imwrite(os.path.join(path, f"mask_edges_{getTime()}.jpg"), mask_edges)
 
+         ''' 
+         list_patch = [{'x': (0,25),'y': (120,100)}, {'x': (25,50),'y': (120,100)}, {'x': (50,75),'y': (120,100)},{'x': (75,100),'y': (120,100)}, {'x': (100,125),'y': (120,100)}]
+
+
+         list_patch += [{'x': (194,219),'y': (120,100)},{'x': (219,244),'y': (120,100)}, {'x': (244,269),'y': (120,100)}, {'x': (269,294),'y': (120,100)},{'x': (294,319),'y': (120,100)}]
+
+         list_patch += [{'x': (0,25),'y': (100,75)}, {'x': (25,50),'y': (100,75)}, {'x': (50,75),'y': (100,75)},{'x': (75,100),'y': (100,75)}, {'x': (100,125),'y': (100,75)}]
+         list_patch += [{'x': (194,219),'y': (100,75)},{'x': (219,244),'y': (100,75)}, {'x': (244,269),'y': (100,75)}, {'x': (269,294),'y': (100,75)},{'x': (294,319),'y': (100,75)}]
+
+         list_patch += [{'x': (0,25),'y': (75,50)}, {'x': (25,50),'y': (75,50)}, {'x': (50,75),'y': (75,50)},{'x': (75,100),'y': (75,50)}, {'x': (100,125),'y': (75,50)}]
+         list_patch += [{'x': (194,219),'y': (75,50)},{'x': (219,244),'y': (75,50)}, {'x': (244,269),'y': (75,50)}, {'x': (269,294),'y': (75,50)},{'x': (294,319),'y': (75,50)}]
+ 
+         list_patch += [{'x': (75,100),'y': (50,25)}, {'x': (100,125),'y': (50,25)}]
+         list_patch += [{'x': (194,219),'y': (50,25)},{'x': (219,244),'y': (50,25)}]
+
+         list_patch += [{'x': (100,125),'y': (25,0)}]
+         list_patch += [{'x': (194,219),'y': (25,0)}]
+         ''' 
          # Adjusted 'list_patch' with corrected 'y' values
          list_patch = [
               # First set of patches (original y: (120, 100) adjusted)
@@ -206,7 +206,7 @@ for i in times2Run:
               n_right_side_left_dir = 0
               n_left_side_right_dir = 0
               n_left_side_left_dir = 0
-
+              
               print('Computing centroids and mean direction...') 
               for patch in list_patch: 
                    centroids = {'bottom': np.zeros((1,2)),'top': np.zeros((1,2))}
