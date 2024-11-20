@@ -14,7 +14,8 @@ SCREEN_HEIGHT = 480
 past_steering_angle = 0
 row_threshold = 0
 path = "/home/pi/repo/Capstone-Dallas-Edgar/research/ESEColorDetection/Data"
-
+# Calculate crop height for top 25% of the image
+crop_height = int(SCREEN_HEIGHT * 0.25)  # This will be 120 pixels
 
 # Initialize the camera for Image capturing. 
 camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
@@ -58,22 +59,24 @@ for i in times2Run:
          # Rotate the raw image by 180 degrees
          raw_image = cv2.flip(raw_image, -1)
 
-         row_threshold = 120
+         # row_threshold = 120 # Previous implementation
+         row_threshold =  SCREEN_HEIGHT - crop_height  # This will be 360 pixels
 
          print('Img to color...')
          img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
 
          print('Cropping top half of the image...')
-         img_bottom_half_bgr = cv2.cvtColor(img_rgb[-row_threshold:,:], cv2.COLOR_RGB2BGR)
-
+         #img_bottom_half_bgr = cv2.cvtColor(img_rgb[-row_threshold:,:], cv2.COLOR_RGB2BGR)
+         img_bottom_half_bgr = cv2.cvtColor(img_rgb[crop_height:,:], cv2.COLOR_RGB2BGR)
 
          print('Performing HSV color space transformation...')
          img_hsv = cv2.cvtColor(img_rgb, cv2.COLOR_RGB2HSV)
 
          print('Creating Top Hald bgr and img crop...')
-         img_top_half_bgr = raw_image[:-row_threshold,:]
-         img_crop_hsv = img_hsv[-row_threshold:,:]
-
+         #img_top_half_bgr = raw_image[:-row_threshold,:]
+         img_top_half_bgr = raw_image[:crop_height,:]
+         #img_crop_hsv = img_hsv[-row_threshold:,:]
+         img_crop_hsv = img_hsv[crop_height:,:]
 
          print('Creating binary mask...')
          bound = (np.array([0, 0, 0]), np.array([255, 255, 50]))
@@ -101,7 +104,10 @@ for i in times2Run:
          cv2.imwrite(os.path.join(path, f"mask_blurred_{getTime()}.jpg"), mask_blurred)
          cv2.imwrite(os.path.join(path, f"mask_edges_{getTime()}.jpg"), mask_edges)
 
+         ''' 
          list_patch = [{'x': (0,25),'y': (120,100)}, {'x': (25,50),'y': (120,100)}, {'x': (50,75),'y': (120,100)},{'x': (75,100),'y': (120,100)}, {'x': (100,125),'y': (120,100)}]
+
+
          list_patch += [{'x': (194,219),'y': (120,100)},{'x': (219,244),'y': (120,100)}, {'x': (244,269),'y': (120,100)}, {'x': (269,294),'y': (120,100)},{'x': (294,319),'y': (120,100)}]
 
          list_patch += [{'x': (0,25),'y': (100,75)}, {'x': (25,50),'y': (100,75)}, {'x': (50,75),'y': (100,75)},{'x': (75,100),'y': (100,75)}, {'x': (100,125),'y': (100,75)}]
@@ -115,12 +121,77 @@ for i in times2Run:
 
          list_patch += [{'x': (100,125),'y': (25,0)}]
          list_patch += [{'x': (194,219),'y': (25,0)}]
+         ''' 
+         # Adjusted 'list_patch' with corrected 'y' values
+         list_patch = [
+              # First set of patches (original y: (120, 100) adjusted)
+              {'x': (0,25),     'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (25,50),    'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (50,75),    'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (75,100),   'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (100,125),  'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (194,219),  'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (219,244),  'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (244,269),  'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (269,294),  'y': (240 - crop_height, 180 - crop_height)},
+              {'x': (294,319),  'y': (240 - crop_height, 180 - crop_height)},
+
+              # Second set of patches (original y: (100, 75) adjusted)
+              {'x': (0,25),     'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (25,50),    'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (50,75),    'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (75,100),   'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (100,125),  'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (194,219),  'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (219,244),  'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (244,269),  'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (269,294),  'y': (180 - crop_height, 105 - crop_height)},
+              {'x': (294,319),  'y': (180 - crop_height, 105 - crop_height)},
+
+              # Third set of patches (original y: (75, 50) adjusted)
+              {'x': (0,25),     'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (25,50),    'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (50,75),    'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (75,100),   'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (100,125),  'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (194,219),  'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (219,244),  'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (244,269),  'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (269,294),  'y': (105 - crop_height, 30 - crop_height)},
+              {'x': (294,319),  'y': (105 - crop_height, 30 - crop_height)},
+
+              # Fourth set of patches (original y: (50, 25) adjusted)
+              {'x': (75,100),   'y': (30 - crop_height, 0)},
+              {'x': (100,125),  'y': (30 - crop_height, 0)},
+              {'x': (194,219),  'y': (30 - crop_height, 0)},
+              {'x': (219,244),  'y': (30 - crop_height, 0)},
+
+              # Fifth set of patches (original y: (25, 0) adjusted)
+              # Adjusted to (0, 0) since negative values are outside the image
+              {'x': (100,125),  'y': (0, 0)},
+              {'x': (194,219),  'y': (0, 0)},
+          ]
+         
+         # Optionally, evaluate the adjusted 'y' values now to get integer values
+         # Evaluate the adjusted 'y' values
+         for patch in list_patch:
+              # Calculate adjusted 'y' values
+              y0 = max(patch['y'][0], 0)
+              y1 = max(patch['y'][1], 0)
+              # Ensure 'y' coordinates are ordered from top to bottom
+              if y0 > y1:
+                   y0, y1 = y1, y0
+              patch['y'] = (int(y0), int(y1))
+              # Similarly ensure 'x' coordinates are integers
+              x0 = int(patch['x'][0])
+              x1 = int(patch['x'][1])
+              patch['x'] = (x0, x1)
 
          for patch in list_patch:
-              cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][0]),(patch['x'][1],patch['y'][0]),(0,165,255),1) # First line. 
-              cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][1]),(patch['x'][1],patch['y'][1]),(0,165,255),1) # Second line. 
-              cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][0]),(patch['x'][0],patch['y'][1]),(0,165,255),1) # Third line. 
-              cv2.line(img_bottom_half_bgr,(patch['x'][1],patch['y'][0]),(patch['x'][1],patch['y'][1]),(0,165,255),1) # Fourth line. 
+              cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][0]),(patch['x'][1],patch['y'][0]),(0,165,255),1) # Top line. 
+              cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][1]),(patch['x'][1],patch['y'][1]),(0,165,255),1) # Bottom line. 
+              cv2.line(img_bottom_half_bgr,(patch['x'][0],patch['y'][0]),(patch['x'][0],patch['y'][1]),(0,165,255),1) # Left line. 
+              cv2.line(img_bottom_half_bgr,(patch['x'][1],patch['y'][0]),(patch['x'][1],patch['y'][1]),(0,165,255),1) # Right line. 
          
          print("Saving Image With Lines.")
          cv2.imwrite(os.path.join(path, f"image_lines{getTime()}.jpg"), img_bottom_half_bgr)
