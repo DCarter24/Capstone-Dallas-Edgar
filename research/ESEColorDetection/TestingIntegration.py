@@ -85,17 +85,17 @@ for i in times2Run:
          img_crop_hsv = img_hsv[crop_height:,:]
 
          print('Creating binary mask...')
-         if ifblue{
+         if ifblue:
               # If True, we are detecting blue lanes for testing. 
               # Define HSV range for blue color
               lower_hsv = np.array([100, 150, 50])
               upper_hsv = np.array([130, 255, 255])
-         }else{
+         else:
               # If False, we are detecting white lanes for implementation. 
               # Define HSV range for white color
               lower_hsv = np.array([0, 0, 200])
               upper_hsv = np.array([180, 25, 255])
-         }
+         
  
          # Create the mask using the new HSV bounds
          mask = cv2.inRange(img_crop_hsv, lower_hsv, upper_hsv)
