@@ -55,6 +55,9 @@ for i in times2Run:
               print("Image not taken successful. ")
               break 
          
+         # Rotate the raw image by 180 degrees
+         raw_image = cv2.flip(raw_image, -1)
+
          row_threshold = 120
 
          print('Img to color...')
