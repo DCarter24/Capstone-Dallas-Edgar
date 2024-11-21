@@ -55,8 +55,9 @@ class LidarObjectDetection(Node):
     def process_lidar_data(self, msg):
         detected_objects = []
         for i, range_val in enumerate(msg.ranges):
-            if range_val < 1.0:  # Object detected if range is less than 1 meter
-                detected_objects.append((i, range_val))  # Store angle and distance
+            if 0.0 < range_val < 1.0:  # Object detected if range is within valid bounds
+                angle = i % 360  # Ensure angle stays within 0–359°
+                detected_objects.append((angle, range_val))  # Store angle and distance
         return detected_objects
 
     def decide_maneuver(self, detected_objects):
