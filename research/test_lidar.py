@@ -16,7 +16,7 @@ def Servo_Motor_Initialization():
     """
     i2c_bus = busio.I2C(SCL, SDA)
     pca = PCA9685(i2c_bus)
-    pca.frequency = 50  # Set the frequency of the motor controller
+    pca.frequency = 100
     return pca
 
 def Motor_Start(pca):
