@@ -76,10 +76,10 @@ class LidarObjectDetection(Node):
         # Control logic based on object position and proximity
         if angle < 90:  # Object is on the left
             self.get_logger().info('Object on the left, turning right.')
-            self.turn_right()  # Turn right to avoid the object
+            self.turn_right()  
         elif angle > 90:  # Object is on the right
             self.get_logger().info('Object on the right, turning left.')
-            self.turn_left()  # Turn left to avoid the object
+            self.turn_left()  
         else:  # Object directly ahead
             if distance < 0.5:  # Too close
                 self.get_logger().info('Object directly ahead, stopping.')
@@ -90,26 +90,26 @@ class LidarObjectDetection(Node):
 
     def move_forward(self):
         self.get_logger().info('Moving forward.')
-        self.Motor_Speed(0.15)  # Forward speed
+        self.Motor_Speed(0.5)  # Forward speed
         self.steering_servo.angle = 90  # Keep steering straight
         time.sleep(0.3)  
 
     def move_forward_slow(self):
         self.get_logger().info('Moving forward slowly.')
-        self.Motor_Speed(0.05)  # Slower forward speed
+        self.Motor_Speed(0.2)  # Slower forward speed
         self.steering_servo.angle = 90  # Keep steering straight
         time.sleep(0.3)  
 
     def turn_left(self):
         self.get_logger().info('Turning left.')
         self.steering_servo.angle = 45  # Turn left (servo angle adjusted)
-        self.Motor_Speed(0.05)  # Slow down while turning (adjust speed as needed)
+        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
         time.sleep(0.3)  
 
     def turn_right(self):
         self.get_logger().info('Turning right.')
         self.steering_servo.angle = 135  # Turn right (servo angle adjusted)
-        self.Motor_Speed(0.05)  # Slow down while turning (adjust speed as needed)
+        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
         time.sleep(0.3)  
 
     def stop(self):
