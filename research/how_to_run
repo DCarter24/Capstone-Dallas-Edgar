@@ -1,6 +1,9 @@
 go to the ros workspace
 "source install/setup.bash"
   ros2 launch rplidar_ros launch_steer.py
+
+open separate terminal and run
+"ros2 launch rplidar_ros rplidar_a1_(Tab)..."
   ###DEBUGGING TIPS###
   The python files that are ran when running lunch_steer are in scripts directory.
   lidar_object_detection and steering_control
