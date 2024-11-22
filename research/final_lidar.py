@@ -17,7 +17,7 @@ class LidarObjectDetection(Node):
         # Initialize servo motor for both steering and speed control
         self.pca = self.Servo_Motor_Initialization()
         self.steering_servo = servo.Servo(self.pca.channels[14])  # Steering servo (channel 14)
-        self.speed_servo = servo.Servo(self.pca.channels[15])     # Speed servo (channel 1)
+        self.speed_servo = servo.Servo(self.pca.channels[15])     # Speed servo (channel 15)
         self.pca.frequency = 100
 
         # Set initial positions for servo motors
@@ -74,11 +74,11 @@ class LidarObjectDetection(Node):
 
     def decide_maneuver(self, angle, distance):
         # Control logic based on object position and proximity
-        if angle < 90:  # Object is on the left
-            self.get_logger().info('Object on the left, turning right.')
-            self.turn_right()  
-        elif angle > 90:  # Object is on the right
+        if angle < 90:  # Object is on the right
             self.get_logger().info('Object on the right, turning left.')
+            self.turn_right()  
+        elif angle > 90:  # Object is on the left
+            self.get_logger().info('Object on the left, turning right.')
             self.turn_left()  
         else:  # Object directly ahead
             if distance < 0.5:  # Too close
