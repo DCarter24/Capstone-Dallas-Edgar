@@ -17,7 +17,7 @@ class LidarObjectDetection(Node):
         # Initialize servo motor for both steering and speed control
         self.pca = self.Servo_Motor_Initialization()
         self.steering_servo = servo.Servo(self.pca.channels[14])  # Steering servo (channel 14)
-        self.speed_servo = servo.Servo(self.pca.channels[1])     # Speed servo (channel 1)
+        self.speed_servo = servo.Servo(self.pca.channels[15])     # Speed servo (channel 1)
         self.pca.frequency = 100
 
         # Set initial positions for servo motors
