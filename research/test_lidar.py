@@ -41,9 +41,9 @@ def Motor_Speed(pca, percent):
     print(f"Motor speed set to {speed/65535:.2f} (16-bit duty cycle)")
 
 # LIDAR Node
-class LidarMotorControl(Node):
+class LidarObjectDetection(Node):
     def __init__(self):
-        super().__init__('lidar_motor_control')
+        super().__init__('lidar_object_detection')
         self.subscription = self.create_subscription(
             LaserScan,
             'scan',
@@ -116,9 +116,9 @@ class LidarMotorControl(Node):
 # Main
 def main(args=None):
     rclpy.init(args=args)
-    lidar_motor_control = LidarMotorControl()
-    rclpy.spin(lidar_motor_control)
-    lidar_motor_control.destroy_node()
+    lidar_object_detection = LidarObjectDetection()
+    rclpy.spin(lidar_object_detection)
+    lidar_object_detection.destroy_node()
     rclpy.shutdown()
 
 if __name__ == '__main__':
