@@ -4,7 +4,7 @@ import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 import math
-import time  # Import time module for delays
+import time  
 from board import SCL, SDA
 import busio
 from adafruit_motor import servo
@@ -16,8 +16,8 @@ class LidarObjectDetection(Node):
 
         # Initialize servo motor for both steering and speed control
         self.pca = self.Servo_Motor_Initialization()
-        self.steering_servo = servo.Servo(self.pca.channels[14])  # Steering servo (channel 14)
-        self.speed_servo = servo.Servo(self.pca.channels[15])     # Speed servo (channel 15)
+        self.steering_servo = servo.Servo(self.pca.channels[14])  
+        self.speed_servo = servo.Servo(self.pca.channels[15])     
         self.pca.frequency = 100
 
         # Set initial positions for servo motors
@@ -52,11 +52,7 @@ class LidarObjectDetection(Node):
             # Select the closest object
             closest_object = min(detected_objects, key=lambda x: x[1])
             angle, distance = closest_object
-
-            # Log object information
             self.get_logger().info(f'Object detected at angle {angle}° and distance {distance:.2f}m')
-
-            # Make a decision based on the object's location
             self.decide_maneuver(angle, distance)
         else:
             # No objects detected, move straight
@@ -74,14 +70,14 @@ class LidarObjectDetection(Node):
 
     def decide_maneuver(self, angle, distance):
         # Control logic based on object position and proximity
-        if angle < 90:  # Object is on the right
+        if 180 < angle < 270:  # Object is on the right
             self.get_logger().info('Object on the right, turning left.')
             self.turn_right()  
-        elif angle > 90:  # Object is on the left
+        elif 360> angle > 271:  # Object is on the left
             self.get_logger().info('Object on the left, turning right.')
             self.turn_left()  
         else:  # Object directly ahead
-            if distance < 0.5:  # Too close
+            if distance < 0.05:  # Too close
                 self.get_logger().info('Object directly ahead, stopping.')
                 self.stop()
             else:
@@ -102,13 +98,13 @@ class LidarObjectDetection(Node):
 
     def turn_left(self):
         self.get_logger().info('Turning left.')
-        self.steering_servo.angle = 45  # Turn left (servo angle adjusted)
+        self.steering_servo.angle = 30  # Turn left (servo angle adjusted)
         self.Motor_Speed(0.2)  # Slow down while turning (adjust)
         time.sleep(0.3)  
 
     def turn_right(self):
         self.get_logger().info('Turning right.')
-        self.steering_servo.angle = 135  # Turn right (servo angle adjusted)
+        self.steering_servo.angle = 120  # Turn right (servo angle adjusted)
         self.Motor_Speed(0.2)  # Slow down while turning (adjust)
         time.sleep(0.3)  
 
