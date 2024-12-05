@@ -11,6 +11,19 @@ from adafruit_motor import servo
 from adafruit_pca9685 import PCA9685
 
 class LidarObjectDetection(Node):
+    
+    def Servo_Motor_Initialization():
+        i2c_bus = busio.I2C(SCL, SDA)
+        pca = PCA9685(i2c_bus)
+        pca.frequency = 100
+        return pca
+    def Motor_Speed(self, percent):
+        # Convert a -1 to 1 value to a 16-bit duty cycle
+        speed = ((percent) * 3277) + 65535 * 0.15
+        pca.channels[15].duty_cycle = math.floor(speed)
+        #self.get_logger().info(f'Motor Speed: {speed / 65535:.2f}')
+        print(speed/65535)
+        
     def __init__(self):
         super().__init__('lidar_object_detection')
 
@@ -20,7 +33,7 @@ class LidarObjectDetection(Node):
         self.speed_servo = servo.Servo(self.pca.channels[15])     
         self.pca.frequency = 100
 
-        # Set initial positions for servo motors
+        # Set initial positions for servo motors CHECK HERE FOR ERRORS
         self.steering_servo.angle = 90  # Neutral steering (straight)
         self.speed_servo.angle = 90     # Neutral speed (stopped)
 
@@ -31,18 +44,6 @@ class LidarObjectDetection(Node):
             self.lidar_callback,
             10
         )
-
-    def Servo_Motor_Initialization(self):
-        i2c_bus = busio.I2C(SCL, SDA)
-        pca = PCA9685(i2c_bus)
-        pca.frequency = 100
-        return pca
-
-    def Motor_Speed(self, percent):
-        # Convert a -1 to 1 value to a 16-bit duty cycle
-        speed = ((percent) * 3277) + 65535 * 0.15
-        self.pca.channels[15].duty_cycle = math.floor(speed)
-        self.get_logger().info(f'Motor Speed: {speed / 65535:.2f}')
 
     def lidar_callback(self, msg):
         # Process LIDAR scan data to detect objects
@@ -70,14 +71,14 @@ class LidarObjectDetection(Node):
 
     def decide_maneuver(self, angle, distance):
         # Control logic based on object position and proximity
-        if 180 < angle < 270:  # Object is on the right
+        if 180 < angle < 270:  # Object is on the right, FIX THIS
             self.get_logger().info('Object on the right, turning left.')
             self.turn_right()  
-        elif 360> angle > 271:  # Object is on the left
+        elif 360> angle > 271:  # Object is on the left, FIX THIS
             self.get_logger().info('Object on the left, turning right.')
             self.turn_left()  
         else:  # Object directly ahead
-            if distance < 0.05:  # Too close
+            if distance < 0.01:  # Too close
                 self.get_logger().info('Object directly ahead, stopping.')
                 self.stop()
             else:
@@ -86,31 +87,31 @@ class LidarObjectDetection(Node):
 
     def move_forward(self):
         self.get_logger().info('Moving forward.')
-        self.Motor_Speed(0.5)  # Forward speed
+        self.Motor_Speed(pca, 0.15)  # Forward speed
         self.steering_servo.angle = 90  # Keep steering straight
         time.sleep(0.3)  
 
     def move_forward_slow(self):
         self.get_logger().info('Moving forward slowly.')
-        self.Motor_Speed(0.2)  # Slower forward speed
+        self.Motor_Speed(pca, 0.05)  # Slower forward speed
         self.steering_servo.angle = 90  # Keep steering straight
         time.sleep(0.3)  
 
     def turn_left(self):
         self.get_logger().info('Turning left.')
         self.steering_servo.angle = 30  # Turn left (servo angle adjusted)
-        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
+        self.Motor_Speed(pca, 0.05)  # Slow down while turning (adjust)
         time.sleep(0.3)  
 
     def turn_right(self):
         self.get_logger().info('Turning right.')
         self.steering_servo.angle = 120  # Turn right (servo angle adjusted)
-        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
+        self.Motor_Speed(pca, 0.15)  # Slow down while turning (adjust)
         time.sleep(0.3)  
 
     def stop(self):
         self.get_logger().info('Stopping.')
-        self.Motor_Speed(0)  # Stop motor
+        self.Motor_Speed(pca, 0)  # Stop motor
         time.sleep(0.3)  
 
 def main(args=None):
