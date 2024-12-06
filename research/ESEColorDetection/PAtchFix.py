@@ -16,7 +16,7 @@ row_threshold = 0
 path = "/home/pi/repo/Capstone-Dallas-Edgar/research/ESEColorDetection/PatchData"
 # Calculate crop height for top 25% of the image
 crop_height = int(SCREEN_HEIGHT * 0.25)  # This will be 120 pixels
-ifblue = True # Select the HSV bound depending on where we are testing the pi car. 
+ifblue = False # Select the HSV bound depending on where we are testing the pi car. 
 lower_hsv = 0
 upper_hsv = 0
 
