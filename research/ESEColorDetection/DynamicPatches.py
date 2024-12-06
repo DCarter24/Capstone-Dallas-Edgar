@@ -53,8 +53,11 @@ for i in times2Run:
         img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
 
         print('Cropping top half of the image...')
-        img_bottom_half_bgr = cv2.cvtColor(img_rgb[crop_height:,:], cv2.COLOR_RGB2BGR)
-
+        
+        left_crop = 10   # Number of pixels to crop from the left side
+        right_crop = 10  # Number of pixels to crop from the right side
+        cropped_img = img_rgb[crop_height:, left_crop:SCREEN_WIDTH - right_crop]
+        img_bottom_half_bgr = cv2.cvtColor(cropped_img[crop_height:,:], cv2.COLOR_RGB2BGR)
         print('Performing HSV color space transformation...')
         img_hsv = cv2.cvtColor(raw_image, cv2.COLOR_BGR2HSV)
         img_top_half_bgr = raw_image[:crop_height,:]
