@@ -46,9 +46,13 @@ for i in times2Run:
             print("Image not taken successful.")
             break
 
-        raw_image = cv2.flip(raw_image, -1)
+        white_bar_width = 10
+        
+        raw_image = raw_image[:, white_bar_width:]
+        adjusted_screen_width = SCREEN_WIDTH - white_bar_width
         row_threshold = SCREEN_HEIGHT - crop_height
-
+        raw_image = cv2.flip(raw_image, -1)
+        
         print('Img to color...')
         img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
 
