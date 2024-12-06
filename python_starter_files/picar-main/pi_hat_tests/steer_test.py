@@ -44,6 +44,7 @@ servo7 = servo.Servo(pca.channels[channel_num])
 for i in range(180):
     servo7.angle = i
     time.sleep(0.03)
+#servo7.angle = 135
 for i in range(180):
     servo7.angle = 180 - i
     time.sleep(0.03)
