@@ -75,7 +75,7 @@ for i in times2Run:
         mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)
 
         print('Applying Canny filter...')
-        mask_edges = cv2.Canny(mask, 50, 150)
+        mask_edges = cv2.Canny(mask_blurred, 50, 150)
 
         minLineLength = 12
         maxLineGap = 3
