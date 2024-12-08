@@ -12,13 +12,13 @@ def Servo_Motor_Initialization():
    return pca
 
 def Motor_Start(pca):
-   x = input("Press and hold EZ button. Once the LED turns red, immediately relase the button. After the LED blink red once, press 'ENTER'on keyboard.")
-   Motor_Speed(pca, 1)
-   time.sleep(2)
-   y = input("If the LED just blinked TWICE, then press the 'ENTER'on keyboard.")
-   Motor_Speed(pca, -1)
-   time.sleep(2)
-   z = input("Now the LED should be in solid green, indicating the initialization is complete. Press 'ENTER' on keyboard to proceed")
+    x = input("Press and hold EZ button. Once the LED turns red, immediately relase the button. After the LED blink red once, press 'ENTER'on keyboard.")
+    Motor_Speed(pca, 1)
+    time.sleep(2)
+    y = input("If the LED just blinked TWICE, then press the 'ENTER'on keyboard.")
+    Motor_Speed(pca, -1)
+    time.sleep(2)
+    z = input("Now the LED should be in solid green, indicating the initialization is complete. Press 'ENTER' on keyboard to proceed")
    
 
 def Motor_Speed(pca,percent):
@@ -33,11 +33,11 @@ Motor_Start(pca)
 
 Motor_Speed(pca, 0)   #stop/neutral position
 time.sleep(2)
-Motor_Speed(pca, -0.25)   #reverse
+Motor_Speed(pca, -0.29)   #reverse
 time.sleep(3)
 Motor_Speed(pca, 0)
 time.sleep(2)
-Motor_Speed(pca, 0.25)   #forward
+Motor_Speed(pca, 0.27)   #forward
 time.sleep(3)
 Motor_Speed(pca, 0)    
 time.sleep(2)
