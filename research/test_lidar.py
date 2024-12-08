@@ -1,117 +1,86 @@
-#!/usr/bin/env python3 
+#!/usr/bin/env python3
 
 import rclpy
 from rclpy.node import Node
 from sensor_msgs.msg import LaserScan
 import math
-import time  
 from board import SCL, SDA
 import busio
 from adafruit_motor import servo
 from adafruit_pca9685 import PCA9685
 
 class LidarObjectDetection(Node):
+    NEUTRAL_ANGLE = 90
+    SLOW_SPEED_PERCENT = 0.15
+    TURN_SPEED_PERCENT = 0.2
+    STOP_SPEED = 0
+    DETECTION_RANGE_MIN = 0.1  # in meters
+    DETECTION_RANGE_MAX = 2.0  # in meters
+    RIGHT_TURN_ANGLE = 135
+    LEFT_TURN_ANGLE = 45
+
     def __init__(self):
         super().__init__('lidar_object_detection')
-
-        # Initialize servo motor for both steering and speed control
-        self.pca = self.Servo_Motor_Initialization()
-        self.steering_servo = servo.Servo(self.pca.channels[14])  
-        self.speed_servo = servo.Servo(self.pca.channels[15])     
+        self.pca = self.init_servo_motor()
+        self.steering_servo = servo.Servo(self.pca.channels[14])
         self.pca.frequency = 100
-
-        # Set initial positions for servo motors
-        self.steering_servo.angle = 90  # Neutral steering (straight)
-        self.speed_servo.angle = 90     # Neutral speed (stopped)
-
-        # Initialize LIDAR subscriber
+        self.steering_servo.angle = self.NEUTRAL_ANGLE
         self.lidar_subscription = self.create_subscription(
-            LaserScan,
-            '/scan',
-            self.lidar_callback,
-            10
-        )
+            LaserScan, '/scan', self.lidar_callback, 10)
 
-    def Servo_Motor_Initialization(self):
+    def init_servo_motor(self):
         i2c_bus = busio.I2C(SCL, SDA)
         pca = PCA9685(i2c_bus)
         pca.frequency = 100
         return pca
 
-    def Motor_Speed(self, percent):
-        # Convert a -1 to 1 value to a 16-bit duty cycle
-        speed = ((percent) * 3277) + 65535 * 0.15
-        self.pca.channels[15].duty_cycle = math.floor(speed)
-        self.get_logger().info(f'Motor Speed: {speed / 65535:.2f}')
+    def motor_speed(self, percent):
+        speed = int((percent * 32767) + 65535 * 0.15)
+        self.pca.channels[15].duty_cycle = speed
+        self.get_logger().info(f'Motor Speed: {percent:.2f}')
 
     def lidar_callback(self, msg):
-        # Process LIDAR scan data to detect objects
-        detected_objects = self.process_lidar_data(msg)
-
-        if detected_objects:
-            # Select the closest object
-            closest_object = min(detected_objects, key=lambda x: x[1])
-            angle, distance = closest_object
-            self.get_logger().info(f'Object detected at angle {angle}° and distance {distance:.2f}m')
-            self.decide_maneuver(angle, distance)
+        objects = [(i, distance) for i, distance in enumerate(msg.ranges) if self.DETECTION_RANGE_MIN < distance < self.DETECTION_RANGE_MAX]
+        if objects:
+            closest_object = min(objects, key=lambda x: x[1])
+            angle = math.degrees(msg.angle_min + closest_object[0] * msg.angle_increment)
+            self.decide_maneuver(angle, closest_object[1])
         else:
-            # No objects detected, move straight
             self.get_logger().info('No objects detected, moving straight.')
             self.move_forward()
 
-    def process_lidar_data(self, msg):
-        detected_objects = []
-        for i, distance in enumerate(msg.ranges):
-            if 0.1 < distance < 2.0:  # Filter valid range (e.g., 10cm to 2m)
-                angle = math.degrees(msg.angle_min + i * msg.angle_increment)
-                if 0 <= angle <= 180:  # Consider objects in front
-                    detected_objects.append((angle, distance))
-        return detected_objects
-
     def decide_maneuver(self, angle, distance):
-        # Control logic based on object position and proximity
-        if 0 < angle < 90:  # Object is on the right
-            self.get_logger().info('Object on the right, turning left.')
-            self.turn_right()  
-        elif 180 > angle > 90:  # Object is on the left
-            self.get_logger().info('Object on the left, turning right.')
-            self.turn_left()  
-        else:  # Object directly ahead
-            if distance < 0.3:  # Too close
-                self.get_logger().info('Object directly ahead, stopping.')
-                self.stop()
-            else:
-                self.get_logger().info('Object directly ahead, moving forward cautiously.')
-                self.move_forward_slow()
+        if angle <= 45 or angle >= 315:
+            self.handle_ahead_object(angle, distance)
+        elif 45 < angle <= 90:
+            self.turn_left()
+        elif 270 < angle < 315:
+            self.turn_right()
+
+    def handle_ahead_object(self, angle, distance):
+        if distance < 0.02:
+            self.stop()
+        else:
+            self.move_forward_slow()
 
     def move_forward(self):
-        self.get_logger().info('Moving forward.')
-        self.Motor_Speed(0.5)  # Forward speed
-        self.steering_servo.angle = 90  # Keep steering straight
-        time.sleep(0.3)  
+        self.motor_speed(self.SLOW_SPEED_PERCENT)
+        self.steering_servo.angle = self.NEUTRAL_ANGLE
 
     def move_forward_slow(self):
-        self.get_logger().info('Moving forward slowly.')
-        self.Motor_Speed(0.2)  # Slower forward speed
-        self.steering_servo.angle = 90  # Keep steering straight
-        time.sleep(0.3)  
+        self.motor_speed(self.TURN_SPEED_PERCENT)
+        self.steering_servo.angle = self.NEUTRAL_ANGLE
 
     def turn_left(self):
-        self.get_logger().info('Turning left.')
-        self.steering_servo.angle = 30  # Turn left (servo angle adjusted)
-        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
-        time.sleep(0.3)  
+        self.steering_servo.angle = self.LEFT_TURN_ANGLE
+        self.motor_speed(self.TURN_SPEED_PERCENT)
 
     def turn_right(self):
-        self.get_logger().info('Turning right.')
-        self.steering_servo.angle = 120  # Turn right (servo angle adjusted)
-        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
-        time.sleep(0.3)  
+        self.steering_servo.angle = self.RIGHT_TURN_ANGLE
+        self.motor_speed(self.TURN_SPEED_PERCENT)
 
     def stop(self):
-        self.get_logger().info('Stopping.')
-        self.Motor_Speed(0)  # Stop motor
-        time.sleep(0.3)  
+        self.motor_speed(self.STOP_SPEED)
 
 def main(args=None):
     rclpy.init(args=args)
