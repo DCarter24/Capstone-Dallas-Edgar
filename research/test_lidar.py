@@ -1,124 +1,87 @@
-#!/usr/bin/env python3 
-
-import rclpy
-from rclpy.node import Node
-from sensor_msgs.msg import LaserScan
 import math
-import time  
-from board import SCL, SDA
+import os
+import time
 import busio
-from adafruit_motor import servo
+from math import cos, sin, pi, floor
+from board import SCL, SDA
 from adafruit_pca9685 import PCA9685
+from adafruit_motor import servo
+from adafruit_rplidar import RPLidar
+import trialmotor as momo
 
-class LidarObjectDetection(Node):
-    def __init__(self):
-        super().__init__('lidar_object_detection')
+i2c = busio.I2C(SCL, SDA)
+pca = PCA9685(i2c)
+pca.frequency = 100
 
-        # Initialize servo motor for both steering and speed control
-        self.pca = self.Servo_Motor_Initialization()
-        self.steering_servo = servo.Servo(self.pca.channels[14])  
-        self.speed_servo = servo.Servo(self.pca.channels[15])     
-        self.pca.frequency = 100
+os.putenv('SDL_FBDEV', '/dev/fb1')
+PORT_NAME = '/dev/ttyUSB0'
+lidar = RPLidar(None, PORT_NAME, timeout=3)
+steering_channel = 14
+motor_channel = 15
+servo_steering = servo.Servo(pca.channels[steering_channel])
 
-        # Set initial positions for servo motors
-        self.steering_servo.angle = 90  # Neutral steering (straight)
-        self.speed_servo.angle = 90     # Neutral speed (stopped)
+def update_steering_angle(angle):
+    servo_steering.angle = angle
+    
+def scale_lidar_distance(distance, max_distance=3000):
+    return min(distance, max_distance) / max_distance
 
-        # Initialize LIDAR subscriber
-        self.lidar_subscription = self.create_subscription(
-            LaserScan,
-            '/scan',
-            self.lidar_callback,
-            10
-        )
-
-    def Servo_Motor_Initialization(self):
-        i2c_bus = busio.I2C(SCL, SDA)
-        pca = PCA9685(i2c_bus)
-        pca.frequency = 100
-        return pca
-
-    def Motor_Speed(self, percent):
-        # Convert a -1 to 1 value to a 16-bit duty cycle
-        speed = ((percent) * 3277) + 65535 * 0.15
-        self.pca.channels[15].duty_cycle = math.floor(speed)
-        self.get_logger().info(f'Motor Speed: {speed / 65535:.2f}')
-
-    def lidar_callback(self, msg):
-        # Process LIDAR scan data to detect objects
-        detected_objects = self.process_lidar_data(msg)
-
-        if detected_objects:
-            # Select the closest object
-            closest_object = min(detected_objects, key=lambda x: x[1])
-            angle, distance = closest_object
-            self.get_logger().info(f'Object detected at angle {angle}° and distance {distance:.2f}m')
-            self.decide_maneuver(angle, distance)
-        else:
-            # No objects detected, move straight
-            self.get_logger().info('No objects detected, moving straight.')
-            self.move_forward()
-
-    def process_lidar_data(self, msg):
-        detected_objects = []
-        for i, distance in enumerate(msg.ranges):
-            if 0.1 < distance < 2.0:  # Filter valid range (e.g., 10cm to 2m)
-                angle = math.degrees(msg.angle_min + i * msg.angle_increment)
-                if 0 <= angle <= 180:  # Consider objects in front
-                    detected_objects.append((angle, distance))
-        return detected_objects
-
-    def decide_maneuver(self, angle, distance):
-        # Control logic based on object position and proximity
-        if 0 < angle < 90:  # Object is on the right
-            self.get_logger().info('Object on the right, turning left.')
-            self.turn_right()  
-        elif 180 > angle > 90:  # Object is on the left
-            self.get_logger().info('Object on the left, turning right.')
-            self.turn_left()  
-        else:  # Object directly ahead
-            if distance < 0.3:  # Too close
-                self.get_logger().info('Object directly ahead, stopping.')
-                self.stop()
-            else:
-                self.get_logger().info('Object directly ahead, moving forward cautiously.')
-                self.move_forward_slow()
-
-    def move_forward(self):
-        self.get_logger().info('Moving forward.')
-        self.Motor_Speed(0.5)  # Forward speed
-        self.steering_servo.angle = 90  # Keep steering straight
-        time.sleep(0.3)  
-
-    def move_forward_slow(self):
-        self.get_logger().info('Moving forward slowly.')
-        self.Motor_Speed(0.2)  # Slower forward speed
-        self.steering_servo.angle = 90  # Keep steering straight
-        time.sleep(0.3)  
-
-    def turn_left(self):
-        self.get_logger().info('Turning left.')
-        self.steering_servo.angle = 30  # Turn left (servo angle adjusted)
-        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
-        time.sleep(0.3)  
-
-    def turn_right(self):
-        self.get_logger().info('Turning right.')
-        self.steering_servo.angle = 120  # Turn right (servo angle adjusted)
-        self.Motor_Speed(0.2)  # Slow down while turning (adjust)
-        time.sleep(0.3)  
-
-    def stop(self):
-        self.get_logger().info('Stopping.')
-        self.Motor_Speed(0)  # Stop motor
-        time.sleep(0.3)  
-
-def main(args=None):
-    rclpy.init(args=args)
-    lidar_object_detection = LidarObjectDetection()
-    rclpy.spin(lidar_object_detection)
-    lidar_object_detection.destroy_node()
-    rclpy.shutdown()
-
-if __name__ == '__main__':
+def main():
+    # neutral
+    update_steering_angle(97)
+    time.sleep(0.1)
+    momo.Motor_Speed(pca,0.175)
+    count = 0
+    reset = False
+    
+    try:
+        scan_data = [0]*360
+        while True:
+            for scan in lidar.iter_scans():
+                for (_, angle, distance) in scan:
+                    angle = int(angle)
+                    
+                    # Print Out Data
+                    f_dist = f"{distance:.2f}"
+                    f_angle = f"{angle:.2f}"
+                    print(f"D: {f_dist} mm, A: {f_angle} deg")
+                    
+                    # Back
+                    if distance <= 225 and (angle in range(315, 360) or angle in range(0,45)):
+                        print("Object Behind!")
+                        momo.Motor_Speed(pca,0)
+                        exit()
+                        
+                    # Front
+                    if distance <= 675 and (angle in range(180, 230)):
+                        print("Object Front!")
+                        momo.Motor_Speed(pca,0)
+                        exit()
+                        
+                    # Left
+                    if distance <= 650 and (angle in range(45, 180)):
+                        print("Open space on the left side!")
+                        update_steering_angle(60)
+                        
+                    # Right
+                    if distance <= 650 and (angle in range(230, 315)):
+                        print("Open space on the right side!")
+                        update_steering_angle(130)
+                                            
+                # LIDAR scaling
+                for angle in range(360):
+                    distance = scan_data[angle]
+                    if distance:
+                        scaled_distance = scale_lidar_distance(distance)
+                        radians = angle * pi / 180
+                        x = scaled_distance * cos(radians) * 119
+                        y = scaled_distance * sin(radians) * 119
+                        point = (160 + int(x), 120 + int(y))
+                        
+    except KeyboardInterrupt:
+        print('Stopping.')
+    finally:
+        lidar.stop()
+        lidar.disconnect()
+if __name__ == "__main__":
     main()

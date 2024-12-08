@@ -33,11 +33,19 @@ Motor_Start(pca)
 
 Motor_Speed(pca, 0)   #stop/neutral position
 time.sleep(2)
+<<<<<<< HEAD
 Motor_Speed(pca, -0.29)   #reverse
 time.sleep(3)
 Motor_Speed(pca, 0)
 time.sleep(2)
 Motor_Speed(pca, 0.27)   #forward
+=======
+Motor_Speed(pca, -0.15)   #reverse
+time.sleep(3)
+Motor_Speed(pca, 0)
+time.sleep(2)
+Motor_Speed(pca, 0.15)   #forward
+>>>>>>> a5cc24cbc2766ff62897762f5de662e427c701c9
 time.sleep(3)
 Motor_Speed(pca, 0)    
 time.sleep(2)
