@@ -29,7 +29,7 @@ def scale_lidar_distance(distance, max_distance=3000):
 def main():
     # neutral
     update_steering_angle(97)
-    time.sleep(0.1)
+    #time.sleep(0.1)
     momo.Motor_Speed(pca,0.175)
     count = 0
     reset = False
@@ -49,14 +49,14 @@ def main():
                     # Back
                     if distance <= 225 and (angle in range(315, 360) or angle in range(0,45)):
                         print("Object Behind!")
-                        momo.Motor_Speed(pca,0)
-                        exit()
+                        momo.Motor_Speed(pca,-0.15)
+                        # exit()
                         
                     # Front
                     if distance <= 675 and (angle in range(180, 230)):
                         print("Object Front!")
-                        momo.Motor_Speed(pca,0)
-                        exit()
+                        momo.Motor_Speed(pca,0.15)
+                        # exit()
                         
                     # Left
                     if distance <= 650 and (angle in range(45, 180)):
