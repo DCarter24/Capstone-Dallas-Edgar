@@ -306,14 +306,20 @@ for i in times2Run:
             text = str(stable_steering_angle)
             cv2.putText(poly_debug_img, text, (110, 30 ), font, 1, (0, 0, 255), 2)
 
-            # Visualize steering angle line on a new frame composed of top and bottom halves
-            # We have img_top_half_bgr and img_bottom_half_bgr from previous steps
-            # First, update the bottom half with the poly_debug_img content (since that's where lines are)
-            # Note: poly_debug_img and img_bottom_half_bgr have the same dimensions for bottom half region
-            # Just use poly_debug_img as the final image with everything drawn
-            new_frame = np.concatenate((raw_image[:crop_height,:], poly_debug_img), axis=0)
+            # Before concatenating, ensure poly_debug_img and raw_image[:crop_height,:] have the same width
+            top_section = raw_image[:crop_height,:]
+            top_h, top_w, _ = top_section.shape
+            poly_h, poly_w, _ = poly_debug_img.shape
 
-            # Draw steering line
+            # If widths differ, pad poly_debug_img to match top_w
+            if poly_w < top_w:
+                diff = top_w - poly_w
+                poly_debug_img = cv2.copyMakeBorder(poly_debug_img, 0, 0, 0, diff, cv2.BORDER_CONSTANT, value=(0,0,0))
+
+            # Now concatenate the top raw portion with the processed bottom portion
+            new_frame = np.concatenate((top_section, poly_debug_img), axis=0)
+
+            # Draw steering line on new_frame
             height, width, _ = new_frame.shape
             start_point = (int(width / 2), int(height))
             angle_from_vertical = stable_steering_angle - 90
