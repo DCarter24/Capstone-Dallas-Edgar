@@ -178,11 +178,6 @@ for i in times2Run:
         else:
            
             # Centroid Calculation
-            
-            # Convert mask_edges to a BGR image for visualization
-            mask_edges_color = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
-            cv2.imwrite(os.path.join(path, f"mask_edges_colored_{getTime()}.jpg"), mask_edges_color)
-
             print('Computing centroids of patches based on white pixels...')
 
             X_left = np.zeros((1,2))
@@ -223,9 +218,9 @@ for i in times2Run:
                 if not empty_bool:
                     # Draw a small orange circle at the centroid for visualization
                     # Orange (BGR): (0,165,255), radius=3
-                    cv2.circle(mask_edges_color, (centroids['bottom'][0], centroids['bottom'][1]), 3, (0,165,255), -1)
+                    cv2.circle(img_crop_hsv, (centroids['bottom'][0], centroids['bottom'][1]), 3, (0,165,255), -1)
 
-            cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), mask_edges_color)
+            cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), img_crop_hsv)
             print("Centroids computed and visualized.")
 
 
