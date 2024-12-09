@@ -12,7 +12,7 @@ SCREEN_HEIGHT = 480
 past_steering_angle = 0
 row_threshold = 0
 path = "/home/pi/repo/Capstone-Dallas-Edgar/research/ESEColorDetection/PatchData"
-crop_height = int(SCREEN_HEIGHT * 0.25)  # This will be 120 pixels
+crop_height = int(SCREEN_HEIGHT * 0.10)  # This will be 120 pixels
 ifblue = False
 
 camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
