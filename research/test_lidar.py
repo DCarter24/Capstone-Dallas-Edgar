@@ -7,7 +7,24 @@ from board import SCL, SDA
 from adafruit_pca9685 import PCA9685
 from adafruit_motor import servo
 from adafruit_rplidar import RPLidar
-import trialmotor as momo
+import adafruit_motor.servo
+
+def Servo_Motor_Initialization():
+   i2c_bus = busio.I2C(SCL,SDA)
+   pca = PCA9685(i2c_bus)
+   pca.frequency = 100
+   return pca
+   
+def Motor_Speed(pca,percent):
+   #converts a -1 to 1 value to 16-bit duty cycle
+   speed = ((percent) * 3277) + 65535 * 0.15
+   pca.channels[15].duty_cycle = math.floor(speed)
+   print(speed/65535)
+
+#initialization
+pca = Servo_Motor_Initialization()
+
+Motor_Speed(pca,0)
 
 i2c = busio.I2C(SCL, SDA)
 pca = PCA9685(i2c)
@@ -28,10 +45,10 @@ def scale_lidar_distance(distance, max_distance=3000):
 
 def main():
     # neutral
-    update_steering_angle(97)
+    update_steering_angle(90)
     #time.sleep(0.1)
-    momo.Motor_Speed(pca,0.175)
-    count = 0
+    Motor_Speed(pca,-0.225)
+    stop_motor = False
     reset = False
     
     try:
@@ -46,26 +63,29 @@ def main():
                     f_angle = f"{angle:.2f}"
                     print(f"D: {f_dist} mm, A: {f_angle} deg")
                     
+                    if stop_motor:
+                        continue
                     # Back
-                    if distance <= 225 and (angle in range(315, 360) or angle in range(0,45)):
+                    if distance <= 500 and (angle in range(315, 360) or angle in range(0,45)):
                         print("Object Behind!")
-                        momo.Motor_Speed(pca,-0.15)
+                        Motor_Speed(pca,-0.175)
                         # exit()
                         
                     # Front
-                    if distance <= 675 and (angle in range(180, 230)):
+                    if distance <= 600 and (angle in range(140, 225)):
                         print("Object Front!")
-                        momo.Motor_Speed(pca,0.15)
-                        # exit()
+                        Motor_Speed(pca,0)
+                        stop_motor = True
+                        #exit()
                         
                     # Left
-                    if distance <= 650 and (angle in range(45, 180)):
-                        print("Open space on the left side!")
+                    if distance <= 500 and (angle in range(45, 180)):
+                        print("Object is on the left, move right")
                         update_steering_angle(60)
                         
                     # Right
-                    if distance <= 650 and (angle in range(230, 315)):
-                        print("Open space on the right side!")
+                    if distance <= 500 and (angle in range(230, 315)):
+                        print("Object is on the right, move left")
                         update_steering_angle(130)
                                             
                 # LIDAR scaling
