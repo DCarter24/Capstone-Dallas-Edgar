@@ -99,7 +99,7 @@ for i in times2Run:
         print("Detected lines (in mask_edges coords):")
         for line in lines:
             x1, y1, x2, y2 = line[0]
-            print(f"Line: ({x1},{y1}) -> ({x2},{y2})")
+            # print(f"Line: ({x1},{y1}) -> ({x2},{y2})")
             cv2.line(hough_debug_img, (x1, y1), (x2, y2), (0, 0, 255), 2)
 
     print("Saving Images without calculating angle.")
@@ -248,30 +248,22 @@ for i in times2Run:
             print(f"Right side has {X_right.shape[0]} points, applying polyfit...")
             right_lane = np.polyfit(X_right[:,0], X_right[:,1], 1, w=X_right[:,1])
             print(f"Polynomial coefficients (slope, intercept) for right lane: {right_lane}")
-            y1 = right_lane[0] * 219 + right_lane[1]
-            y2 = right_lane[0] * 319 + right_lane[1]
-            print(f"Calculated y1: {y1}, y2: {y2} for x=219 and x=319")
-            cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (0,255,255), 5)
-            print(f"Drew right lane line (yellow) from (219, {int(y1)}) to (319, {int(y2)})")
+            y1_right = right_lane[0] * 219 + right_lane[1]
+            y2_right = right_lane[0] * 319 + right_lane[1]
+            print(f"Calculated y1: {y1_right}, y2: {y2_right} for x=219 and x=319")
             x_start_right = int((25 - right_lane[1])/(right_lane[0]+0.001))
-            print(f"Right lane line drawn. x_start_right: {x_start_right}")
         else:
-            print(f'len(X_right) : {len(X_right) }')
             print("Not enough points on the right side for polyfit.")
 
         if len(X_left) > 1:
             print(f"Left side has {X_left.shape[0]} points, applying polyfit...")
             left_lane = np.polyfit(X_left[:,0], X_left[:,1], 1, w=X_left[:,1])
             print(f"Polynomial coefficients (slope, intercept) for left lane: {left_lane}")
-            y1 = left_lane[0] * 0 + left_lane[1]
-            y2 = left_lane[0] * 100 + left_lane[1]
-            print(f"Calculated y1: {y1}, y2: {y2} for x=0 and x=100")
-            cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (255,0,0), 5)
-            print(f"Drew left lane line (blue) from (0, {int(y1)}) to (100, {int(y2)})")
+            y1_left = left_lane[0] * 0 + left_lane[1]
+            y2_left = left_lane[0] * 100 + left_lane[1]
+            print(f"Calculated y1: {y1_left}, y2: {y2_left} for x=0 and x=100")
             x_start_left = int((25 - left_lane[1])/(left_lane[0]+0.001))
-            print(f"Left lane line drawn. x_start_left: {x_start_left}")
         else:
-            print(f'len(X_right) : {len(X_right)}')
             print("Not enough points on the left side for polyfit.")
 
         cv2.imwrite(os.path.join(path, f"polynomial_lines_{getTime()}.jpg"), poly_debug_img)
@@ -281,26 +273,22 @@ for i in times2Run:
         if (x_start_right is not None) and (x_start_left is not None):
             mid_star = 0.5 * (x_start_right + x_start_left)
             print(f"Both lanes detected. mid_star: {mid_star}")
-            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         elif (x_start_right is not None) and (x_start_left is None):
             mid_star = (25-100)/right_lane[0] + 160
             print(f"Only right lane detected. mid_star: {mid_star}")
-            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         elif (x_start_right is None) and (x_start_left is not None):
             mid_star = (25-100)/left_lane[0] + 160
             print(f"Only left lane detected. mid_star: {mid_star}")
-            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         else:
             mid_star = 159
             print("No lanes detected. Using default mid_star: 159")
 
         print('Computing steering angle...')
         if np.abs(mid_star-160)<2:
-            print(f'Steering angle np value for true: {(np.abs(mid_star-160))}')
             steering_angle = 90
+            print(f'Current angle for TRUE (default): {np.abs(mid_star-160)}')
             print("Steering angle close to center, set to 90.")
         else:
-            print(f'Steering angle np value for false: {(np.abs(mid_star-160))}')
             steering_angle = 90 + np.degrees(np.arctan((mid_star-160)/75.))
             steering_angle = np.clip(steering_angle,55,135)
             print(f"Calculated steering angle: {steering_angle}")
@@ -326,25 +314,55 @@ for i in times2Run:
         print("Concatenated top and bottom images.")
 
         height, width, _ = new_frame.shape
-        start_point = (int(width / 2), int(height))
-        angle_from_vertical = stable_steering_angle - 90
-        angle_rad = np.radians(angle_from_vertical)
-        line_length = 100
-        end_point_x = int(start_point[0] + line_length * np.sin(angle_rad))
-        end_point_y = int(start_point[1] - line_length * np.cos(angle_rad))
-        end_point_x = max(0, min(end_point_x, width - 1))
-        end_point_y = max(0, min(end_point_y, height - 1))
-        end_point = (end_point_x, end_point_y)
-        cv2.line(new_frame, start_point, end_point, (255, 0, 255), thickness=2)
+
+        # Now apply offsets (crop_width, crop_height) when drawing lines and centroids on new_frame
+
+        # Draw right lane line if available
+        if len(X_right) > 1:
+            x1_right_adj = 219 + crop_width
+            y1_right_adj = int(y1_right) + crop_height
+            x2_right_adj = 319 + crop_width
+            y2_right_adj = int(y2_right) + crop_height
+            cv2.line(new_frame, (x1_right_adj, y1_right_adj), (x2_right_adj, y2_right_adj), (0,255,255), 5)
+
+        # Draw left lane line if available
+        if len(X_left) > 1:
+            x1_left_adj = 0 + crop_width
+            y1_left_adj = int(y1_left) + crop_height
+            x2_left_adj = 100 + crop_width
+            y2_left_adj = int(y2_left) + crop_height
+            cv2.line(new_frame, (x1_left_adj, y1_left_adj), (x2_left_adj, y2_left_adj), (255,0,0), 5)
+
+        # Draw mid_star line
+        if (x_start_right is not None) and (x_start_left is not None):
+            mid_star_adj_x = int(mid_star) + crop_width
+            y_start = 25 + crop_height
+            y_end = 100 + crop_height
+            cv2.line(new_frame,(int(np.clip(mid_star_adj_x,-10000,10000)),y_start),(160+crop_width,y_end),(255,0,255),5)
+        elif (x_start_right is not None) and (x_start_left is None):
+            mid_star_adj_x = int(mid_star) + crop_width
+            y_start = 25 + crop_height
+            y_end = 100 + crop_height
+            cv2.line(new_frame,(int(np.clip(mid_star_adj_x,-10000,10000)),y_start),(160+crop_width,y_end),(255,0,255),5)
+        elif (x_start_right is None) and (x_start_left is not None):
+            mid_star_adj_x = int(mid_star) + crop_width
+            y_start = 25 + crop_height
+            y_end = 100 + crop_height
+            cv2.line(new_frame,(int(np.clip(mid_star_adj_x,-10000,10000)),y_start),(160+crop_width,y_end),(255,0,255),5)
+        else:
+            mid_star_adj_x = int(mid_star) + crop_width
+            y_start = 25 + crop_height
+            y_end = 100 + crop_height
+            cv2.line(new_frame,(int(np.clip(mid_star_adj_x,-10000,10000)),y_start),(160+crop_width,y_end),(255,0,255),5)
+
         print("Drew steering line on new_frame.")
 
-        # Overlay centroids onto the final image
+        # Overlay centroids onto new_frame (add offsets)
         print("Overlaying centroids onto the final image...")
         for data_item in patch_centroids_data:
             cx, cy = data_item['centroid']
-            cv2.circle(new_frame, (cx + crop_width, cy + crop_height), 5, (0, 165, 255), -1)  
-            print(f"Overlayed centroid at ({cx + crop_width}, {cy + crop_height})")
-
+            cv2.circle(new_frame, (cx + crop_width, cy + crop_height), 5, (0,165,255), -1)
+            # print(f"Overlayed centroid at ({cx + crop_width}, {cy + crop_height})")
 
         cv2.imwrite(os.path.join(path, f"final_frame_image_{getTime()}.jpg"), new_frame)
         print("Steering angle computed and visualized.")
