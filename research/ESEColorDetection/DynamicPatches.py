@@ -46,12 +46,20 @@ for i in times2Run:
             print("Image not taken successful.")
             break
 
+        # Save the raw image immediately after reading for debugging
+        cv2.imwrite(os.path.join(path, f"raw_image_{getTime()}.jpg"), raw_image)
+
+        # Validate dimensions to ensure image is read correctly
+        if raw_image.shape[1] != SCREEN_WIDTH or raw_image.shape[0] != SCREEN_HEIGHT:
+            print(f"Warning: Image dimensions mismatch. Expected: {SCREEN_WIDTH}x{SCREEN_HEIGHT}, Got: {raw_image.shape[1]}x{raw_image.shape[0]}")
+
         white_bar_width = 10
         
         raw_image = raw_image[:, white_bar_width:]
         adjusted_screen_width = SCREEN_WIDTH - white_bar_width
         row_threshold = SCREEN_HEIGHT - crop_height
         raw_image = cv2.flip(raw_image, -1)
+        cv2.imwrite(os.path.join(path, f"flipped_image_raw_{getTime()}.jpg"), raw_image)
         
         print('Img to color...')
         img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
