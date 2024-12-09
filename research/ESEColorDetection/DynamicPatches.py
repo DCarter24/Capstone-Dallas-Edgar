@@ -18,6 +18,7 @@ ifblue = False
 camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
 camera.set(cv2.CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH)  
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, SCREEN_HEIGHT)
+camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'))  # Set YUYV format
 
 def getTime():
     return datetime.datetime.now().strftime("%y%m%d_%H%M%S")
@@ -41,6 +42,7 @@ times2Run = {2}
 
 for i in times2Run:
     for i in times2Run:
+        camera.read()  # Discard the first frame
         successfulRead, raw_image = camera.read() 
         if not successfulRead:
             print("Image not taken successful.")
