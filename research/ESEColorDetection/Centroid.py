@@ -165,8 +165,8 @@ for i in times2Run:
         for idx, patch in enumerate(list_patch):
             x0, x1 = patch['x']
             y0, y1 = patch['y']
-            cv2.rectangle(img_bottom_half_bgr, (x0, y0), (x1, y1), (0,165,255), 1)
-            cv2.rectangle(hough_debug_img, (x0, y0), (x1, y1), (0,165,255), 1)
+            cv2.rectangle(img_bottom_half_bgr, (x0, y0), (x1, y1), (50,165,255), 1)
+            cv2.rectangle(hough_debug_img, (x0, y0), (x1, y1), (50,165,255), 1)
 
         print("Saving Image With Lines (Dynamic Patches).")
         cv2.imwrite(os.path.join(path, f"image_lines_bottom_half_raw{getTime()}.jpg"), img_bottom_half_bgr)
@@ -179,7 +179,7 @@ for i in times2Run:
             break
         else:
             # Create a debug image for centroid visualization
-            centroid_debug_image = cv2.cvtColor(hough_debug_img, cv2.COLOR_GRAY2BGR)
+            centroid_debug_image = hough_debug_img.copy()
 
             # Data structure to store computed centroids
             patch_centroids_data = []
