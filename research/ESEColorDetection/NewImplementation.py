@@ -251,8 +251,8 @@ for i in times2Run:
             y1 = right_lane[0] * 219 + right_lane[1]
             y2 = right_lane[0] * 319 + right_lane[1]
             print(f"Calculated y1: {y1}, y2: {y2} for x=219 and x=319")
-            cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (0,255,255), 5)
-            print(f"Drew line from (219, {int(y1)}) to (319, {int(y2)})")
+            cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (0,255,0), 5)
+            print(f"Drew right lane line (Green) from (219, {int(y1)}) to (319, {int(y2)})")
             x_start_right = int((25 - right_lane[1])/(right_lane[0]+0.001))
             print(f"Right lane line drawn. x_start_right: {x_start_right}")
         else:
@@ -266,8 +266,8 @@ for i in times2Run:
             y1 = left_lane[0] * 0 + left_lane[1]
             y2 = left_lane[0] * 100 + left_lane[1]
             print(f"Calculated y1: {y1}, y2: {y2} for x=0 and x=100")
-            cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (0,255,255), 5)
-            print(f"Drew line from (0, {int(y1)}) to (100, {int(y2)})")
+            cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (255,0,0), 5)
+            print(f"Drew left lane line (Blue) from (0, {int(y1)}) to (100, {int(y2)})")
             x_start_left = int((25 - left_lane[1])/(left_lane[0]+0.001))
             print(f"Left lane line drawn. x_start_left: {x_start_left}")
         else:
