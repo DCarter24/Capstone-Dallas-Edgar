@@ -181,6 +181,7 @@ for i in times2Run:
             
             # Convert mask_edges to a BGR image for visualization
             mask_edges_color = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
+            cv2.imwrite(os.path.join(path, f"mask_edges_colored_{getTime()}.jpg"), mask_edges_color)
 
             print('Computing centroids of patches based on white pixels...')
 
