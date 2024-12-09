@@ -89,6 +89,16 @@ for i in times2Run:
         print('Applying Canny filter...')
         mask_edges = cv2.Canny(mask_blurred, 50, 150)
 
+        crop_width = 20  # Adjust this value if needed
+        mask_edges = mask_edges[:, crop_width:]
+
+        # Adjust the SCREEN_WIDTH to account for the crop
+        adjusted_screen_width = SCREEN_WIDTH - crop_width
+        print(f"New width after cropping: {adjusted_screen_width}")
+
+        # Save the cropped mask_edges for debugging
+        cv2.imwrite(os.path.join(path, f"cropped_mask_edges_{getTime()}.jpg"), mask_edges)
+
         minLineLength = 12
         maxLineGap = 3
         min_threshold = 5
