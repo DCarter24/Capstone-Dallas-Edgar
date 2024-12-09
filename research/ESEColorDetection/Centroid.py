@@ -213,3 +213,120 @@ for i in times2Run:
             # Save the visualization with centroids drawn
             cv2.imwrite(os.path.join(path, f"centroids_visualized_{getTime()}.jpg"), centroid_debug_image)
             print("Centroids computed and visualized on debug image.")
+
+            # Create arrays for left and right centroids
+            X_left = []
+            X_right = []
+            # In case we need directional counters (example code used these)
+            n_right_side_right_dir = 0
+            n_right_side_left_dir = 0
+            n_left_side_right_dir = 0
+            n_left_side_left_dir = 0
+
+            # Separate centroids into left or right side
+            # For now, we will not use velocity as it's not defined here.
+            # We'll assume that all centroids with x < 160 belong to the left side,
+            # and all centroids with x >= 160 belong to the right side.
+            # This is a simplification to illustrate the idea.
+            for data_item in patch_centroids_data:
+                cx, cy = data_item['centroid']  # centroid is (x, y)
+                if cx < 160:
+                    X_left.append([cx, cy])
+                else:
+                    X_right.append([cx, cy])
+
+            # Convert to numpy arrays if we have points
+            X_left = np.array(X_left) if len(X_left) > 0 else np.zeros((0,2))
+            X_right = np.array(X_right) if len(X_right) > 0 else np.zeros((0,2))
+
+            # Polynomial interpolation
+            # We'll attempt a simple linear fit y = m*x + b
+            # Only proceed if we have at least 2 points on each side
+            # Visualization will be done on hough_debug_img which already has patches
+            poly_debug_img = hough_debug_img.copy()
+
+            x_start_right = None
+            x_start_left = None
+
+            # Fit line on right side
+            if len(X_right) > 1:
+                print('Computing polynomial interpolation for right lane...')
+                # Fit a polynomial (linear)
+                right_lane = np.polyfit(X_right[:,0], X_right[:,1], 1, w=X_right[:,1])
+                # Let's draw a line between two x-coordinates, say from x=219 to x=319 as per example
+                y1 = right_lane[0] * 219 + right_lane[1]
+                y2 = right_lane[0] * 319 + right_lane[1]
+                cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (150,50,240), 5)
+                x_start_right = int((25 - right_lane[1])/(right_lane[0]+0.001))
+
+            # Fit line on left side
+            if len(X_left) > 1:
+                print('Computing polynomial interpolation for left lane...')
+                left_lane = np.polyfit(X_left[:,0], X_left[:,1], 1, w=X_left[:,1])
+                # Draw a line from x=0 to x=100 as per example
+                y1 = left_lane[0] * 0 + left_lane[1]
+                y2 = left_lane[0] * 100 + left_lane[1]
+                cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (150,50,240), 5)
+                x_start_left = int((25 - left_lane[1])/(left_lane[0]+0.001))
+
+            # Save the image with polynomial lines
+            cv2.imwrite(os.path.join(path, f"polynomial_lines_{getTime()}.jpg"), poly_debug_img)
+            print("Polynomial lines computed and visualized.")
+
+            # Steering angle calculation
+            # We'll compute mid_star based on whether we have both lines, one line, or none
+            if (x_start_right is not None) and (x_start_left is not None):
+                mid_star = 0.5 * (x_start_right + x_start_left)
+                cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(0,0,255),5)
+            elif (x_start_right is not None) and (x_start_left is None):
+                # Only right line available
+                mid_star = (25-100)/right_lane[0] + 160
+                cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(0,0,255),5)
+            elif (x_start_right is None) and (x_start_left is not None):
+                # Only left line available
+                mid_star = (25-100)/left_lane[0] + 160
+                cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(0,0,255),5)
+            else:
+                # No lines
+                mid_star = 159
+
+            # Compute steering angle as per example logic
+            print('Computing steering angle...')
+            if np.abs(mid_star-160)<2:
+                steering_angle = 90
+            else:
+                steering_angle = 90 + np.degrees(np.arctan((mid_star-160)/75.))
+                steering_angle = np.clip(steering_angle,55,135)
+
+            # Stabilize angle
+            stable_steering_angle = stabilize_steering_angle(steering_angle,past_steering_angle)
+
+            # Add steering angle text
+            font = cv2.FONT_HERSHEY_SIMPLEX
+            text = str(stable_steering_angle)
+            cv2.putText(poly_debug_img, text, (110, 30 ), font, 1, (0, 0, 255), 2)
+
+            # Visualize steering angle line on a new frame composed of top and bottom halves
+            # We have img_top_half_bgr and img_bottom_half_bgr from previous steps
+            # First, update the bottom half with the poly_debug_img content (since that's where lines are)
+            # Note: poly_debug_img and img_bottom_half_bgr have the same dimensions for bottom half region
+            # Just use poly_debug_img as the final image with everything drawn
+            new_frame = np.concatenate((raw_image[:crop_height,:], poly_debug_img), axis=0)
+
+            # Draw steering line
+            height, width, _ = new_frame.shape
+            start_point = (int(width / 2), int(height))
+            angle_from_vertical = stable_steering_angle - 90
+            angle_rad = np.radians(angle_from_vertical)
+            line_length = 100  
+            end_point_x = int(start_point[0] + line_length * np.sin(angle_rad))
+            end_point_y = int(start_point[1] - line_length * np.cos(angle_rad))
+            end_point_x = max(0, min(end_point_x, width - 1))
+            end_point_y = max(0, min(end_point_y, height - 1))
+            end_point = (end_point_x, end_point_y)
+            cv2.line(new_frame, start_point, end_point, (0, 0, 255), thickness=2)
+
+            # Save image with steering angle
+            cv2.imwrite(os.path.join(path, f"final_frame_image_{getTime()}.jpg"), new_frame)
+            print("Steering angle computed and visualized.")
+            print("End.")
