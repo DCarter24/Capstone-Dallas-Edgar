@@ -148,7 +148,7 @@ for i in times2Run:
             list_patch = []
 
             for (seg_start, seg_end) in segments:
-                col_center = (seg_start + seg_end) // 2
+                col_center = (seg_start + seg_end) // 2 + crop_width
                 # Center patch around col_center
                 x0 = max(col_center - patch_width//2, 0)
                 x1 = min(col_center + patch_width//2, SCREEN_WIDTH - 1)
@@ -156,7 +156,7 @@ for i in times2Run:
                 # Create vertical patches
                 for k in range(num_patches_vertical):
                     y0 = k * patch_height
-                    y1 = (k+1)*patch_height - 1
+                    y1 = (k+1) * patch_height - 1
                     list_patch.append({'x': (x0, x1), 'y': (y0, y1)})
 
         # Draw dynamic patches for debugging
