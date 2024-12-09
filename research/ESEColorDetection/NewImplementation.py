@@ -7,8 +7,8 @@ import sys
 import os
 
 # Constants
-SCREEN_WIDTH = 640  
-SCREEN_HEIGHT = 480 
+SCREEN_WIDTH = 640
+SCREEN_HEIGHT = 480
 past_steering_angle = 0
 row_threshold = 0
 path = "/home/pi/repo/Capstone-Dallas-Edgar/research/ESEColorDetection/PatchData"
@@ -16,7 +16,7 @@ crop_height = int(SCREEN_HEIGHT * 0.10)  # This will be 120 pixels
 ifblue = False
 
 camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
-camera.set(cv2.CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH)  
+camera.set(cv2.CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, SCREEN_HEIGHT)
 camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'))  # Set YUYV format
 
@@ -41,22 +41,19 @@ times2Run = {1}
 
 for i in times2Run:
     camera.read()  # Discard the first frame
-    successfulRead, raw_image = camera.read() 
+    successfulRead, raw_image = camera.read()
     if not successfulRead:
         print("Image not taken successful.")
         break
 
-    # Save the raw image immediately after reading for debugging
     cv2.imwrite(os.path.join(path, f"raw_image_{getTime()}.jpg"), raw_image)
 
-    # Validate dimensions to ensure image is read correctly
     if raw_image.shape[1] != SCREEN_WIDTH or raw_image.shape[0] != SCREEN_HEIGHT:
         print(f"Warning: Image dimensions mismatch. Expected: {SCREEN_WIDTH}x{SCREEN_HEIGHT}, Got: {raw_image.shape[1]}x{raw_image.shape[0]}")
 
-    # Flip the raw image
     raw_image = cv2.flip(raw_image, -1)
     cv2.imwrite(os.path.join(path, f"flipped_image_raw_{getTime()}.jpg"), raw_image)
-    
+
     print('Img to color...')
     img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
 
@@ -72,7 +69,6 @@ for i in times2Run:
         lower_hsv = np.array([100, 150, 50])
         upper_hsv = np.array([130, 255, 255])
     else:
-        # White detection
         lower_hsv = np.array([0, 0, 120])
         upper_hsv = np.array([180, 50, 255])
 
@@ -84,9 +80,8 @@ for i in times2Run:
     print('Applying Canny filter...')
     mask_edges = cv2.Canny(mask_blurred, 50, 150)
 
-    crop_width = 20  
+    crop_width = 20
     mask_edges = mask_edges[:, crop_width:]
-
     adjusted_screen_width = SCREEN_WIDTH - crop_width
     print(f"New width after cropping: {adjusted_screen_width}")
 
@@ -101,8 +96,6 @@ for i in times2Run:
 
     if lines is not None:
         hough_debug_img = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
-
-    if lines is not None:
         print("Detected lines (in mask_edges coords):")
         for line in lines:
             x1, y1, x2, y2 = line[0]
@@ -119,8 +112,8 @@ for i in times2Run:
     if lines is not None:
         cv2.imwrite(os.path.join(path, f"hough_lines_{getTime()}.jpg"), hough_debug_img)
 
-    # Try lowering threshold if too strict (originally 50)
-    threshold = 30  
+    # Lower threshold more to get patches
+    threshold = 10
     print(f"Using threshold={threshold} for lane detection.")
     col_sum = np.sum(mask_edges > 0, axis=0)
     lane_columns = np.where(col_sum > threshold)[0]
@@ -140,35 +133,33 @@ for i in times2Run:
             prev = c
         segments.append((start, prev))
 
-        num_patches_vertical = 4  
+        num_patches_vertical = 4
         patch_height = (SCREEN_HEIGHT - crop_height) // num_patches_vertical
-        patch_width = 20  
+        patch_width = 20
         list_patch = []
 
         print("Patches (in mask_edges coords):")
         for (seg_start, seg_end) in segments:
-            col_center = (seg_start + seg_end) // 2 
+            col_center = (seg_start + seg_end) // 2
             x0 = max(col_center - patch_width//2, 0)
             x1 = min(col_center + patch_width//2, adjusted_screen_width - 1)
-
             for k in range(num_patches_vertical):
                 y0 = k * patch_height
                 y1 = (k+1) * patch_height - 1
                 list_patch.append({'x': (x0, x1), 'y': (y0, y1)})
                 print(f"Patch: x=({x0},{x1}), y=({y0},{y1})")
 
-    for idx, patch in enumerate(list_patch):
-        x0, x1 = patch['x']
-        y0, y1 = patch['y']
-        # Add crop_width only for visualization
-        cv2.rectangle(img_bottom_half_bgr, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
-        cv2.rectangle(hough_debug_img, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
+    if lines is not None:
+        for idx, patch in enumerate(list_patch):
+            x0, x1 = patch['x']
+            y0, y1 = patch['y']
+            cv2.rectangle(img_bottom_half_bgr, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
+            cv2.rectangle(hough_debug_img, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
 
     print("Saving Image With Lines (Dynamic Patches).")
     cv2.imwrite(os.path.join(path, f"image_lines_bottom_half_raw{getTime()}.jpg"), img_bottom_half_bgr)
     if lines is not None:
         cv2.imwrite(os.path.join(path, f"image_lines_masked_edges{getTime()}.jpg"), hough_debug_img)
-
 
     if lines is None:
         print("No Lines Detected. Exiting Loop")
@@ -185,7 +176,6 @@ for i in times2Run:
             inside_points = []
             for detected_line in lines:
                 lx1, ly1, lx2, ly2 = detected_line[0]
-                # Print line endpoints and patch coords for debugging
                 print(f"Checking line ({lx1},{ly1})-({lx2},{ly2}) against patch x=({px_start},{px_end}), y=({py_start},{py_end})")
 
                 if (lx1 >= px_start and lx1 <= px_end and ly1 >= py_start and ly1 <= py_end and
@@ -198,7 +188,6 @@ for i in times2Run:
                 inside_points = np.array(inside_points)
                 centroid_coords = np.mean(inside_points, axis=0).astype(int)
                 patch_centroids_data.append({'patch': patch_info, 'centroid': (centroid_coords[0], centroid_coords[1])})
-
                 cv2.circle(centroid_debug_image, (centroid_coords[0] + crop_width, centroid_coords[1]), 3, (0,165,255), -1)
                 print(f"Centroid: ({centroid_coords[0]},{centroid_coords[1]})")
 
@@ -244,7 +233,7 @@ for i in times2Run:
             cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (0,255,255), 5)
             x_start_right = int((25 - right_lane[1])/(right_lane[0]+0.001))
             print(f"Right lane line drawn. x_start_right: {x_start_right}")
-        else: 
+        else:
             print("Not enough points on the right side for polyfit.")
 
         if len(X_left) > 1:
@@ -255,7 +244,7 @@ for i in times2Run:
             cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (0,255,255), 5)
             x_start_left = int((25 - left_lane[1])/(left_lane[0]+0.001))
             print(f"Left lane line drawn. x_start_left: {x_start_left}")
-        else: 
+        else:
             print("Not enough points on the left side for polyfit.")
 
         cv2.imwrite(os.path.join(path, f"polynomial_lines_{getTime()}.jpg"), poly_debug_img)
@@ -311,7 +300,7 @@ for i in times2Run:
         start_point = (int(width / 2), int(height))
         angle_from_vertical = stable_steering_angle - 90
         angle_rad = np.radians(angle_from_vertical)
-        line_length = 100  
+        line_length = 100
         end_point_x = int(start_point[0] + line_length * np.sin(angle_rad))
         end_point_y = int(start_point[1] - line_length * np.cos(angle_rad))
         end_point_x = max(0, min(end_point_x, width - 1))
