@@ -176,57 +176,44 @@ for i in times2Run:
             print("No Lines Detected. Exiting Loop")
             break
         else:
-            X_left = np.zeros((1,2))
-            X_right = np.zeros((1,2))
-            n_right_side_right_dir = 0
-            n_right_side_left_dir = 0
-            n_left_side_right_dir = 0
-            n_left_side_left_dir = 0
+           
+           # Centroid Calculation
+           # Convert mask_edges to BGR for visualization of centroids in orange
+           mask_edges_color = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
 
-            print('Computing centroids and mean direction...')
-            for patch in list_patch: 
-                centroids = {'bottom': np.zeros((1,2)),'top': np.zeros((1,2))}
-                velocity = (None,None)
-                empty_bool = True
+           print('Computing centroids of patches...')
+           for patch in list_patch:
+            x0, x1 = patch['x']
+            y0, y1 = patch['y']
+            
+            # Extract the region of interest from mask_edges
+            roi = mask_edges[y0:y1+1, x0:x1+1]
+            
+            # Find coordinates of all non-zero pixels in the ROI
+            points = np.argwhere(roi > 0)
+            
+            if len(points) > 0:
+                # Compute centroid: mean of the x and y coordinates
+                # np.argwhere returns [row, col], so row -> y, col -> x
+                avg_y = np.mean(points[:,0]) + y0
+                avg_x = np.mean(points[:,1]) + x0
+                
+                # Round to integer coordinates
+                centroid_x = int(round(avg_x))
+                centroid_y = int(round(avg_y))
 
-                for line in lines:
-                    x1,y1,x2,y2 = line[0]
-                    # Check if line endpoints are inside this patch
-                    if x1>=patch['x'][0] and x1<=patch['x'][1] and y1<=patch['y'][1] and y1>=patch['y'][0]:
-                        if x2>=patch['x'][0] and x2<=patch['x'][1] and y2<=patch['y'][1] and y2>=patch['y'][0]:
-                            centroids['bottom'] = np.vstack((centroids['bottom'],np.array([x1,y1])))
-                            centroids['top'] = np.vstack((centroids['top'],np.array([x2,y2])))
+                # Draw a small orange circle at the centroid
+                # Orange in BGR is (0,165,255)
+                # Radius set to 3 (adjust if needed)
+                cv2.circle(mask_edges_color, (centroid_x, centroid_y), 3, (0,165,255), -1)
+            else:
+                # No non-zero pixels; no centroid to draw
+                pass
 
-                centroids['bottom'] = centroids['bottom'][1:,:]
-                centroids['top'] = centroids['top'][1:,:]
-                if len(centroids['bottom']) > 0:
-                    # Compute mean of centroids
-                    for arrow_side in ['bottom','top']:
-                        centroids[arrow_side] = np.mean(centroids[arrow_side],axis=0)
+            # Save the visualization with centroids
+            cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), mask_edges_color)
 
-                    if centroids['bottom'][1] <= centroids['top'][1]:
-                        velocity = (centroids['bottom'][0]-centroids['top'][0], 
-                                    centroids['bottom'][1]-centroids['top'][1])
-                    else: 
-                        velocity = (centroids['top'][0]-centroids['bottom'][0], 
-                                    centroids['top'][1]-centroids['bottom'][1])
-
-                    for arrow_side in ['bottom','top']:
-                        centroids[arrow_side] = [int(np.round(a)) for a in centroids[arrow_side]]
-
-                    empty_bool = False
-
-                if not empty_bool:
-                    # Determine direction and side
-                    if velocity[1] < -0.25 and centroids['bottom'][0]>160:
-                        X_right = np.vstack((X_right, centroids['bottom']))
-                        n_right_side_left_dir += int(velocity[0] < -0.25)
-                        n_right_side_right_dir += int(velocity[0] >= -0.25)
-                    elif velocity[1] < -0.25 and centroids['bottom'][0]<160:
-                        X_left = np.vstack((X_left, centroids['bottom']))
-                        n_left_side_left_dir += int(velocity[0] < -0.25)
-                        n_left_side_right_dir += int(velocity[0] >= -0.25)
-
+            '''
             # Decide lane direction
             if n_right_side_right_dir>=n_right_side_left_dir:
                 right_side_dir = ('right', n_right_side_right_dir)
@@ -302,3 +289,4 @@ for i in times2Run:
             cv2.line(new_frame, start_point, end_point, (0, 0, 255), thickness=2)
 
             cv2.imwrite(os.path.join(path, f"new_frame_image_{getTime()}.jpg"), new_frame)
+            '''
