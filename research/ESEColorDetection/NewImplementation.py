@@ -20,6 +20,18 @@ camera.set(cv2.CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, SCREEN_HEIGHT)
 camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'))  # Set YUYV format
 
+def test_file_write():
+    test_path = path
+    test_filename = os.path.join(test_path, "testfile.txt")
+    try:
+        with open(test_filename, 'w') as f:
+            f.write("Hello, World!")
+        print("File written successfully.")
+    except Exception as e:
+        print(f"Failed to write file: {e}")
+
+test_file_write()
+
 def getTime():
     return datetime.datetime.now().strftime("S_%S_M_%M")
 
@@ -37,15 +49,19 @@ def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alph
             return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),
                            last_steering_angle-3, last_steering_angle+3)
 
-times2Run = {1}
+# Ensure the directory exists
+if not os.path.exists(path):
+    os.makedirs(path)
 
-# Create a unique text log file each run so data is not overwritten
-log_filename = os.path.join(path, f"run_data_{getTime()}.txt")
-log_file = open(log_filename, 'w')
+log_filename = os.path.join(path, f"run_data_{getTime()}.log")
+log_file = open(log_filename, 'w')  # Open the log file for writing
 
 def log_print(message):
     print(message)
     log_file.write(message + "\n")
+    log_file.flush()  # Ensure data is written immediately
+
+times2Run = {1}
 
 for i in times2Run:
     camera.read()  # Discard the first frame
@@ -53,6 +69,8 @@ for i in times2Run:
     if not successfulRead:
         log_print("Image not taken successful.")
         break
+    else:
+        log_print("Image successful.")
 
     cv2.imwrite(os.path.join(path, f"raw_image_{getTime()}.jpg"), raw_image)
 
@@ -109,6 +127,8 @@ for i in times2Run:
             x1, y1, x2, y2 = line[0]
             log_print(f"Line: ({x1},{y1}) -> ({x2},{y2})")
             cv2.line(hough_debug_img, (x1, y1), (x2, y2), (0, 0, 255), 2)
+    else:
+        hough_debug_img = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
 
     log_print("Saving Images without calculating angle.")
     cv2.imwrite(os.path.join(path, f"img_rgb_{getTime()}.jpg"), img_rgb)
