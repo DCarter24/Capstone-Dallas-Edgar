@@ -107,6 +107,18 @@ for i in times2Run:
         print('Applying Probabilistic Hough Transform...')
         lines = cv2.HoughLinesP(mask_edges, 1, np.pi/180, min_threshold, minLineLength, maxLineGap)
 
+        if lines is not None:
+        # Convert mask_edges to BGR for visualization
+        hough_debug_img = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
+
+        # Draw the Hough lines on the debug image
+        for line in lines:
+            x1, y1, x2, y2 = line[0]
+            cv2.line(hough_debug_img, (x1, y1), (x2, y2), (0, 0, 255), 2)
+
+        # Save the Hough lines visualization
+        cv2.imwrite(os.path.join(path, f"hough_lines_{getTime()}.jpg"), hough_debug_img)
+
         # Save intermediate images
         print("Saving Images without calculating angle.")
         cv2.imwrite(os.path.join(path, f"img_rgb_{getTime()}.jpg"), img_rgb)
