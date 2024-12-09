@@ -53,11 +53,6 @@ for i in times2Run:
         if raw_image.shape[1] != SCREEN_WIDTH or raw_image.shape[0] != SCREEN_HEIGHT:
             print(f"Warning: Image dimensions mismatch. Expected: {SCREEN_WIDTH}x{SCREEN_HEIGHT}, Got: {raw_image.shape[1]}x{raw_image.shape[0]}")
 
-        white_bar_width = 10
-        
-        raw_image = raw_image[:, white_bar_width:]
-        adjusted_screen_width = SCREEN_WIDTH - white_bar_width
-        row_threshold = SCREEN_HEIGHT - crop_height
         raw_image = cv2.flip(raw_image, -1)
         cv2.imwrite(os.path.join(path, f"flipped_image_raw_{getTime()}.jpg"), raw_image)
         
