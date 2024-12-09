@@ -189,13 +189,13 @@ for i in times2Run:
             inside_points = []
             for detected_line in lines:
                 lx1, ly1, lx2, ly2 = detected_line[0]
-                print(f"Checking line ({lx1},{ly1})-({lx2},{ly2}) against patch x=({px_start},{px_end}), y=({py_start},{py_end})")
+                #print(f"Checking line ({lx1},{ly1})-({lx2},{ly2}) against patch x=({px_start},{px_end}), y=({py_start},{py_end})")
 
                 if (lx1 >= px_start and lx1 <= px_end and ly1 >= py_start and ly1 <= py_end and
                     lx2 >= px_start and lx2 <= px_end and ly2 >= py_start and ly2 <= py_end):
                     inside_points.append([lx1, ly1])
                     inside_points.append([lx2, ly2])
-                    print(f"Line endpoints inside patch: Start ({lx1}, {ly1}), End ({lx2}, {ly2})")  # Debug line endpoints
+                    #print(f"Line endpoints inside patch: Start ({lx1}, {ly1}), End ({lx2}, {ly2})")  # Debug line endpoints
 
             if len(inside_points) > 0:
                 inside_points = np.array(inside_points)
