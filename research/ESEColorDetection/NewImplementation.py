@@ -20,18 +20,6 @@ camera.set(cv2.CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH)
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, SCREEN_HEIGHT)
 camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'))  # Set YUYV format
 
-def test_file_write():
-    test_path = path
-    test_filename = os.path.join(test_path, "testfile.txt")
-    try:
-        with open(test_filename, 'w') as f:
-            f.write("Hello, World!")
-        print("File written successfully.")
-    except Exception as e:
-        print(f"Failed to write file: {e}")
-
-test_file_write()
-
 def getTime():
     return datetime.datetime.now().strftime("S_%S_M_%M")
 
@@ -49,48 +37,34 @@ def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alph
             return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),
                            last_steering_angle-3, last_steering_angle+3)
 
-# Ensure the directory exists
-if not os.path.exists(path):
-    os.makedirs(path)
-
-log_filename = os.path.join(path, f"run_data_{getTime()}.log")
-log_file = open(log_filename, 'w')  # Open the log file for writing
-
-def log_print(message):
-    print(message)
-    log_file.write(message + "\n")
-    log_file.flush()  # Ensure data is written immediately
-
 times2Run = {1}
 
 for i in times2Run:
     camera.read()  # Discard the first frame
     successfulRead, raw_image = camera.read()
     if not successfulRead:
-        log_print("Image not taken successful.")
+        print("Image not taken successful.")
         break
-    else:
-        log_print("Image successful.")
 
     cv2.imwrite(os.path.join(path, f"raw_image_{getTime()}.jpg"), raw_image)
 
     if raw_image.shape[1] != SCREEN_WIDTH or raw_image.shape[0] != SCREEN_HEIGHT:
-        log_print(f"Warning: Image dimensions mismatch. Expected: {SCREEN_WIDTH}x{SCREEN_HEIGHT}, Got: {raw_image.shape[1]}x{raw_image.shape[0]}")
+        print(f"Warning: Image dimensions mismatch. Expected: {SCREEN_WIDTH}x{SCREEN_HEIGHT}, Got: {raw_image.shape[1]}x{raw_image.shape[0]}")
 
     raw_image = cv2.flip(raw_image, -1)
     cv2.imwrite(os.path.join(path, f"flipped_image_raw_{getTime()}.jpg"), raw_image)
 
-    log_print('Img to color...')
+    print('Img to color...')
     img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
 
-    log_print('Cropping top portion of the image...')
+    print('Cropping top portion of the image...')
     img_bottom_half_bgr = raw_image[crop_height:,:]
 
-    log_print('Performing HSV color space transformation...')
+    print('Performing HSV color space transformation...')
     img_hsv = cv2.cvtColor(img_bottom_half_bgr, cv2.COLOR_BGR2HSV)
     img_crop_hsv = img_hsv
 
-    log_print('Creating binary mask...')
+    print('Creating binary mask...')
     if ifblue:
         lower_hsv = np.array([100, 150, 50])
         upper_hsv = np.array([130, 255, 255])
@@ -100,16 +74,16 @@ for i in times2Run:
 
     mask = cv2.inRange(img_crop_hsv, lower_hsv, upper_hsv)
 
-    log_print('Applying Gaussian blur on mask...')
+    print('Applying Gaussian blur on mask...')
     mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)
 
-    log_print('Applying Canny filter...')
+    print('Applying Canny filter...')
     mask_edges = cv2.Canny(mask_blurred, 50, 150)
 
     crop_width = 20
     mask_edges = mask_edges[:, crop_width:]
     adjusted_screen_width = SCREEN_WIDTH - crop_width
-    log_print(f"New width after cropping: {adjusted_screen_width}")
+    print(f"New width after cropping: {adjusted_screen_width}")
 
     cv2.imwrite(os.path.join(path, f"cropped_mask_edges_{getTime()}.jpg"), mask_edges)
 
@@ -117,20 +91,18 @@ for i in times2Run:
     maxLineGap = 3
     min_threshold = 5
 
-    log_print('Applying Probabilistic Hough Transform...')
+    print('Applying Probabilistic Hough Transform...')
     lines = cv2.HoughLinesP(mask_edges, 1, np.pi/180, min_threshold, minLineLength, maxLineGap)
 
     if lines is not None:
         hough_debug_img = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
-        log_print("Detected lines (in mask_edges coords):")
+        print("Detected lines (in mask_edges coords):")
         for line in lines:
             x1, y1, x2, y2 = line[0]
-            log_print(f"Line: ({x1},{y1}) -> ({x2},{y2})")
+            print(f"Line: ({x1},{y1}) -> ({x2},{y2})")
             cv2.line(hough_debug_img, (x1, y1), (x2, y2), (0, 0, 255), 2)
-    else:
-        hough_debug_img = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
 
-    log_print("Saving Images without calculating angle.")
+    print("Saving Images without calculating angle.")
     cv2.imwrite(os.path.join(path, f"img_rgb_{getTime()}.jpg"), img_rgb)
     cv2.imwrite(os.path.join(path, f"img_bottom_half_bgr_{getTime()}.jpg"), img_bottom_half_bgr)
     cv2.imwrite(os.path.join(path, f"img_crop_hsv_{getTime()}.jpg"), img_crop_hsv)
@@ -140,11 +112,12 @@ for i in times2Run:
     if lines is not None:
         cv2.imwrite(os.path.join(path, f"hough_lines_{getTime()}.jpg"), hough_debug_img)
 
+    # Lower threshold more to get patches
     threshold = 10
-    log_print(f"Using threshold={threshold} for lane detection.")
+    print(f"Using threshold={threshold} for lane detection.")
     col_sum = np.sum(mask_edges > 0, axis=0)
     lane_columns = np.where(col_sum > threshold)[0]
-    log_print(f"lane_columns: {lane_columns}")
+    print(f"lane_columns: {lane_columns}")
 
     if len(lane_columns) == 0:
         list_patch = []
@@ -152,50 +125,58 @@ for i in times2Run:
         segments = []
         start = lane_columns[0]
         prev = lane_columns[0]
+        print(f"Start: {start}, Prev: {prev}")
 
         for c in lane_columns[1:]:
+            print(f"Current column: {c}, Previous column: {prev}")  # Debugging current and previous columns
             if c != prev + 1:
+                print(f"Non-continuous segment detected. Appending segment: ({start}, {prev})")  # Debug when a segment is finalized
                 segments.append((start, prev))
                 start = c
+                print(f"New start set to: {start}")  # Debug the new start
             prev = c
         segments.append((start, prev))
+        print(f"Final segment appended: ({start}, {prev})")
 
         num_patches_vertical = 4
         patch_height = (SCREEN_HEIGHT - crop_height) // num_patches_vertical
+        print(f'Pathc Height: {patch_height}')
         patch_width = 20
         list_patch = []
 
-        log_print("Patches (in mask_edges coords):")
+        print("Patches (in mask_edges coords):")
         for (seg_start, seg_end) in segments:
             col_center = (seg_start + seg_end) // 2
             x0 = max(col_center - patch_width//2, 0)
             x1 = min(col_center + patch_width//2, adjusted_screen_width - 1)
+            print(f'Col_center: {col_center}, x0: {x0}, x1: {x1}')
             for k in range(num_patches_vertical):
                 y0 = k * patch_height
                 y1 = (k+1) * patch_height - 1
                 list_patch.append({'x': (x0, x1), 'y': (y0, y1)})
-                log_print(f"Patch: x=({x0},{x1}), y=({y0},{y1})")
+                print(f"Patch: x=({x0},{x1}), y=({y0},{y1})")
 
     if lines is not None:
         for idx, patch in enumerate(list_patch):
             x0, x1 = patch['x']
             y0, y1 = patch['y']
+            print(f'Rectangle First Coordinate: {(x0 + crop_width, y0)}, Second: {(x1 + crop_width, y1)}')
             cv2.rectangle(img_bottom_half_bgr, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
             cv2.rectangle(hough_debug_img, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
 
-    log_print("Saving Image With Lines (Dynamic Patches).")
+    print("Saving Image With Lines (Dynamic Patches).")
     cv2.imwrite(os.path.join(path, f"image_lines_bottom_half_raw{getTime()}.jpg"), img_bottom_half_bgr)
     if lines is not None:
         cv2.imwrite(os.path.join(path, f"image_lines_masked_edges{getTime()}.jpg"), hough_debug_img)
 
     if lines is None:
-        log_print("No Lines Detected. Exiting Loop")
+        print("No Lines Detected. Exiting Loop")
         break
     else:
         centroid_debug_image = hough_debug_img.copy()
         patch_centroids_data = []
 
-        log_print("Calculating centroids...")
+        print("Calculating centroids...")
         for patch_info in list_patch:
             px_start, px_end = patch_info['x']
             py_start, py_end = patch_info['y']
@@ -203,23 +184,24 @@ for i in times2Run:
             inside_points = []
             for detected_line in lines:
                 lx1, ly1, lx2, ly2 = detected_line[0]
-                log_print(f"Checking line ({lx1},{ly1})-({lx2},{ly2}) against patch x=({px_start},{px_end}), y=({py_start},{py_end})")
+                print(f"Checking line ({lx1},{ly1})-({lx2},{ly2}) against patch x=({px_start},{px_end}), y=({py_start},{py_end})")
 
                 if (lx1 >= px_start and lx1 <= px_end and ly1 >= py_start and ly1 <= py_end and
                     lx2 >= px_start and lx2 <= px_end and ly2 >= py_start and ly2 <= py_end):
                     inside_points.append([lx1, ly1])
                     inside_points.append([lx2, ly2])
-                    log_print("Line endpoints inside patch.")
+                    print(f"Line endpoints inside patch: Start ({lx1}, {ly1}), End ({lx2}, {ly2})")  # Debug line endpoints
 
             if len(inside_points) > 0:
                 inside_points = np.array(inside_points)
                 centroid_coords = np.mean(inside_points, axis=0).astype(int)
+                print(f'Centroid_Coords: {centroid_coords}')
                 patch_centroids_data.append({'patch': patch_info, 'centroid': (centroid_coords[0], centroid_coords[1])})
                 cv2.circle(centroid_debug_image, (centroid_coords[0] + crop_width, centroid_coords[1]), 3, (0,165,255), -1)
-                log_print(f"Centroid: ({centroid_coords[0]},{centroid_coords[1]})")
+                print(f"Centroid: ({centroid_coords[0]},{centroid_coords[1]})")
 
         cv2.imwrite(os.path.join(path, f"centroids_visualized_{getTime()}.jpg"), centroid_debug_image)
-        log_print("Centroids computed and visualized on debug image.")
+        print("Centroids computed and visualized on debug image.")
 
         X_left = []
         X_right = []
@@ -229,87 +211,95 @@ for i in times2Run:
         n_left_side_left_dir = 0
 
         image_center = adjusted_screen_width // 2
-        log_print(f"Using image_center={image_center} to divide left/right lanes.")
+        print(f"Using image_center={image_center} to divide left/right lanes.")
 
-        log_print("Separating centroids into left and right sets for polynomial interpolation...")
+        print("Separating centroids into left and right sets for polynomial interpolation...")
         for data_item in patch_centroids_data:
             cx, cy = data_item['centroid']
-            log_print(f"Centroid found at x={cx}, y={cy}")
+            print(f"Centroid found at x={cx}, y={cy}")
             if cx < image_center:
                 X_left.append([cx, cy])
-                log_print("Added to X_left set.")
+                print(f"Added centroid ({cx}, {cy}) to X_left. Current X_left set: {X_left}")
             else:
                 X_right.append([cx, cy])
-                log_print("Added to X_right set.")
+                print(f"Added centroid ({cx}, {cy}) to X_right. Current X_right set: {X_right}")
 
         X_left = np.array(X_left) if len(X_left) > 0 else np.zeros((0,2))
         X_right = np.array(X_right) if len(X_right) > 0 else np.zeros((0,2))
-        log_print(f"X_left points: {X_left.shape[0]}, X_right points: {X_right.shape[0]}")
+        print(f"X_left points: {X_left.shape[0]}, X_right points: {X_right.shape[0]}")
 
-        log_print("Starting polynomial interpolation section...")
+        print("Starting polynomial interpolation section...")
         poly_debug_img = hough_debug_img.copy()
 
         x_start_right = None
         x_start_left = None
 
         if len(X_right) > 1:
-            log_print(f"Right side has {X_right.shape[0]} points, applying polyfit...")
+            print(f"Right side has {X_right.shape[0]} points, applying polyfit...")
             right_lane = np.polyfit(X_right[:,0], X_right[:,1], 1, w=X_right[:,1])
+            print(f"Polynomial coefficients (slope, intercept) for right lane: {right_lane}")
             y1 = right_lane[0] * 219 + right_lane[1]
             y2 = right_lane[0] * 319 + right_lane[1]
+            print(f"Calculated y1: {y1}, y2: {y2} for x=219 and x=319")
             cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (0,255,255), 5)
+            print(f"Drew line from (219, {int(y1)}) to (319, {int(y2)})")
             x_start_right = int((25 - right_lane[1])/(right_lane[0]+0.001))
-            log_print(f"Right lane line drawn. x_start_right: {x_start_right}")
+            print(f"Right lane line drawn. x_start_right: {x_start_right}")
         else:
-            log_print("Not enough points on the right side for polyfit.")
+            print("Not enough points on the right side for polyfit.")
 
         if len(X_left) > 1:
-            log_print(f"Left side has {X_left.shape[0]} points, applying polyfit...")
+            print(f"Left side has {X_left.shape[0]} points, applying polyfit...")
             left_lane = np.polyfit(X_left[:,0], X_left[:,1], 1, w=X_left[:,1])
+            print(f"Polynomial coefficients (slope, intercept) for left lane: {left_lane}")
             y1 = left_lane[0] * 0 + left_lane[1]
             y2 = left_lane[0] * 100 + left_lane[1]
+            print(f"Calculated y1: {y1}, y2: {y2} for x=0 and x=100")
             cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (0,255,255), 5)
+            print(f"Drew line from (0, {int(y1)}) to (100, {int(y2)})")
             x_start_left = int((25 - left_lane[1])/(left_lane[0]+0.001))
-            log_print(f"Left lane line drawn. x_start_left: {x_start_left}")
+            print(f"Left lane line drawn. x_start_left: {x_start_left}")
         else:
-            log_print("Not enough points on the left side for polyfit.")
+            print("Not enough points on the left side for polyfit.")
 
         cv2.imwrite(os.path.join(path, f"polynomial_lines_{getTime()}.jpg"), poly_debug_img)
-        log_print("Polynomial lines computed and visualized.")
+        print("Polynomial lines computed and visualized.")
 
-        log_print("Starting steering angle calculation...")
+        print("Starting steering angle calculation...")
         if (x_start_right is not None) and (x_start_left is not None):
             mid_star = 0.5 * (x_start_right + x_start_left)
-            log_print(f"Both lanes detected. mid_star: {mid_star}")
+            print(f"Both lanes detected. mid_star: {mid_star}")
             cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         elif (x_start_right is not None) and (x_start_left is None):
             mid_star = (25-100)/right_lane[0] + 160
-            log_print(f"Only right lane detected. mid_star: {mid_star}")
+            print(f"Only right lane detected. mid_star: {mid_star}")
             cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         elif (x_start_right is None) and (x_start_left is not None):
             mid_star = (25-100)/left_lane[0] + 160
-            log_print(f"Only left lane detected. mid_star: {mid_star}")
+            print(f"Only left lane detected. mid_star: {mid_star}")
             cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         else:
             mid_star = 159
-            log_print("No lanes detected. Using default mid_star: 159")
+            print("No lanes detected. Using default mid_star: 159")
 
-        log_print('Computing steering angle...')
+        print('Computing steering angle...')
         if np.abs(mid_star-160)<2:
+            print(f'Steering angle np value for true: {(np.abs(mid_star-160)<2)}')
             steering_angle = 90
-            log_print("Steering angle close to center, set to 90.")
+            print("Steering angle close to center, set to 90.")
         else:
+            print(f'Steering angle np value for false: {(np.abs(mid_star-160)<2)}')
             steering_angle = 90 + np.degrees(np.arctan((mid_star-160)/75.))
             steering_angle = np.clip(steering_angle,55,135)
-            log_print(f"Calculated steering angle: {steering_angle}")
+            print(f"Calculated steering angle: {steering_angle}")
 
         stable_steering_angle = stabilize_steering_angle(steering_angle,past_steering_angle)
-        log_print(f"Stabilized steering angle: {stable_steering_angle}")
+        print(f"Stabilized steering angle: {stable_steering_angle}")
 
         font = cv2.FONT_HERSHEY_SIMPLEX
         text = str(stable_steering_angle)
         cv2.putText(poly_debug_img, text, (110, 30 ), font, 1, (0, 0, 255), 2)
-        log_print("Steering angle text written on image.")
+        print("Steering angle text written on image.")
 
         top_section = raw_image[:crop_height,:]
         top_h, top_w, _ = top_section.shape
@@ -318,10 +308,10 @@ for i in times2Run:
         if poly_w < top_w:
             diff = top_w - poly_w
             poly_debug_img = cv2.copyMakeBorder(poly_debug_img, 0, 0, 0, diff, cv2.BORDER_CONSTANT, value=(0,0,0))
-            log_print("Padded poly_debug_img to match top width.")
+            print("Padded poly_debug_img to match top width.")
 
         new_frame = np.concatenate((top_section, poly_debug_img), axis=0)
-        log_print("Concatenated top and bottom images.")
+        print("Concatenated top and bottom images.")
 
         height, width, _ = new_frame.shape
         start_point = (int(width / 2), int(height))
@@ -334,10 +324,8 @@ for i in times2Run:
         end_point_y = max(0, min(end_point_y, height - 1))
         end_point = (end_point_x, end_point_y)
         cv2.line(new_frame, start_point, end_point, (255, 0, 255), thickness=2)
-        log_print("Drew steering line on new_frame.")
+        print("Drew steering line on new_frame.")
 
         cv2.imwrite(os.path.join(path, f"final_frame_image_{getTime()}.jpg"), new_frame)
-        log_print("Steering angle computed and visualized.")
-        log_print("End.")
-
-log_file.close()
+        print("Steering angle computed and visualized.")
+        print("End.")
