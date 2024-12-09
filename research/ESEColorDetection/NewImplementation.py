@@ -338,6 +338,14 @@ for i in times2Run:
         cv2.line(new_frame, start_point, end_point, (255, 0, 255), thickness=2)
         print("Drew steering line on new_frame.")
 
+        # Overlay centroids onto the final image
+        print("Overlaying centroids onto the final image...")
+        for data_item in patch_centroids_data:
+            cx, cy = data_item['centroid']
+            cv2.circle(new_frame, (cx + crop_width, cy + crop_height), 5, (0, 165, 255), -1)  
+            print(f"Overlayed centroid at ({cx + crop_width}, {cy + crop_height})")
+
+
         cv2.imwrite(os.path.join(path, f"final_frame_image_{getTime()}.jpg"), new_frame)
         print("Steering angle computed and visualized.")
         print("End.")
