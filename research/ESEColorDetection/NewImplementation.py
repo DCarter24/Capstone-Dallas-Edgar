@@ -37,7 +37,7 @@ def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alph
             return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),
                            last_steering_angle-3, last_steering_angle+3)
 
-times2Run = {1}
+times2Run = {2}
 
 for i in times2Run:
     camera.read()  # Discard the first frame
@@ -156,13 +156,18 @@ for i in times2Run:
                 list_patch.append({'x': (x0, x1), 'y': (y0, y1)})
                 print(f"Patch: x=({x0},{x1}), y=({y0},{y1})")
 
+    print("Testing if lines is not None")
     if lines is not None:
+        print("lines is not None")
         for idx, patch in enumerate(list_patch):
             x0, x1 = patch['x']
             y0, y1 = patch['y']
+            print(f"Patch {idx}: x0={x0}, x1={x1}, y0={y0}, y1={y1}")
             print(f'Rectangle First Coordinate: {(x0 + crop_width, y0)}, Second: {(x1 + crop_width, y1)}')
             cv2.rectangle(img_bottom_half_bgr, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
             cv2.rectangle(hough_debug_img, (x0 + crop_width, y0), (x1 + crop_width, y1), (50,255, 0), 1)
+    else:
+        print("lines is NONE")
 
     print("Saving Image With Lines (Dynamic Patches).")
     cv2.imwrite(os.path.join(path, f"image_lines_bottom_half_raw{getTime()}.jpg"), img_bottom_half_bgr)
@@ -214,7 +219,12 @@ for i in times2Run:
         print(f"Using image_center={image_center} to divide left/right lanes.")
 
         print("Separating centroids into left and right sets for polynomial interpolation...")
+
+        numTimes = 0 
+
         for data_item in patch_centroids_data:
+            numTimes
+            print(f'Number of times Separating Centroids Ran: {numTimes}')
             cx, cy = data_item['centroid']
             print(f"Centroid found at x={cx}, y={cy}")
             if cx < image_center:
@@ -246,6 +256,7 @@ for i in times2Run:
             x_start_right = int((25 - right_lane[1])/(right_lane[0]+0.001))
             print(f"Right lane line drawn. x_start_right: {x_start_right}")
         else:
+            print(f'len(X_right) : {len(X_right) }')
             print("Not enough points on the right side for polyfit.")
 
         if len(X_left) > 1:
@@ -260,6 +271,7 @@ for i in times2Run:
             x_start_left = int((25 - left_lane[1])/(left_lane[0]+0.001))
             print(f"Left lane line drawn. x_start_left: {x_start_left}")
         else:
+            print(f'len(X_right) : {len(X_right)}')
             print("Not enough points on the left side for polyfit.")
 
         cv2.imwrite(os.path.join(path, f"polynomial_lines_{getTime()}.jpg"), poly_debug_img)
@@ -284,11 +296,11 @@ for i in times2Run:
 
         print('Computing steering angle...')
         if np.abs(mid_star-160)<2:
-            print(f'Steering angle np value for true: {(np.abs(mid_star-160)<2)}')
+            print(f'Steering angle np value for true: {(np.abs(mid_star-160))}')
             steering_angle = 90
             print("Steering angle close to center, set to 90.")
         else:
-            print(f'Steering angle np value for false: {(np.abs(mid_star-160)<2)}')
+            print(f'Steering angle np value for false: {(np.abs(mid_star-160))}')
             steering_angle = 90 + np.degrees(np.arctan((mid_star-160)/75.))
             steering_angle = np.clip(steering_angle,55,135)
             print(f"Calculated steering angle: {steering_angle}")
