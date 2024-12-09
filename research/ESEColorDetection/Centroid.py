@@ -115,9 +115,7 @@ for i in times2Run:
         for line in lines:
             x1, y1, x2, y2 = line[0]
             cv2.line(hough_debug_img, (x1, y1), (x2, y2), (0, 0, 255), 2)
-
-        # Save the Hough lines visualization
-        cv2.imwrite(os.path.join(path, f"hough_lines_{getTime()}.jpg"), hough_debug_img)
+       
 
         # Save intermediate images
         print("Saving Images without calculating angle.")
@@ -127,6 +125,7 @@ for i in times2Run:
         cv2.imwrite(os.path.join(path, f"mask_{getTime()}.jpg"), mask)
         cv2.imwrite(os.path.join(path, f"mask_blurred_{getTime()}.jpg"), mask_blurred)
         cv2.imwrite(os.path.join(path, f"mask_edges_{getTime()}.jpg"), mask_edges)
+        cv2.imwrite(os.path.join(path, f"hough_lines_{getTime()}.jpg"), hough_debug_img)
 
         ### DYNAMIC PATCH GENERATION BASED ON mask_edges ###
         col_sum = np.sum(mask_edges > 0, axis=0)
@@ -179,22 +178,38 @@ for i in times2Run:
             print("No Lines Detected. Exiting Loop")
             break
         else:
-           
-            # Centroid Calculation
-            print('Computing centroids of patches based on white pixels...')
+            # Create a debug image for centroid visualization
+            centroid_debug_image = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
 
-            X_left = np.zeros((1,2))
-            X_right = np.zeros((1,2))
-            n_right_side_right_dir = 0
-            n_right_side_left_dir = 0
-            n_left_side_right_dir = 0
-            n_left_side_left_dir = 0
+            # Data structure to store computed centroids
+            patch_centroids_data = []
 
-            for patch in list_patch:
-                # Extract ROI from mask_edges
-                x0, x1 = patch['x']
-                y0, y1 = patch['y']
-                roi = mask_edges[y0:y1+1, x0:x1+1]
+            # Calculate centroids for each patch based on line data
+            for patch_info in list_patch:
+                px_start, px_end = patch_info['x']
+                py_start, py_end = patch_info['y']
 
-            # Steering angle calculation commented out as in the given code state
-            # ...
+                # Collect all line endpoints that lie fully inside this patch
+                inside_points = []
+                for detected_line in lines:
+                    lx1, ly1, lx2, ly2 = detected_line[0]
+                    if (lx1 >= px_start and lx1 <= px_end and ly1 >= py_start and ly1 <= py_end and
+                        lx2 >= px_start and lx2 <= px_end and ly2 >= py_start and ly2 <= py_end):
+                        inside_points.append([lx1, ly1])
+                        inside_points.append([lx2, ly2])
+
+                # If we have endpoints inside this patch, compute a single centroid
+                if len(inside_points) > 0:
+                    inside_points = np.array(inside_points)
+                    centroid_coords = np.mean(inside_points, axis=0)
+                    centroid_coords = centroid_coords.astype(int)
+
+                    # Store centroid data for later processing
+                    patch_centroids_data.append({'patch': patch_info, 'centroid': (int(centroid_coords[0]), int(centroid_coords[1]))})
+
+                    # Visualize this centroid on the debug image
+                    cv2.circle(centroid_debug_image, (int(centroid_coords[0]), int(centroid_coords[1])), 3, (0,165,255), -1)
+
+            # Save the visualization with centroids drawn
+            cv2.imwrite(os.path.join(path, f"centroids_visualized_{getTime()}.jpg"), centroid_debug_image)
+            print("Centroids computed and visualized on debug image.")
