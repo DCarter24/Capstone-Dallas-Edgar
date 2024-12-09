@@ -218,9 +218,9 @@ for i in times2Run:
                 if not empty_bool:
                     # Draw a small orange circle at the centroid for visualization
                     # Orange (BGR): (0,165,255), radius=3
-                    cv2.circle(img_crop_hsv, (centroids['bottom'][0], centroids['bottom'][1]), 3, (0,165,255), -1)
+                    cv2.circle(img_bottom_half_bgr, (centroids['bottom'][0], centroids['bottom'][1]), 3, (0,165,255), -1)
 
-            cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), img_crop_hsv)
+            cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), img_bottom_half_bgr)
             print("Centroids computed and visualized.")
 
 
