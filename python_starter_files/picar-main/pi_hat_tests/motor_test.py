@@ -23,23 +23,29 @@ def Motor_Start(pca):
 
 def Motor_Speed(pca,percent):
    #converts a -1 to 1 value to 16-bit duty cycle
-   speed = ((percent) * 3277) + 65535 * 0.15
+   speed = ((percent) * 3277) + 65535 * 0.15 
    pca.channels[15].duty_cycle = math.floor(speed)
    print(speed/65535)
 
 #initialization
 pca = Servo_Motor_Initialization()
 # Motor_Start(pca)
+Motor_Speed(pca, -0.225)
+time.sleep(5)  # Let the motor run for 5 seconds
+Motor_Speed(pca, 0.1)  # Then stop
 
-while (1==1):
-   Motor_Speed(pca, 0)   #stop/neutral position
-   time.sleep(2)
-   Motor_Speed(pca, -0.3)   #reverse
-   time.sleep(3)
-   Motor_Speed(pca, 0)
-   time.sleep(2)
-   Motor_Speed(pca, 0.3)   #forward
-   time.sleep(3)
-   Motor_Speed(pca, 0)    
-   time.sleep(2)
+# while (1==1):
+#    Motor_Speed(pca, 0)   #stop/neutral position
+#    time.sleep(2)
+#    Motor_Speed(pca, -0.15)   #reverse
+#    time.sleep(3)
+#    Motor_Speed(pca, 0)
+#    time.sleep(2)
+#    Motor_Speed(pca, 0.15)   #forward
+#    time.sleep(3)
+#    Motor_Speed(pca, 0)    
+#    time.sleep(2)
+#    stop_motor = True
+#    if KeyboardInterrupt:
+#       stop_motor = True
 #Footer

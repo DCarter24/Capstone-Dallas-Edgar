@@ -26,11 +26,11 @@ pca = Servo_Motor_Initialization()
 
 Motor_Speed(pca,0)
 
-i2c = busio.I2C(SCL, SDA)
-pca = PCA9685(i2c)
-pca.frequency = 100
+# i2c = busio.I2C(SCL, SDA)
+# pca = PCA9685(i2c)
+# pca.frequency = 100
 
-os.putenv('SDL_FBDEV', '/dev/fb1')
+# os.putenv('SDL_FBDEV', '/dev/fb1')
 PORT_NAME = '/dev/ttyUSB0'
 lidar = RPLidar(None, PORT_NAME, timeout=3)
 steering_channel = 14
@@ -63,30 +63,32 @@ def main():
                     f_angle = f"{angle:.2f}"
                     print(f"D: {f_dist} mm, A: {f_angle} deg")
                     
-                    if stop_motor:
-                        continue
+                    Motor_Speed(pca,-0.225)# if stop_motor:
+                    #     continue
                     # Back
-                    if distance <= 500 and (angle in range(315, 360) or angle in range(0,45)):
-                        print("Object Behind!")
-                        Motor_Speed(pca,-0.175)
+                    if distance <= 350 and (angle in range(315, 360) or angle in range(0,45)):
+                        print("Object is behind us, speed up!")
+                        Motor_Speed(pca,-0.25)
+                        # time.sleep(1)
                         # exit()
                         
                     # Front
-                    if distance <= 600 and (angle in range(140, 225)):
-                        print("Object Front!")
+                    if distance <= 600 and (angle in range(150, 215)):
+                        print("Object is in front of us, slow down")
                         Motor_Speed(pca,0)
+                        # time.sleep(1)
                         stop_motor = True
-                        #exit()
+                        # exit()
                         
                     # Left
-                    if distance <= 500 and (angle in range(45, 180)):
+                    if distance <= 200 and (angle in range(45, 180)):
                         print("Object is on the left, move right")
                         update_steering_angle(60)
                         
                     # Right
-                    if distance <= 500 and (angle in range(230, 315)):
+                    if distance <= 200 and (angle in range(230, 315)):
                         print("Object is on the right, move left")
-                        update_steering_angle(130)
+                        update_steering_angle(135)
                                             
                 # LIDAR scaling
                 for angle in range(360):
