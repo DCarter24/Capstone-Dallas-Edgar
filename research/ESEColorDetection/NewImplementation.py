@@ -37,7 +37,7 @@ def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alph
             return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),
                            last_steering_angle-3, last_steering_angle+3)
 
-times2Run = {2}
+times2Run = {1}
 
 for i in times2Run:
     camera.read()  # Discard the first frame
