@@ -78,8 +78,8 @@ for i in times2Run:
             upper_hsv = np.array([130, 255, 255])
         else:
             # White detection
-            lower_hsv = np.array([0, 0, 200])
-            upper_hsv = np.array([180, 25, 255])
+            lower_hsv = np.array([0, 0, 120])
+            upper_hsv = np.array([180, 50, 255])
 
         mask = cv2.inRange(img_crop_hsv, lower_hsv, upper_hsv)
 
