@@ -150,7 +150,7 @@ for i in times2Run:
         list_patch = []
 
         for (seg_start, seg_end) in segments:
-            col_center = (seg_start + seg_end) // 1 + crop_width
+            col_center = (seg_start + seg_end) // 2 + crop_width
             x0 = max(col_center - patch_width//2, 0)
             x1 = min(col_center + patch_width//2, SCREEN_WIDTH - 1)
 
@@ -163,8 +163,8 @@ for i in times2Run:
     for idx, patch in enumerate(list_patch):
         x0, x1 = patch['x']
         y0, y1 = patch['y']
-        cv2.rectangle(img_bottom_half_bgr, (x0, y0), (x1, y1), (50,165,255), 1)
-        cv2.rectangle(hough_debug_img, (x0, y0), (x1, y1), (50,165,255), 1)
+        cv2.rectangle(img_bottom_half_bgr, (x0, y0), (x1, y1), (50,255, 0), 1)
+        cv2.rectangle(hough_debug_img, (x0, y0), (x1, y1), (50,255, 0), 1)
 
     print("Saving Image With Lines (Dynamic Patches).")
     cv2.imwrite(os.path.join(path, f"image_lines_bottom_half_raw{getTime()}.jpg"), img_bottom_half_bgr)
@@ -254,7 +254,7 @@ for i in times2Run:
             # Let's draw a line between two x-coordinates, say from x=219 to x=319 as per example
             y1 = right_lane[0] * 219 + right_lane[1]
             y2 = right_lane[0] * 319 + right_lane[1]
-            cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (150,50,240), 5)
+            cv2.line(poly_debug_img, (219,int(y1)), (319,int(y2)), (0,255,255), 5)
             x_start_right = int((25 - right_lane[1])/(right_lane[0]+0.001))
 
         # Fit line on left side
@@ -264,7 +264,7 @@ for i in times2Run:
             # Draw a line from x=0 to x=100 as per example
             y1 = left_lane[0] * 0 + left_lane[1]
             y2 = left_lane[0] * 100 + left_lane[1]
-            cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (150,50,240), 5)
+            cv2.line(poly_debug_img, (0,int(y1)), (100,int(y2)), (0,255,255), 5)
             x_start_left = int((25 - left_lane[1])/(left_lane[0]+0.001))
 
         # Save the image with polynomial lines
@@ -275,15 +275,15 @@ for i in times2Run:
         # We'll compute mid_star based on whether we have both lines, one line, or none
         if (x_start_right is not None) and (x_start_left is not None):
             mid_star = 0.5 * (x_start_right + x_start_left)
-            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(0,0,255),5)
+            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         elif (x_start_right is not None) and (x_start_left is None):
             # Only right line available
             mid_star = (25-100)/right_lane[0] + 160
-            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(0,0,255),5)
+            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         elif (x_start_right is None) and (x_start_left is not None):
             # Only left line available
             mid_star = (25-100)/left_lane[0] + 160
-            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(0,0,255),5)
+            cv2.line(poly_debug_img,(int(np.clip(mid_star,-10000,10000)),25),(160,100),(255,0,255),5)
         else:
             # No lines
             mid_star = 159
@@ -328,7 +328,7 @@ for i in times2Run:
         end_point_x = max(0, min(end_point_x, width - 1))
         end_point_y = max(0, min(end_point_y, height - 1))
         end_point = (end_point_x, end_point_y)
-        cv2.line(new_frame, start_point, end_point, (0, 0, 255), thickness=2)
+        cv2.line(new_frame, start_point, end_point, (255, 0, 255), thickness=2)
 
         # Save image with steering angle
         cv2.imwrite(os.path.join(path, f"final_frame_image_{getTime()}.jpg"), new_frame)
