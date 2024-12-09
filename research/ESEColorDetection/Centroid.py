@@ -108,8 +108,8 @@ for i in times2Run:
         lines = cv2.HoughLinesP(mask_edges, 1, np.pi/180, min_threshold, minLineLength, maxLineGap)
 
         if lines is not None:
-        # Convert mask_edges to BGR for visualization
-        hough_debug_img = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
+            # Convert mask_edges to BGR for visualization
+            hough_debug_img = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
 
         # Draw the Hough lines on the debug image
         for line in lines:
