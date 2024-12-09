@@ -178,38 +178,54 @@ for i in times2Run:
         else:
            
             # Centroid Calculation
-            # Centroid Calculation
-            print('Computing centroids and mean direction...')
+            
+            # Convert mask_edges to a BGR image for visualization
+            mask_edges_color = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
+
+            print('Computing centroids of patches based on white pixels...')
+
+            X_left = np.zeros((1,2))
+            X_right = np.zeros((1,2))
+            n_right_side_right_dir = 0
+            n_right_side_left_dir = 0
+            n_left_side_right_dir = 0
+            n_left_side_left_dir = 0
+
             for patch in list_patch:
-                # Extract patch boundaries
+                # Extract ROI from mask_edges
                 x0, x1 = patch['x']
                 y0, y1 = patch['y']
-                
-                # Extract the patch from the mask_edges
-                patch_region = mask_edges[y0:y1+1, x0:x1+1]
-                
-                # Find non-zero pixels in the patch
-                non_zero_coords = cv2.findNonZero(patch_region)
-                
-                if non_zero_coords is not None:
-                    # Compute the centroid of the non-zero pixels
-                    M = cv2.moments(patch_region, binaryImage=True)
-                    if M['m00'] > 0:  # Ensure the area is non-zero
-                        cx = int(M['m10'] / M['m00']) + x0  # Offset by patch origin
-                        cy = int(M['m01'] / M['m00']) + y0  # Offset by patch origin
-                        
-                        # Draw the centroid as an orange dot on mask_edges
-                        cv2.circle(mask_edges, (cx, cy), radius=3, color=(255, 140, 0), thickness=-1)  # Orange dot
-                        
-                        # Optionally save centroid coordinates
-                        print(f"Centroid found at: ({cx}, {cy})")
-                    else:
-                        print("No centroid found for this patch.")
-                else:
-                    print("No non-zero pixels in this patch.")
+                roi = mask_edges[y0:y1+1, x0:x1+1]
 
-            # Save the mask_edges image with visualized centroids
-            cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), mask_edges)
+                # Find all white pixel coordinates (non-zero)
+                points = np.argwhere(roi > 0)  # returns [row, col] with row, col relative to ROI
+
+                centroids = {'bottom': np.zeros((1,2)), 'top': np.zeros((1,2))}
+                empty_bool = True
+
+                if len(points) > 0:
+                    # Compute the centroid as the mean of x and y coordinates of white pixels
+                    avg_y = np.mean(points[:,0]) + y0
+                    avg_x = np.mean(points[:,1]) + x0
+
+                    # Assign both 'bottom' and 'top' centroids to the same point 
+                    # to stay consistent with the structure of the original code.
+                    centroids['bottom'] = np.array([avg_x, avg_y])
+                    centroids['top'] = np.array([avg_x, avg_y])
+
+                    # Convert to integers
+                    centroids['bottom'] = [int(np.round(a)) for a in centroids['bottom']]
+                    centroids['top'] = [int(np.round(a)) for a in centroids['top']]
+
+                    empty_bool = False
+
+                if not empty_bool:
+                    # Draw a small orange circle at the centroid for visualization
+                    # Orange (BGR): (0,165,255), radius=3
+                    cv2.circle(mask_edges_color, (centroids['bottom'][0], centroids['bottom'][1]), 3, (0,165,255), -1)
+
+            cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), mask_edges_color)
+            print("Centroids computed and visualized.")
 
 
             '''
