@@ -21,7 +21,7 @@ camera.set(cv2.CAP_PROP_FRAME_HEIGHT, SCREEN_HEIGHT)
 camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'))  # Set YUYV format
 
 def getTime():
-    return datetime.datetime.now().strftime("%y%m%d_%H%M%S")
+    return datetime.datetime.now().strftime("S_%S_M_%M")
 
 def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alpha=0.2):
     if last_steering_angle is None:
@@ -177,41 +177,42 @@ for i in times2Run:
             break
         else:
            
-           # Centroid Calculation
-           # Convert mask_edges to BGR for visualization of centroids in orange
-           mask_edges_color = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
+            # Centroid Calculation
+            # Convert mask_edges to BGR for visualization of centroids in orange
+            # Convert mask_edges to BGR color for visualization purposes only
+            mask_edges_color = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
 
-           print('Computing centroids of patches...')
-           for patch in list_patch:
-            x0, x1 = patch['x']
-            y0, y1 = patch['y']
-            
-            # Extract the region of interest from mask_edges
-            roi = mask_edges[y0:y1+1, x0:x1+1]
-            
-            # Find coordinates of all non-zero pixels in the ROI
-            points = np.argwhere(roi > 0)
-            
-            if len(points) > 0:
-                # Compute centroid: mean of the x and y coordinates
-                # np.argwhere returns [row, col], so row -> y, col -> x
-                avg_y = np.mean(points[:,0]) + y0
-                avg_x = np.mean(points[:,1]) + x0
-                
-                # Round to integer coordinates
-                centroid_x = int(round(avg_x))
-                centroid_y = int(round(avg_y))
+            print('Computing centroids of patches...')
 
-                # Draw a small orange circle at the centroid
-                # Orange in BGR is (0,165,255)
-                # Radius set to 3 (adjust if needed)
-                cv2.circle(mask_edges_color, (centroid_x, centroid_y), 3, (0,165,255), -1)
-            else:
-                # No non-zero pixels; no centroid to draw
-                pass
+            for patch in list_patch:
+                x0, x1 = patch['x']
+                y0, y1 = patch['y']
 
-            # Save the visualization with centroids
+                # Extract the region of interest from mask_edges (already binary: 0 or 255)
+                roi = mask_edges[y0:y1+1, x0:x1+1]
+
+                # Find coordinates of all white pixels in this patch (non-zero pixels)
+                points = np.argwhere(roi > 0)  # points are in form [row, col]
+
+                if len(points) > 0:
+                    # Compute the centroid as the mean of all white pixel coordinates.
+                    # Since points[:,0] are the y-coordinates (rows) and points[:,1] are the x-coordinates,
+                    # we need to add the offset of the patch to these coordinates.
+                    centroid_y = int(round(np.mean(points[:,0]) + y0))
+                    centroid_x = int(round(np.mean(points[:,1]) + x0))
+
+                    # Draw a small orange circle at the centroid on the visualization image
+                    # Orange in BGR is (0,165,255)
+                    # Radius = 3 for small, but visible dots
+                    cv2.circle(mask_edges_color, (centroid_x, centroid_y), 3, (0,165,255), -1)
+                else:
+                    # No white pixels found, so no centroid to compute or draw
+                    print("No Centroids Detected, no centroids calculated. ")
+                    pass
+
+            # After computing and visualizing all centroids, save the visualization image
             cv2.imwrite(os.path.join(path, f"mask_edges_with_centroids_{getTime()}.jpg"), mask_edges_color)
+
 
             '''
             # Decide lane direction
