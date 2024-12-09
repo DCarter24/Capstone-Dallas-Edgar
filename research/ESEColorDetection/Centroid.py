@@ -1,81 +1,188 @@
 import cv2
 import numpy as np
+import logging
 import datetime
+import math
+import sys
 import os
 
 # Constants
-SCREEN_WIDTH = 640
-SCREEN_HEIGHT = 480
+SCREEN_WIDTH = 640  
+SCREEN_HEIGHT = 480 
+past_steering_angle = 0
+row_threshold = 0
 path = "/home/pi/repo/Capstone-Dallas-Edgar/research/ESEColorDetection/PatchData"
-crop_height = int(SCREEN_HEIGHT * 0.10)  # Adjusted to 48 pixels
+crop_height = int(SCREEN_HEIGHT * 0.10)  # This will be 120 pixels
+ifblue = False
 
 camera = cv2.VideoCapture('/dev/video0', cv2.CAP_V4L)
-camera.set(cv2.CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH)
+camera.set(cv2.CAP_PROP_FRAME_WIDTH, SCREEN_WIDTH)  
 camera.set(cv2.CAP_PROP_FRAME_HEIGHT, SCREEN_HEIGHT)
-camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'))
+camera.set(cv2.CAP_PROP_FOURCC, cv2.VideoWriter_fourcc(*'YUYV'))  # Set YUYV format
 
 def getTime():
     return datetime.datetime.now().strftime("S_%S_M_%M")
 
-for _ in range(1):  # Simplified loop
-    camera.read()  # Discard the first frame
-    successfulRead, raw_image = camera.read()
-    if not successfulRead:
-        print("Image not taken successful.")
-        break
+def stabilize_steering_angle(curr_steering_angle, last_steering_angle=None, alpha=0.2):
+    if last_steering_angle is None:
+        return int(curr_steering_angle)
+    else:
+        if 135 - last_steering_angle <= 5 and curr_steering_angle >= last_steering_angle:
+            return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),
+                           last_steering_angle-1, last_steering_angle+1)
+        elif last_steering_angle - 55 <= 5 and curr_steering_angle <= last_steering_angle:
+            return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),
+                           last_steering_angle-1, last_steering_angle+1)
+        else:
+            return np.clip(int(alpha * curr_steering_angle + (1.-alpha) * last_steering_angle),
+                           last_steering_angle-3, last_steering_angle+3)
 
-    cv2.imwrite(os.path.join(path, f"raw_image_{getTime()}.jpg"), raw_image)
+datestr = getTime()
+times2Run = {1}
 
-    raw_image = cv2.flip(raw_image, -1)
+for i in times2Run:
+    for i in times2Run:
+        camera.read()  # Discard the first frame
+        successfulRead, raw_image = camera.read() 
+        if not successfulRead:
+            print("Image not taken successful.")
+            break
 
-    img_hsv = cv2.cvtColor(raw_image, cv2.COLOR_BGR2HSV)
-    img_crop_hsv = img_hsv[crop_height:, :]
+        # Save the raw image immediately after reading for debugging
+        cv2.imwrite(os.path.join(path, f"raw_image_{getTime()}.jpg"), raw_image)
 
-    lower_hsv = np.array([0, 0, 120])  # Adjusted for dark lighting
-    upper_hsv = np.array([180, 50, 255])
-    mask = cv2.inRange(img_crop_hsv, lower_hsv, upper_hsv)
-    mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)
-    mask_edges = cv2.Canny(mask_blurred, 50, 150)
+        # Validate dimensions to ensure image is read correctly
+        if raw_image.shape[1] != SCREEN_WIDTH or raw_image.shape[0] != SCREEN_HEIGHT:
+            print(f"Warning: Image dimensions mismatch. Expected: {SCREEN_WIDTH}x{SCREEN_HEIGHT}, Got: {raw_image.shape[1]}x{raw_image.shape[0]}")
 
-    crop_width = 20
-    mask_edges = mask_edges[:, crop_width:]
-    adjusted_screen_width = SCREEN_WIDTH - crop_width
+        # Flip the raw image
+        raw_image = cv2.flip(raw_image, -1)
+        cv2.imwrite(os.path.join(path, f"flipped_image_raw_{getTime()}.jpg"), raw_image)
+        
+        print('Img to color...')
+        img_rgb = cv2.cvtColor(raw_image, cv2.COLOR_BGR2RGB)
 
-    lines = cv2.HoughLinesP(mask_edges, 1, np.pi/180, 10, 12, 3)
+        print('Cropping top half of the image...')
+        # Crop the image 
+        img_bottom_half_bgr = raw_image[crop_height:,:]
 
-    col_sum = np.sum(mask_edges > 0, axis=0)
-    threshold = 50
-    lane_columns = np.where(col_sum > threshold)[0]
-    list_patch = []
+        print('Performing HSV color space transformation...')
+        # Convert only the bottom half to HSV
+        img_hsv = cv2.cvtColor(img_bottom_half_bgr, cv2.COLOR_BGR2HSV)
+        # Since we already cropped the image by taking only the bottom half,
+        # this hsv image is effectively the "cropped hsv". We keep the variable name as requested.
+        img_crop_hsv = img_hsv
 
-    if lane_columns.size > 0:
-        start = lane_columns[0]
-        for c in lane_columns[1:]:
-            if c != start + 1:
-                list_patch.append((start, c - 1))
-                start = c
-        list_patch.append((start, lane_columns[-1]))
+        print('Creating binary mask...')
+        if ifblue:
+            lower_hsv = np.array([100, 150, 50])
+            upper_hsv = np.array([130, 255, 255])
+        else:
+            # White detection
+            lower_hsv = np.array([0, 0, 120])
+            upper_hsv = np.array([180, 50, 255])
 
-        num_patches_vertical = 4
-        patch_height = (SCREEN_HEIGHT - crop_height) // num_patches_vertical
-        patch_width = 20
+        mask = cv2.inRange(img_crop_hsv, lower_hsv, upper_hsv)
 
-        img_bottom_half_bgr = cv2.cvtColor(raw_image, cv2.COLOR_RGB2BGR)
-        mask_edges_color = cv2.cvtColor(mask_edges, cv2.COLOR_GRAY2BGR)
+        print('Applying Gaussian blur on mask...')
+        mask_blurred = cv2.GaussianBlur(mask, (5, 5), 0)
 
-        for (start, end) in list_patch:
-            x0 = max(start - patch_width // 2, 0)
-            x1 = min(end + patch_width // 2, adjusted_screen_width)
-            for k in range(num_patches_vertical):
-                y0 = k * patch_height
-                y1 = (k + 1) * patch_height - 1
-                roi = mask_edges[y0:y1, x0:x1]
-                points = np.argwhere(roi > 0)
-                if points.size > 0:
-                    centroid = np.mean(points, axis=0) + [y0, x0]
-                    centroid = centroid.astype(int)
-                    print(f"Centroid found at {centroid} in patch starting at {x0}, {y0}")
-                    cv2.circle(mask_edges_color, (centroid[1], centroid[0]), 3, (0, 165, 255), -1)
+        print('Applying Canny filter...')
+        mask_edges = cv2.Canny(mask_blurred, 50, 150)
 
-        cv2.imwrite(os.path.join(path, f"centroids_visualized_{getTime()}.jpg"), mask_edges_color)
-        print("Centroids computed and visualized on mask edges.")
+        crop_width = 20  # Adjust this value if needed
+        mask_edges = mask_edges[:, crop_width:]
+
+        # Adjust the SCREEN_WIDTH to account for the crop
+        adjusted_screen_width = SCREEN_WIDTH - crop_width
+        print(f"New width after cropping: {adjusted_screen_width}")
+
+        # Save the cropped mask_edges for debugging
+        cv2.imwrite(os.path.join(path, f"cropped_mask_edges_{getTime()}.jpg"), mask_edges)
+
+        minLineLength = 12
+        maxLineGap = 3
+        min_threshold = 5
+
+        print('Applying Probabilistic Hough Transform...')
+        lines = cv2.HoughLinesP(mask_edges, 1, np.pi/180, min_threshold, minLineLength, maxLineGap)
+
+        # Save intermediate images
+        print("Saving Images without calculating angle.")
+        cv2.imwrite(os.path.join(path, f"img_rgb_{getTime()}.jpg"), img_rgb)
+        cv2.imwrite(os.path.join(path, f"img_bottom_half_bgr_{getTime()}.jpg"), img_bottom_half_bgr)
+        cv2.imwrite(os.path.join(path, f"img_crop_hsv_{getTime()}.jpg"), img_crop_hsv)
+        cv2.imwrite(os.path.join(path, f"mask_{getTime()}.jpg"), mask)
+        cv2.imwrite(os.path.join(path, f"mask_blurred_{getTime()}.jpg"), mask_blurred)
+        cv2.imwrite(os.path.join(path, f"mask_edges_{getTime()}.jpg"), mask_edges)
+
+        ### DYNAMIC PATCH GENERATION BASED ON mask_edges ###
+        col_sum = np.sum(mask_edges > 0, axis=0)
+        threshold = 50  
+        lane_columns = np.where(col_sum > threshold)[0]
+
+        if len(lane_columns) == 0:
+            list_patch = []
+        else:
+            segments = []
+            start = lane_columns[0]
+            prev = lane_columns[0]
+
+            for c in lane_columns[1:]:
+                if c != prev + 1:
+                    segments.append((start, prev))
+                    start = c
+                prev = c
+            segments.append((start, prev))
+
+            num_patches_vertical = 4  
+            patch_height = (SCREEN_HEIGHT - crop_height) // num_patches_vertical
+            patch_width = 20  
+            list_patch = []
+
+            for (seg_start, seg_end) in segments:
+                col_center = (seg_start + seg_end) // 1 + crop_width
+                x0 = max(col_center - patch_width//2, 0)
+                x1 = min(col_center + patch_width//2, SCREEN_WIDTH - 1)
+
+                for k in range(num_patches_vertical):
+                    y0 = k * patch_height
+                    y1 = (k+1) * patch_height - 1
+                    list_patch.append({'x': (x0, x1), 'y': (y0, y1)})
+
+        # Draw dynamic patches for debugging
+        for idx, patch in enumerate(list_patch):
+            x0, x1 = patch['x']
+            y0, y1 = patch['y']
+            cv2.rectangle(img_bottom_half_bgr, (x0, y0), (x1, y1), (0,165,255), 1)
+            cv2.rectangle(mask_edges, (x0, y0), (x1, y1), (0,165,255), 1)
+
+        print("Saving Image With Lines (Dynamic Patches).")
+        cv2.imwrite(os.path.join(path, f"image_lines_bottom_half_raw{getTime()}.jpg"), img_bottom_half_bgr)
+        cv2.imwrite(os.path.join(path, f"image_lines_masked_edges{getTime()}.jpg"), mask_edges)
+
+
+        # Centroid Calculation.  
+        if lines is None:
+            print("No Lines Detected. Exiting Loop")
+            break
+        else:
+           
+            # Centroid Calculation
+            print('Computing centroids of patches based on white pixels...')
+
+            X_left = np.zeros((1,2))
+            X_right = np.zeros((1,2))
+            n_right_side_right_dir = 0
+            n_right_side_left_dir = 0
+            n_left_side_right_dir = 0
+            n_left_side_left_dir = 0
+
+            for patch in list_patch:
+                # Extract ROI from mask_edges
+                x0, x1 = patch['x']
+                y0, y1 = patch['y']
+                roi = mask_edges[y0:y1+1, x0:x1+1]
+
+            # Steering angle calculation commented out as in the given code state
+            # ...
